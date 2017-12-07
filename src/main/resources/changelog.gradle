@@ -9,8 +9,6 @@ buildscript {
  }
 }
 
-ext.projectDisplayName = (project.name.substring(0, 1).toUpperCase()+project.name.substring(1)).replaceAll('-',' ')
-
 task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
  gitHubApi = "https://api.github.com/repos/tomasbjerre/"+project.name;
  gitHubToken = System.properties['GITHUB_OAUTH2TOKEN'];

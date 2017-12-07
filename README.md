@@ -7,6 +7,7 @@ Other projects can apply these scripts like this. See:
 
  * https://github.com/tomasbjerre/violations-lib
  * https://github.com/tomasbjerre/git-changelog-lib
+ * https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin
 
 ```
 apply plugin: 'java'
@@ -27,6 +28,7 @@ buildscript {
 apply from: project.buildscript.classLoader.getResource('java.gradle').toURI()
 apply from: project.buildscript.classLoader.getResource('changelog.gradle').toURI()
 apply from: project.buildscript.classLoader.getResource('release.gradle').toURI()
+apply from: project.buildscript.classLoader.getResource('gradle-plugin.gradle').toURI()
 ```
 
 Jitpack can be slow but you can increase the timeouts like this:
