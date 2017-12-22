@@ -1,7 +1,14 @@
 /**
- * If you want a shadow jar. Add this to your build.gradle
+ * If you want a shadow jar. Add this to your build.gradle:
  *
  *  project.ext.useShadowJar = true
+ *
+ * And relocate any libraries like this:
+ *
+ *  shadowJar {
+ *   relocate 'com.google', 'se.bjurr.com.google'
+ *  }
+ *
  */
 project.ext.useShadowJar = project.hasProperty('useShadowJar') && project.useShadowJar
 
@@ -21,10 +28,8 @@ buildscript {
 
 apply plugin: net.researchgate.release.ReleasePlugin
 apply plugin: com.jfrog.bintray.gradle.BintrayPlugin
+apply plugin: com.github.jengelman.gradle.plugins.shadow.PluginShadowPlugin
 
-if (project.useShadowJar) {
- apply plugin: com.github.jengelman.gradle.plugins.shadow.PluginShadowPlugin
-}
 
 ext.set('release.useAutomaticVersion', 'true')
 
@@ -40,11 +45,16 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 
 def artifactsList = []
 if (project.useShadowJar) {
+ shadowJar {
+  baseName = project.name
+  classifier = null
+  version = project.version
+ }
  artifactsList = [sourcesJar, javadocJar, shadowJar]
  build.dependsOn shadowJar
 } else {
  logger.info("Not including shadow jar. To do that, add to your build.gradle: project.ext.useShadowJar = true")
- artifactsList = [sourcesJar, javadocJar]
+ artifactsList = [sourcesJar, javadocJar, jar]
 }
 
 artifacts {
@@ -78,8 +88,12 @@ def pomConfig = {
 
 publishing {
  publications {
-  MyPublication(MavenPublication) {
-   from components.java
+  MyPublication(MavenPublication) { publication ->
+   if (project.useShadowJar) {
+    project.shadow.component(publication)
+   } else {
+    from project.components.java
+   }
    setArtifacts artifactsList
    groupId project.group
    artifactId project.name
