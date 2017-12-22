@@ -1,3 +1,10 @@
+/**
+ * If you want a shadow jar. Add this to your build.gradle
+ *
+ *  project.ext.useShadowJar = true
+ */
+project.ext.useShadowJar = project.hasProperty('useShadowJar') && project.useShadowJar
+
 buildscript {
  repositories {
   jcenter()
@@ -14,7 +21,10 @@ buildscript {
 
 apply plugin: net.researchgate.release.ReleasePlugin
 apply plugin: com.jfrog.bintray.gradle.BintrayPlugin
-apply plugin: com.github.jengelman.gradle.plugins.shadow.PluginShadowPlugin
+
+if (project.useShadowJar) {
+ apply plugin: com.github.jengelman.gradle.plugins.shadow.PluginShadowPlugin
+}
 
 ext.set('release.useAutomaticVersion', 'true')
 
@@ -28,11 +38,19 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
  from javadoc.destinationDir
 }
 
-artifacts {
- archives sourcesJar, javadocJar, shadowJar
+def artifactsList = []
+if (project.useShadowJar) {
+ artifactsList = [sourcesJar, javadocJar, shadowJar]
+ build.dependsOn shadowJar
+} else {
+ logger.info("Not including shadow jar. To do that, add to your build.gradle: project.ext.useShadowJar = true")
+ artifactsList = [sourcesJar, javadocJar]
 }
 
-build.dependsOn shadowJar
+artifacts {
+ archives artifactsList
+}
+
 
 def pomConfig = {
  scm {
@@ -62,9 +80,7 @@ publishing {
  publications {
   MyPublication(MavenPublication) {
    from components.java
-   artifact sourcesJar
-   artifact javadocJar
-   artifact shadowJar
+   setArtifacts artifactsList
    groupId project.group
    artifactId project.name
    version version
