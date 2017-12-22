@@ -8,11 +8,13 @@ buildscript {
  dependencies {
   classpath 'net.researchgate:gradle-release:2.6.0'
   classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+  classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
  }
 }
 
 apply plugin: net.researchgate.release.ReleasePlugin
 apply plugin: com.jfrog.bintray.gradle.BintrayPlugin
+apply plugin: com.github.jengelman.gradle.plugins.shadow.PluginShadowPlugin
 
 ext.set('release.useAutomaticVersion', 'true')
 
@@ -27,8 +29,10 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
- archives sourcesJar, javadocJar
+ archives sourcesJar, javadocJar, shadowJar
 }
+
+build.dependsOn shadowJar
 
 def pomConfig = {
  scm {
