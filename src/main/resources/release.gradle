@@ -60,11 +60,13 @@ def pomConfig = {
 
 publishing {
  publications {
+  ShadowPublication(MavenPublication) { publication ->
+   project.shadow.component(publication)
+  }
   MyPublication(MavenPublication) {
    from components.java
    artifact sourcesJar
    artifact javadocJar
-   artifact shadowJar
    groupId project.group
    artifactId project.name
    version version
@@ -87,7 +89,7 @@ publishing {
 bintray {
  user = System.getenv('BINTRAY_USER')
  key = System.getenv('BINTRAY_KEY')
- publications = ['MyPublication']
+ publications = ['MyPublication', 'ShadowPublication']
  publish = true
  pkg {
   repo = 'tomasbjerre'
