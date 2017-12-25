@@ -75,14 +75,14 @@ findbugs {
  ignoreFailures = true
  effort = "max"
  showProgress = true
- reportLevel = "high"
+ reportLevel = "low"
  sourceSets = [sourceSets.main]
 }
 
 task violations(type: se.bjurr.violations.gradle.plugin.ViolationsTask) {
  minSeverity = 'INFO'
  detailLevel = 'VERBOSE' // PER_FILE_COMPACT, COMPACT or VERBOSE
- maxViolations = 0
+ maxViolations = 9999
  
  // Many more formats available, see: https://github.com/tomasbjerre/violations-lib
  violations = [
