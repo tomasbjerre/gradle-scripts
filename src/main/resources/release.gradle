@@ -12,6 +12,10 @@
  */
 project.ext.useShadowJar = project.hasProperty('useShadowJar') && project.useShadowJar
 
+ext.safeJavaIdentidier = { input ->
+ input.replaceAll('[^a-zA-Z\\.]','')
+}
+
 buildscript {
  repositories {
   jcenter()
