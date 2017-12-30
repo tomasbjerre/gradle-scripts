@@ -20,7 +20,7 @@ pluginBundle {
   tags = project.tags
 
   plugins {
-    violationsPlugin {
+    thePlugin {
       id = project.group+'.'+project.name
       displayName = project.projectDisplayName
     }
