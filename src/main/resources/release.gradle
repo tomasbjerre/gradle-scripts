@@ -152,5 +152,5 @@ bintray {
 }
 
 afterReleaseBuild.dependsOn {
- [install, bintrayUpload]
+ [bintrayUpload]
 }
