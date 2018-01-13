@@ -83,6 +83,7 @@ task violations(type: se.bjurr.violations.gradle.plugin.ViolationsTask) {
  minSeverity = 'INFO'
  detailLevel = 'VERBOSE' // PER_FILE_COMPACT, COMPACT or VERBOSE
  maxViolations = 9999
+ printViolations = true // Will print violations found in diff
  
  // Many more formats available, see: https://github.com/tomasbjerre/violations-lib
  violations = [
