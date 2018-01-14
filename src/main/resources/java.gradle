@@ -97,7 +97,8 @@ task violations(type: se.bjurr.violations.gradle.plugin.ViolationsTask) {
  
  // Many more formats available, see: https://github.com/tomasbjerre/violations-lib
  violations = [
-  ["FINDBUGS", ".", ".*/build/reports/findbugs/.*\\.xml\$","Findbugs"]
+  ["FINDBUGS", ".", ".*/build/reports/findbugs/.*\\.xml\$","Findbugs"],
+  ["GOOGLEERRORPRONE", ".", ".*/build/googleErrorProne.*\\.log\$","Error Prone"]
  ]
 }
 
