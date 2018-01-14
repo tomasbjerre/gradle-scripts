@@ -1,11 +1,11 @@
 buildscript {
   repositories {
     maven { url "https://plugins.gradle.org/m2/" }
-    maven { url  "https://dl.bintray.com/tomasbjerre/tomasbjerre" }
   }
   dependencies {
     classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
-    classpath "se.bjurr.violations:violations-gradle-plugin:1.+"
+    classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'
+    classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.13'
   }
 }
 
@@ -17,11 +17,21 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'eclipse'
 apply plugin: se.bjurr.violations.gradle.plugin.ViolationsGradlePlugin
+apply plugin: net.ltgt.gradle.errorprone.ErrorProneBasePlugin
 
 ext.projectDisplayName = (project.name.substring(0, 1).toUpperCase()+project.name.substring(1)).replaceAll('-',' ')
 
 task wrapper(type: Wrapper) {
  gradleVersion = '4.4.1'
+}
+
+import net.ltgt.gradle.errorprone.ErrorProneToolChain
+
+task googleErrorProne {
+  finalizedBy {
+    compileJava.toolChain net.ltgt.gradle.errorprone.ErrorProneToolChain.create(project)
+    compileJava
+  }
 }
 
 sourceCompatibility = 1.7
