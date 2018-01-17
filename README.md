@@ -2,12 +2,16 @@
 
 This is a collection of gradle scripts that I use in other projects.
 
-
 Other projects can apply these scripts like this. See:
 
  * https://github.com/tomasbjerre/violations-lib
  * https://github.com/tomasbjerre/git-changelog-lib
  * https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin
+
+Applying them via a Maven repository means:
+
+ * The scripts will be cached. Not downloaded for every build, making them faster, and builds can be performed when offline.
+ * Versions can be released and managed in branches.
 
 ```
 apply plugin: 'java'
