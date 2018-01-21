@@ -3,9 +3,10 @@ buildscript {
     maven { url "https://plugins.gradle.org/m2/" }
   }
   dependencies {
-    classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
+    classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.+'
     classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'
-    classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.13'
+    classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.+'
+    classpath 'org.junit.platform:junit-platform-gradle-plugin:1.+'
   }
 }
 
@@ -18,6 +19,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'eclipse'
 apply plugin: se.bjurr.violations.gradle.plugin.ViolationsGradlePlugin
 apply plugin: net.ltgt.gradle.errorprone.ErrorProneBasePlugin
+apply plugin: org.junit.platform.gradle.plugin.JUnitPlatformPlugin
 
 ext.projectDisplayName = (project.name.substring(0, 1).toUpperCase()+project.name.substring(1)).replaceAll('-',' ')
 
