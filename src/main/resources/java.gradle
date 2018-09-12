@@ -4,6 +4,7 @@ buildscript {
   }
   dependencies {
     classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.+'
+    classpath 'com.github.spotbugs:com.github.spotbugs.gradle.plugin:1.+'
     classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'
     classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.+'
     classpath 'gradle.plugin.com.github.ksoichiro:gradle-build-info-plugin:0.+'
@@ -15,6 +16,7 @@ apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPl
 apply plugin: 'java'
 apply plugin: 'java-library'
 apply plugin: 'findbugs'
+apply plugin: com.github.spotbugs.SpotBugsPlugin
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'eclipse'
@@ -93,6 +95,14 @@ findbugs {
  sourceSets = [sourceSets.main]
 }
 
+spotbugs {
+ ignoreFailures = true
+ effort = "max"
+ showProgress = true
+ reportLevel = "low"
+ sourceSets = [sourceSets.main]
+}
+
 task violations(type: se.bjurr.violations.gradle.plugin.ViolationsTask) {
  minSeverity = 'INFO'
  detailLevel = 'VERBOSE' // PER_FILE_COMPACT, COMPACT or VERBOSE
@@ -102,6 +112,7 @@ task violations(type: se.bjurr.violations.gradle.plugin.ViolationsTask) {
  // Many more formats available, see: https://github.com/tomasbjerre/violations-lib
  violations = [
   ["FINDBUGS", ".", ".*/build/reports/findbugs/.*\\.xml\$","Findbugs"],
+  ["FINDBUGS", ".", ".*/build/reports/spotbugs/.*\\.xml\$","Spotbugs"],
   ["GOOGLEERRORPRONE", ".", ".*/build/googleErrorProne.*\\.log\$","Error Prone"]
  ]
 }
