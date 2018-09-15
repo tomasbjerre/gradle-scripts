@@ -7,7 +7,7 @@ buildscript {
     classpath 'com.github.spotbugs:com.github.spotbugs.gradle.plugin:1.+'
     classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'
     classpath 'net.ltgt.gradle:gradle-errorprone-javacplugin-plugin:0.+'
-    errorproneJavac 'com.google.errorprone:javac:0.+'
+    classpath 'com.google.errorprone:javac:0.+'
     classpath 'gradle.plugin.com.github.ksoichiro:gradle-build-info-plugin:0.+'
     //classpath 'org.junit.platform:junit-platform-gradle-plugin:1.+'
   }
