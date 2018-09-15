@@ -31,7 +31,7 @@ task wrapper(type: Wrapper) {
  gradleVersion = '4.4.1'
 }
 
-import net.ltgt.gradle.errorprone.ErrorProneToolChain
+import net.ltgt.gradle.errorprone.*
 
 task googleErrorProne {
   finalizedBy {
