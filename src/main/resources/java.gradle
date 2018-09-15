@@ -6,7 +6,7 @@ buildscript {
     classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.+'
     classpath 'com.github.spotbugs:com.github.spotbugs.gradle.plugin:1.+'
     classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'
-    classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.+'
+    classpath 'net.ltgt.gradle:gradle-errorprone-javacplugin-plugin:0.+'
     classpath 'gradle.plugin.com.github.ksoichiro:gradle-build-info-plugin:0.+'
     //classpath 'org.junit.platform:junit-platform-gradle-plugin:1.+'
   }
@@ -21,7 +21,7 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'eclipse'
 apply plugin: se.bjurr.violations.gradle.plugin.ViolationsGradlePlugin
-apply plugin: net.ltgt.gradle.errorprone.ErrorProneBasePlugin
+apply plugin: net.ltgt.gradle.errorprone.javacplugin.ErrorProneJavacPluginPlugin
 apply plugin: com.github.ksoichiro.build.info.BuildInfoPlugin
 //apply plugin: org.junit.platform.gradle.plugin.JUnitPlatformPlugin
 
