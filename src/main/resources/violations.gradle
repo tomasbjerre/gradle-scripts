@@ -7,8 +7,5 @@ buildscript {
   }
 }
 
-import se.bjurr.violations.lib.util.Utils
+import se.bjurr.violations.lib.util.*
 Utils.updateReadmeWithReporters()
-
-import se.bjurr.violations.lib.reports.Reporter
-project.ext.tags = Reporter.values().collect { it.name }
