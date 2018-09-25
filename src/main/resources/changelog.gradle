@@ -25,10 +25,10 @@ Changelog of ${projectDisplayName}.
  {{#issues}}
   {{#hasIssue}}
    {{#hasLink}}
-### {{name}} [{{issue}}]({{link}}) {{title}}
+### {{name}} [{{issue}}]({{link}}) {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
    {{/hasLink}}
    {{^hasLink}}
-### {{name}} {{issue}} {{title}}
+### {{name}} {{issue}} {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
    {{/hasLink}}
   {{/hasIssue}}
   {{^hasIssue}}
@@ -42,7 +42,7 @@ Changelog of ${projectDisplayName}.
  * {{.}} 
 {{/messageBodyItems}}
 
-[{{hash}}](https://github.com/tomasbjerre/${project.name}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
+[{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
 
   {{/commits}}
 
