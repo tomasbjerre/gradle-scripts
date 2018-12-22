@@ -28,7 +28,7 @@ apply plugin: com.github.ksoichiro.build.info.BuildInfoPlugin
 ext.projectDisplayName = (project.name.substring(0, 1).toUpperCase()+project.name.substring(1)).replaceAll('-',' ')
 
 task wrapper(type: Wrapper) {
- gradleVersion = '4.4.1'
+ gradleVersion = '5.0'
  distributionType = Wrapper.DistributionType.ALL
 }
 
