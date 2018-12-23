@@ -29,7 +29,8 @@ ext.projectDisplayName = (project.name.substring(0, 1).toUpperCase()+project.nam
 
 task wrapper(type: Wrapper) {
  gradleVersion = '5.0'
- distributionType = Wrapper.DistributionType.ALL
+ //distributionType = Wrapper.DistributionType.ALL
+ distributionUrl = distributionUrl.replace("bin", "all")
 }
 
 //import net.ltgt.gradle.errorprone.*
