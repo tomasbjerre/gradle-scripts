@@ -27,10 +27,10 @@ apply plugin: com.github.ksoichiro.build.info.BuildInfoPlugin
 
 ext.projectDisplayName = (project.name.substring(0, 1).toUpperCase()+project.name.substring(1)).replaceAll('-',' ')
 
-//task wrapper(type: Wrapper) {
-// gradleVersion = '4.4.1'
-// distributionType = Wrapper.DistributionType.ALL
-//}
+task wrapper(type: Wrapper) {
+ gradleVersion = '4.4.1'
+ distributionType = Wrapper.DistributionType.ALL
+}
 
 //import net.ltgt.gradle.errorprone.*
 
