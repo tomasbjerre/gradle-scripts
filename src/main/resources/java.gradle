@@ -47,7 +47,7 @@ targetCompatibility = 1.8
 repositories {
  mavenLocal()
  jcenter()
- //mavenCentral()
+ mavenCentral()
  maven { url 'https://jitpack.io' }
 }
 
