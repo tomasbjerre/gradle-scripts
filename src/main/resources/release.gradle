@@ -151,6 +151,10 @@ bintray {
  }
 }
 
+release {
+ failOnSnapshotDependencies = false
+}
+
 afterReleaseBuild.dependsOn {
  [bintrayUpload]
 }
