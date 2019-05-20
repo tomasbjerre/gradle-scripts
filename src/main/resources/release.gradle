@@ -24,9 +24,9 @@ buildscript {
   }
  }
  dependencies {
-  classpath 'net.researchgate:gradle-release:2.6.0'
-  classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
-  classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
+  classpath 'net.researchgate:gradle-release:2.8.0'
+  classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+  classpath 'com.github.jengelman.gradle.plugins:shadow:5.0.0'
  }
 }
 
