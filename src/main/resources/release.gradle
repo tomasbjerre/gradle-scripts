@@ -11,6 +11,7 @@
  *
  */
 project.ext.useShadowJar = project.hasProperty('useShadowJar') && project.useShadowJar
+project.ext.syncCentral = project.hasProperty('syncCentral') && project.syncCentral || !project.hasProperty('syncCentral')
 
 ext.safeJavaIdentidier = { input ->
  input.replaceAll('[^a-zA-Z\\.]','')
@@ -143,7 +144,7 @@ bintray {
     sign = true
    }
    mavenCentralSync {
-    sync = true
+    sync = project.syncCentral
     user = System.getenv('MAVEN_CENTRAL_USER')
     password = System.getenv('MAVEN_CENTRAL_PASSWORD')
    }
