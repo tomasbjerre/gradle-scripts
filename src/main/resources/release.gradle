@@ -129,7 +129,7 @@ bintray {
   name = project.group+':'+project.name
   desc = project.description
   licenses = ['Apache-2.0']
-  vcsUrl = 'git@github.com:tomasbjerre/'+project.name+'.git'
+  vcsUrl = 'https://git@github.com/tomasbjerre/'+project.name+'.git'
   websiteUrl = 'https://github.com/tomasbjerre/'+project.name
   issueTrackerUrl = 'https://github.com/tomasbjerre/'+project.name+'/issues'
   labels = project.tags
