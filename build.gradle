@@ -1,9 +1,16 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-task wrapper(type: Wrapper) {
- gradleVersion = '4.4.1'
-}
+
+//
+// Added for testing
+//
+
+apply from: 'src/main/resources/java.gradle'
+
+//
+// End of testing
+//
 
 sourceSets {
  main.java.srcDirs = ['src/main/java' ]

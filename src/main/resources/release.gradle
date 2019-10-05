@@ -11,6 +11,7 @@
  *
  */
 project.ext.useShadowJar = project.hasProperty('useShadowJar') && project.useShadowJar
+project.ext.syncCentral = project.hasProperty('syncCentral') && project.syncCentral || !project.hasProperty('syncCentral')
 
 ext.safeJavaIdentidier = { input ->
  input.replaceAll('[^a-zA-Z\\.]','')
@@ -24,9 +25,9 @@ buildscript {
   }
  }
  dependencies {
-  classpath 'net.researchgate:gradle-release:2.6.0'
-  classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
-  classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
+  classpath 'net.researchgate:gradle-release:2.8.0'
+  classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+  classpath 'com.github.jengelman.gradle.plugins:shadow:5.0.0'
  }
 }
 
@@ -128,7 +129,7 @@ bintray {
   name = project.group+':'+project.name
   desc = project.description
   licenses = ['Apache-2.0']
-  vcsUrl = 'git@github.com:tomasbjerre/'+project.name+'.git'
+  vcsUrl = 'https://git@github.com/tomasbjerre/'+project.name+'.git'
   websiteUrl = 'https://github.com/tomasbjerre/'+project.name
   issueTrackerUrl = 'https://github.com/tomasbjerre/'+project.name+'/issues'
   labels = project.tags
@@ -143,12 +144,16 @@ bintray {
     sign = true
    }
    mavenCentralSync {
-    sync = true
+    sync = project.syncCentral
     user = System.getenv('MAVEN_CENTRAL_USER')
     password = System.getenv('MAVEN_CENTRAL_PASSWORD')
    }
   }
  }
+}
+
+release {
+ failOnSnapshotDependencies = false
 }
 
 afterReleaseBuild.dependsOn {
