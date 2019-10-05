@@ -13,7 +13,7 @@ buildscript {
 apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
 apply plugin: 'java'
 apply plugin: 'java-library'
-apply plugin: "com.github.spotbugs"
+apply plugin: com.github.spotbugs.SpotBugsPlugin
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'eclipse'
