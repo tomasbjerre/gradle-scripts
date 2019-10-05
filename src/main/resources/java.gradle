@@ -4,18 +4,16 @@ buildscript {
   }
   dependencies {
     classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.+'
-    //classpath 'com.github.spotbugs:com.github.spotbugs.gradle.plugin:1.+'
     classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'
-    //classpath 'net.ltgt.gradle:gradle-errorprone-javacplugin-plugin:0.+'
     classpath 'gradle.plugin.com.github.ksoichiro:gradle-build-info-plugin:0.+'
-    //classpath 'org.junit.platform:junit-platform-gradle-plugin:1.+'
+    classpath "gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:2.0.0"
   }
 }
 
 apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
 apply plugin: 'java'
 apply plugin: 'java-library'
-apply plugin: 'spotbugs'
+apply plugin: "com.github.spotbugs"
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'eclipse'
