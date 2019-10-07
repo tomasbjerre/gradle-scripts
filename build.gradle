@@ -1,17 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-
-//
-// Added for testing
-//
-
-apply from: 'src/main/resources/java.gradle'
-
-//
-// End of testing
-//
-
 sourceSets {
  main.java.srcDirs = ['src/main/java' ]
 }
