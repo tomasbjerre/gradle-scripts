@@ -67,7 +67,7 @@ if (JavaVersion.current().isJava8Compatible()) {
 }
 
 compileJava.dependsOn 'googleJavaFormat'
-verifyJavaFormat.dependsOn 'googleJavaFormat'
+verifyGoogleJavaFormat.dependsOn 'googleJavaFormat'
 
 spotbugs {
  ignoreFailures = true
