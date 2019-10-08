@@ -81,7 +81,13 @@ task violations(type: se.bjurr.violations.gradle.plugin.ViolationsTask) {
  detailLevel = 'VERBOSE' // PER_FILE_COMPACT, COMPACT or VERBOSE
  maxViolations = 9999
  printViolations = true // Will print violations found in diff
- 
+
+ maxReporterColumnWidth = 0 // 0 means "no limit"
+ maxRuleColumnWidth = 50
+ maxSeverityColumnWidth = 0
+ maxLineColumnWidth = 0
+ maxMessageColumnWidth = 300
+
  // Many more formats available, see: https://github.com/tomasbjerre/violations-lib
  violations = [
   ["FINDBUGS", ".", ".*/build/reports/findbugs/.*\\.xml\$","Findbugs"],
