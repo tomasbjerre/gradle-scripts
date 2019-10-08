@@ -87,7 +87,7 @@ task violations(type: se.bjurr.violations.gradle.plugin.ViolationsTask) {
  maxRuleColumnWidth = 60
  maxSeverityColumnWidth = 0
  maxLineColumnWidth = 0
- maxMessageColumnWidth = 100
+ maxMessageColumnWidth = 50
 
  // Many more formats available, see: https://github.com/tomasbjerre/violations-lib
  violations = [
