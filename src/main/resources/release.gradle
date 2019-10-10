@@ -11,7 +11,7 @@
  *
  */
 project.ext.useShadowJar = project.hasProperty('useShadowJar') && project.useShadowJar
-project.ext.syncCentral = project.hasProperty('syncCentral') && project.syncCentral || !project.hasProperty('syncCentral')
+project.ext.syncCentral = false //project.hasProperty('syncCentral') && project.syncCentral || !project.hasProperty('syncCentral')
 
 ext.safeJavaIdentidier = { input ->
  input.replaceAll('[^a-zA-Z\\.]','')
