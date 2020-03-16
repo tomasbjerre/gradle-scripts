@@ -3,6 +3,7 @@ buildscript {
   maven {
    url "https://plugins.gradle.org/m2/"
   }
+  mavenLocal()
  }
  dependencies {
   classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.+"
