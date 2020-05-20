@@ -79,6 +79,10 @@ spotbugs {
  excludeFilterConfig = resources.text.fromString(project.buildscript.classLoader.getResource('spotbugs-exclude.xml').getText())
 }
 
+dependencies {
+  spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.10.1'
+}
+
 task violations(type: se.bjurr.violations.gradle.plugin.ViolationsTask) {
  minSeverity = 'INFO'
  detailLevel = 'VERBOSE' // PER_FILE_COMPACT, COMPACT or VERBOSE
