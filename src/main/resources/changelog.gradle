@@ -16,7 +16,7 @@ task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask
  jiraIssuePattern = "\\bJENKINS-([0-9]+)\\b";
  removeIssueFromMessage = true
  file = new File("CHANGELOG.md");
- ignoreCommitsIfMessageMatches = ".*(Gradle Release Plugin)|(Merge).*";
+ ignoreCommitsIfMessageMatches = "^\\[maven-release-plugin\\].*|^\\[Gradle Release Plugin\\].*|^Merge.*";
  templateContent = """
  # ${projectDisplayName} changelog
 
