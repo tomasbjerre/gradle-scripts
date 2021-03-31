@@ -1,42 +1,52 @@
 # Gradle Scripts
 
-This is a collection of gradle scripts that I use in other projects.
+[![Build Status](https://travis-ci.org/tomasbjerre/gradle-scripts.svg?branch=master)](https://travis-ci.org/tomasbjerre/gradle-scripts)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.gradle/gradle-scripts/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/gradle-scripts)
 
-Other projects can apply these scripts like this. See:
+This is how I share Gradle code between my projects. It is written in a highly configurable way, much like:
+https://www.jenkins.io/blog/2020/10/21/a-sustainable-pattern-with-shared-library/
 
- * https://github.com/tomasbjerre/violations-lib
- * https://github.com/tomasbjerre/git-changelog-lib
- * https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin
+Example usage can be found in:
 
-Applying them via a Maven repository means:
+ * [Violations Lib](https://github.com/tomasbjerre/violations-lib/blob/master/build.gradle)
 
- * The scripts will be cached. Not downloaded for every build, making them faster, and builds can be performed when offline.
- * Versions can be released and managed in branches.
+# How does it work?
 
-```
+It packages a `jar`. Uploads it to a Maven repository. Users can add the `jar` classpath and apply the `main.gradle` script from that `jar`.
+
+The behaviour of the script is highly configurable by supplying a `project.ext.buildConfig`. The given config will be merged with the [defaultConfig](src/main/resources/main.gradle).
+
+```groovy
 apply plugin: 'java'
-
-project.ext.tags = ['tag1', 'tag2']
-group = 'se.bjurr.x'
-description = 'Library for ...'
-
 
 buildscript {
  repositories {
-  maven { url "https://jitpack.io" }
+  mavenCentral()
+  mavenLocal()
  }
  dependencies {
-  classpath 'com.github.tomasbjerre:gradle-scripts:master-SNAPSHOT'
+  classpath 'com.github.tomasbjerre:gradle-scripts:a.b'
  }
 }
-apply from: project.buildscript.classLoader.getResource('java.gradle').toURI()
-apply from: project.buildscript.classLoader.getResource('changelog.gradle').toURI()
-apply from: project.buildscript.classLoader.getResource('release.gradle').toURI()
-apply from: project.buildscript.classLoader.getResource('gradle-plugin.gradle').toURI()
+project.ext.buildConfig = [
+  // Your can supply a given config here and adjust parts of default config in:
+  // src/main/resources/main.gradle
+]
+apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 ```
 
-Jitpack can be slow but you can increase the timeouts like this:
-```
-./gradlew build -Dhttp.socketTimeout=60000 -Dhttp.connectionTimeout=60000
+# Requirements
+
+Tested with Gradle 6.8.3.
+
+```sh
+./gradlew wrapper --gradle-version=6.8.3 --distribution-type=bin
 ```
 
+# Developer instructions
+
+You can fiddle with the script localy by installning it with:
+
+```sh
+./gradlew publishToMavenLocal -Pversion=latest-SNAPSHOT
+```

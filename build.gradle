@@ -1,6 +1,4 @@
-apply plugin: 'java'
-apply plugin: 'maven'
-
-sourceSets {
- main.java.srcDirs = ['src/main/java' ]
-}
+/**
+ * See README.md for usage in a project.
+ */
+apply from: 'src/main/resources/main.gradle'
