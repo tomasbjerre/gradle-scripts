@@ -1,0 +1,414 @@
+def configureChangelog() {
+  def configuredGitHubToken = System.properties[effectiveConfig.changelog.githubTokenEnvVariableName]
+  task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
+    if (configuredGitHubToken != null) {
+      gitHubApi = "https://api.github.com/repos/" + effectiveConfig.changelog.githubOrganization + "/" + project.name;
+      gitHubToken = configuredGitHubToken;
+    } else {
+      println "Did not find Github token ${effectiveConfig.changelog.githubTokenEnvVariableName} env variable."
+    }
+    jiraIssuePattern = effectiveConfig.changelog.jiraIssuePattern;
+    removeIssueFromMessage = true
+    file = file("CHANGELOG.md");
+    ignoreCommitsIfMessageMatches = effectiveConfig.changelog.ignoreCommitsIfMessageMatches;
+    templateContent = """
+    # {{repoName}} changelog
+
+    Changelog of {{repoName}}.
+
+    {{#tags}}
+    ## {{name}}
+    {{#issues}}
+      {{#hasIssue}}
+      {{#hasLink}}
+    ### {{name}} [{{issue}}]({{link}}) {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
+      {{/hasLink}}
+      {{^hasLink}}
+    ### {{name}} {{issue}} {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
+      {{/hasLink}}
+      {{/hasIssue}}
+      {{^hasIssue}}
+    ### {{name}}
+      {{/hasIssue}}
+
+      {{#commits}}
+    **{{{messageTitle}}}**
+
+    {{#messageBodyItems}}
+    * {{.}} 
+    {{/messageBodyItems}}
+
+    [{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
+
+      {{/commits}}
+
+    {{/issues}}
+    {{/tags}}
+    """;
+  }
+}
+
+def File getFile(String name) {
+  def f = file(name)
+  if (!f.exists()) {
+    println "Cannot find file \"${name}\""
+  } else {
+    println "Found file \"${name}\""
+  }
+  return f
+}
+
+def File getResourceAsFile(String name) {
+  Resource resource = project.buildscript.classLoader.getResource(name)
+  if (resource == null) {
+    println "Cannot find resource \"${name}\""
+  } else {
+    println "Found resource ${name} as ${resource.text}"
+    return file(resource.toURI())
+  }
+  
+  def f = getFile(name)
+  if (f.exists()) {
+    return f
+  }
+
+  f = getFile("src/main/resources/"+name)
+  if (f.exists()) {
+    return f
+  }
+
+  throw new RuntimeException("Cannot find resource ${name}")
+}
+
+def configureStaticCodeAnalysis() {
+  apply plugin: com.github.spotbugs.SpotBugsPlugin
+  apply plugin: se.bjurr.violations.gradle.plugin.ViolationsGradlePlugin
+
+  spotbugs {
+    ignoreFailures = true
+    effort = "max"
+    showProgress = true
+    reportLevel = "low"
+    sourceSets = [sourceSets.main]
+    excludeFilter = getResourceAsFile('spotbugs-exclude.xml')
+  }
+
+  dependencies {
+    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.10.1'
+  }
+
+  task violations(type: se.bjurr.violations.gradle.plugin.ViolationsTask) {
+    minSeverity = 'INFO'
+    detailLevel = 'VERBOSE' // PER_FILE_COMPACT, COMPACT or VERBOSE
+    maxViolations = effectiveConfig.maxViolations
+    printViolations = true // Will print violations found in diff
+
+    // Many more formats available, see: https://github.com/tomasbjerre/violations-lib
+    violations = [
+      ["FINDBUGS", ".", ".*/build/reports/findbugs/.*\\.xml\$","Findbugs"],
+      ["FINDBUGS", ".", ".*/build/reports/spotbugs/.*\\.xml\$","Spotbugs"],
+      ["GOOGLEERRORPRONE", ".", ".*/build/googleErrorProne.*\\.log\$","Error Prone"]
+    ]
+  }
+
+  check.finalizedBy violations
+}
+
+def configureFormatting() {
+  apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
+  build.dependsOn 'googleJavaFormat'
+  verifyGoogleJavaFormat.enabled = false
+}
+
+def configureJava() {
+  apply plugin: 'java'
+  apply plugin: 'eclipse'
+  apply plugin: com.github.ksoichiro.build.info.BuildInfoPlugin
+
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+
+  test {
+    if (System.getProperty('DEBUG', 'false') == 'true') {
+      jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9009'
+    }
+  }
+
+  if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+      tasks.withType(Javadoc) {
+      options.addStringOption('Xdoclint:none', '-quiet')
+      }
+    }
+  }
+
+  eclipse {
+    classpath {
+      downloadSources = true
+      downloadJavadoc = true
+    }
+  }
+}
+
+def configureRelease() {
+  apply plugin: "maven-publish"
+  apply plugin: 'signing'
+  apply plugin: net.researchgate.release.ReleasePlugin
+  apply plugin: com.github.jengelman.gradle.plugins.shadow.PluginShadowPlugin
+
+  ext.set('release.useAutomaticVersion', 'true')
+
+  task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+  }
+
+  task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+  }
+
+  def artifactsList = []
+  def useShadowJar = !effectiveConfig.relocate.isEmpty()
+  if (useShadowJar) {
+    effectiveConfig.relocate.each {
+      def relocateFrom = it.split(":")[0]
+      def relocateTo = it.split(":")[1]
+      println "Relocating ${relocateFrom} to ${relocateTo}"
+      shadowJar {
+        relocate relocateFrom, relocateTo
+      }
+    }
+    shadowJar {
+      baseName = project.name
+      classifier = null
+      version = project.version
+    }
+    artifactsList = [sourcesJar, javadocJar, shadowJar]
+    build.dependsOn shadowJar
+  } else {
+    logger.info("Not including shadow jar. To do that, add to your build.gradle: project.ext.useShadowJar = true")
+    artifactsList = [sourcesJar, javadocJar, jar]
+  }
+
+  artifacts {
+    archives artifactsList
+  }
+
+  def pomConfig = {
+    scm {
+      url effectiveConfig.website
+      connection effectiveConfig.vcsUrl
+      developerConnection effectiveConfig.vcsUrl
+    }
+
+    licenses {
+      license {
+        name effectiveConfig.licenseName
+        url effectiveConfig.licenseUrl
+        distribution 'repo'
+      }
+    }
+
+    developers {
+      developer {
+        id effectiveConfig.developerId
+        name effectiveConfig.developerName
+        email effectiveConfig.developerEmail
+      }
+    }
+  }
+
+  publishing {
+    publications {
+      gradleScriptsPublication(MavenPublication) { publication ->
+        if (useShadowJar) {
+          project.shadow.component(publication)
+        } else {
+          from project.components.java
+        }
+        setArtifacts artifactsList
+        println "group: ${project.group} name: ${project.name}"
+        groupId project.group
+        artifactId project.name
+        version version
+        pom.withXml {
+          def root = asNode()
+          root.appendNode('description', project.description)
+          root.appendNode('name', project.name)
+          root.appendNode('url', effectiveConfig.website)
+          root.appendNode('inceptionYear', new Date().getYear() + 1900)
+          root.children().last() + pomConfig
+        }
+      }
+    }
+    repositories {
+      maven {
+        name = effectiveConfig.mavenPublishingRepositoryName
+        credentials(PasswordCredentials)
+        url = effectiveConfig.mavenPublishingRepositoryUrl
+      }
+    }
+  }
+
+  // https://github.com/researchgate/gradle-release
+  release {
+    failOnSnapshotDependencies = false
+
+    git {
+      requireBranch = ''
+      signTag = true
+    }
+  }
+
+  if (effectiveConfig.signRelease) {
+    signing {
+      sign publishing.publications.gradleScriptsPublication
+    }
+  }
+
+  afterReleaseBuild.dependsOn publish
+}
+
+def configureDefault() {
+  configureChangelog()
+  configureJava()
+  configureFormatting()
+  configureStaticCodeAnalysis()
+  configureRelease()
+}
+
+def configureViolations() {
+  configureDefault()
+  se.bjurr.violations.lib.util.Utils.updateReadmeWithReporters()
+}
+
+def configureGradle() {
+  configureDefault()
+
+  apply plugin: com.gradle.publish.PublishPlugin
+
+  dependencies {
+    compile gradleApi()
+  }
+
+  pluginBundle {
+    website = effectiveConfig.website
+    vcsUrl = effectiveConfig.vcsUrl
+    description = project.description
+    tags = project.tags
+
+    plugins {
+      thePlugin {
+        id = project.group+'.'+project.name
+        displayName = project.projectDisplayName
+      }
+    }
+  }
+
+  afterReleaseBuild.dependsOn {
+    [publishPlugins]
+  }
+}
+
+def mergeMaps(Map defaultMap, Map overrideWith) {
+    return overrideWith.inject(defaultMap.clone()) { map, entry ->
+        if (map[entry.key] instanceof Map && entry.value instanceof Map) {
+            map[entry.key] = merge(map[entry.key], entry.value)
+        } else {
+            map[entry.key] = entry.value
+        }
+        return map
+    }
+}
+
+def pretty(it) {
+  groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(it))
+}
+
+def defaultConfig = [
+  /**
+   * "DEFAULT" - Works for most Java projects.
+   * "VIOLATIONS" - Much like Java projects, but with some common behavior of my violations lib and its tools.
+   * "GRADLE" - A Gradle plugin.
+   */
+  repoType: "DEFAULT",
+  website: 'https://github.com/tomasbjerre/' + project.name,
+  vcsUrl: 'https://github.com/tomasbjerre/'+project.name,
+  /**
+   * Maximum number of violations to accept from static code analysis.
+   */
+  maxViolations: 9999,
+  changelog: [
+    produceChangelog: true,
+    githubTokenEnvVariableName: 'GITHUB_OAUTH2TOKEN',
+    githubOrganization: 'tomasbjerre',
+    jiraIssuePattern: "\\bJENKINS-([0-9]+)\\b",
+    ignoreCommitsIfMessageMatches: "^\\[maven-release-plugin\\].*|^\\[Gradle Release Plugin\\].*|^Merge.*"
+  ],
+  /**
+   * If not empty: creates a fat jar with relocated packages.
+   */
+  relocate: [], // Example: [ "com.google:se.bjurr.com.google" ]
+  licenseName: 'The Apache Software License, Version 2.0',
+  licenseUrl: 'http://www.apache.org/licenses/LICENSE-2.0.txt',
+  developerId: 'tomasbjerre',
+  developerName: 'Tomas Bjerre',
+  developerEmail: 'tomas.bjerre85@gmail.com',
+  /**
+   * If using PasswordCredentials and repository name "nexus", you will
+   * need to supply username/password properties named "nexusUsername"
+   * and "nexusPassword". Perhaps in ~/.gradle/gradle.properties
+   */
+  mavenPublishingRepositoryName: "nexus",
+  mavenPublishingRepositoryUrl: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/',
+  /**
+   * If using signing you will need to supply signing properties.
+   * Perhaps in ~/.gradle/gradle.properties
+   * https://docs.gradle.org/current/userguide/signing_plugin.html
+   */
+  signRelease: true
+]
+
+def buildConfig = project.hasProperty('buildConfig') ? buildConfig : [:]
+ext.effectiveConfig = mergeMaps(defaultConfig, buildConfig)
+
+println "----------- tomasbjerre/gradle-scripts ----------------"
+println "Default config:\n\n" + pretty(defaultConfig) + "\n"
+println "Given config:\n\n" + pretty(buildConfig) + "\n"
+println "Effective config:\n\n" + pretty(effectiveConfig) + "\n"
+println "-------------------------------------------------------"
+
+buildscript {
+  repositories {
+    maven { url "https://plugins.gradle.org/m2/" }
+    mavenCentral()
+    mavenLocal()
+  }
+  dependencies {
+    classpath 'se.bjurr.violations:violations-lib:+'
+    classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:+"
+    classpath "com.gradle.publish:plugin-publish-plugin:0.11.0"
+    classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.8'
+    classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'
+    classpath 'gradle.plugin.com.github.ksoichiro:gradle-build-info-plugin:0.+'
+    classpath "gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:2.0.0"
+    classpath 'net.researchgate:gradle-release:2.8.1'
+    classpath 'com.github.jengelman.gradle.plugins:shadow:5.2.0'
+  }
+}
+
+if (effectiveConfig.repoType == "VIOLATIONS") {
+  configureViolations()
+} else if (effectiveConfig.repoType == "GRADLE") {
+  configureGradle()
+} else if (effectiveConfig.repoType == "DEFAULT") {
+  configureDefault()
+} else {
+  throw new RuntimeException('No such repoType: ' + effectiveConfig.repoType)
+}
