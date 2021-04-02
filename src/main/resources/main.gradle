@@ -267,7 +267,7 @@ def configureRelease() {
 
   task commitNewVersionTask() {
     doLast {
-      runCommand(['git', 'commit', '-a', '-m', "New version: ${version}"])
+      runCommand(['git', 'commit', '-a', '-m', "New version: ${version} [GRADLE SCRIPT]"])
       runCommand(['git', 'tag', "${version}"])
       runCommand(['git', 'push', 'origin', "${version}"])
     }
@@ -275,7 +275,7 @@ def configureRelease() {
 
   task commitChangelogTask() {
     doLast {
-      runCommand(['git', 'commit', '-a', '-m', "Updating changelog with ${version}"])
+      runCommand(['git', 'commit', '-a', '-m', "Updating changelog with ${version} [GRADLE SCRIPT]"])
       runCommand(['git', 'push'])
     }
   }
@@ -494,7 +494,7 @@ def defaultConfig = [
     githubTokenEnvVariableName: 'GITHUB_OAUTH2TOKEN',
     githubOrganization: 'tomasbjerre',
     jiraIssuePattern: "\\bJENKINS-([0-9]+)\\b",
-    ignoreCommitsIfMessageMatches: "^\\[maven-release-plugin\\].*|^\\[Gradle Release Plugin\\].*|^Merge.*"
+    ignoreCommitsIfMessageMatches: "^\\[maven-release-plugin\\].*|\\[GRADLE SCRIPT\\].*|^\\[Gradle Release Plugin\\].*|^Merge.*"
   ],
 ]
 
