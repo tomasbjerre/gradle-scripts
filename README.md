@@ -25,7 +25,7 @@ buildscript {
   mavenLocal()
  }
  dependencies {
-  classpath 'com.github.tomasbjerre:gradle-scripts:a.b'
+  classpath 'se.bjurr.gradle:gradle-scripts:2.+'
  }
 }
 project.ext.buildConfig = [
