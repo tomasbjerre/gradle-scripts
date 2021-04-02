@@ -9,12 +9,12 @@ Changelog of gradle-scripts.
 **New version: 2.0.0**
 
 
-[e577902dae7fdf7](https://github.com/tomasbjerre/gradle-scripts/commit/e577902dae7fdf7) Tomas Bjerre *2021-04-02 17:03:55*
+[eb8eec87d7a0113](https://github.com/tomasbjerre/gradle-scripts/commit/eb8eec87d7a0113) Tomas Bjerre *2021-04-02 17:08:54*
 
 **Pretty much complete rewrite**
 
 
-[e9515e1129e3c3c](https://github.com/tomasbjerre/gradle-scripts/commit/e9515e1129e3c3c) Tomas Bjerre *2021-04-02 17:03:25*
+[82cfddc503c3cef](https://github.com/tomasbjerre/gradle-scripts/commit/82cfddc503c3cef) Tomas Bjerre *2021-04-02 17:07:28*
 
 
 ## 1.17
