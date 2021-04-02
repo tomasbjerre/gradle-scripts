@@ -1,18 +1,18 @@
 # Gradle Scripts
 
 [![Build Status](https://travis-ci.org/tomasbjerre/gradle-scripts.svg?branch=master)](https://travis-ci.org/tomasbjerre/gradle-scripts)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.gradle/gradle-scripts/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/gradle-scripts)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.gradle/gradle-scripts/badge.svg)](https://search.maven.org/artifact/se.bjurr.gradle/gradle-scripts)
 
-This is how I share Gradle code between my projects. It is written in a highly configurable way, much like:
-https://www.jenkins.io/blog/2020/10/21/a-sustainable-pattern-with-shared-library/
+This is a gradle script, written in a highly configurable way, much like I've [blogged about in Jenkins](https://www.jenkins.io/blog/2020/10/21/a-sustainable-pattern-with-shared-library/). It contains a bunch of features that I use in my Gradle projects.
 
 Example usage can be found in:
 
+ * [Git Changelog Lib](https://github.com/tomasbjerre/git-changelog-lib/blob/master/build.gradle)
  * [Violations Lib](https://github.com/tomasbjerre/violations-lib/blob/master/build.gradle)
 
 # How does it work?
 
-It packages a `jar`. Uploads it to a Maven repository. Users can add the `jar` classpath and apply the `main.gradle` script from that `jar`.
+It packages a `jar`. Uploads it to a Maven repository. Users can add the `jar` to their classpath and apply the `main.gradle` script from that `jar`.
 
 The behaviour of the script is highly configurable by supplying a `project.ext.buildConfig`. The given config will be merged with the [defaultConfig](src/main/resources/main.gradle).
 
@@ -37,21 +37,20 @@ apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 
 # Features
 
-This script contains a bunch of features that I need in my different projects. But I rewrote it in `2.0.0` with a new pattern that should allow loads of features. Missing something? Pull requests are welcome =)
+Missing something? Pull requests are welcome =)
 
 All configuration options are documented in the [defaultConfig](src/main/resources/main.gradle).
 
-## Version ubmping
-
-With:
-
-```sh
-./gradlew bumpPatch
-./gradlew bumpMinor
-./gradlew bumpMajor
-```
-
 ## Publishing releases
+
+It can:
+
+ * Step version
+ * Package release
+ * Sign release
+ * Publish release to repository (like Nexus or Maven Central)
+ * Create a changelog
+ * Commit/tag/push to Git
 
 With:
 
