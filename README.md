@@ -35,6 +35,44 @@ project.ext.buildConfig = [
 apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 ```
 
+# Features
+
+This script contains a bunch of features that I need in my different projects. But I rewrote it in `2.0.0` with a new pattern that should allow loads of features. Missing something? Pull requests are welcome =)
+
+All configuration options are documented in the [defaultConfig](src/main/resources/main.gradle).
+
+## Version ubmping
+
+With:
+
+```sh
+./gradlew bumpPatch
+./gradlew bumpMinor
+./gradlew bumpMajor
+```
+
+## Publishing releases
+
+With:
+
+```sh
+./gradlew releasePatch
+./gradlew releaseMinor
+./gradlew releaseMajor
+```
+
+## Static code analysis
+
+It has `Spotbugs` configured in combination with [Violations Gradle Plugin](https://github.com/tomasbjerre/violations-gradle-plugin). Any violations will be printed nicely in the build log. And build can optionally be failed based on number of violations.
+
+## Other features
+
+ * Automated changelog
+ * Code formatting, with Google Java Format.
+ * Shadowing, producing fat-jar
+ * Signing artifacts with PGP
+ * ...
+
 # Requirements
 
 Tested with Gradle 6.8.3.
