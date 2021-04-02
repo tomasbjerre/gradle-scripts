@@ -494,7 +494,7 @@ def defaultConfig = [
     githubTokenEnvVariableName: 'GITHUB_OAUTH2TOKEN',
     githubOrganization: 'tomasbjerre',
     jiraIssuePattern: "\\bJENKINS-([0-9]+)\\b",
-    ignoreCommitsIfMessageMatches: "^\\[maven-release-plugin\\].*|\\[GRADLE SCRIPT\\].*|^\\[Gradle Release Plugin\\].*|^Merge.*"
+    ignoreCommitsIfMessageMatches: "^\\[maven-release-plugin\\].*|^\\[Gradle Release Plugin\\].*|^Merge.*|.*\\[GRADLE SCRIPT\\].*"
   ],
 ]
 

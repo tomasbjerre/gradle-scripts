@@ -6,11 +6,6 @@ Changelog of gradle-scripts.
 ## 2.0.2
 ### No issue
 
-**New version: 2.0.2 [GRADLE SCRIPT]**
-
-
-[279cb6afe0b2e4b](https://github.com/tomasbjerre/gradle-scripts/commit/279cb6afe0b2e4b) Tomas Bjerre *2021-04-02 17:55:43*
-
 **Ignoreing commits from script in changelog**
 
 
