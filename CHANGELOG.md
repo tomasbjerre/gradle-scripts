@@ -3,6 +3,30 @@
 
 Changelog of gradle-scripts.
 
+## 2.0.1
+### No issue
+
+**New version: 2.0.1**
+
+
+[958ac45650b2970](https://github.com/tomasbjerre/gradle-scripts/commit/958ac45650b2970) Tomas Bjerre *2021-04-02 17:28:31*
+
+**pushin tag**
+
+
+[140a2a9bdbdff46](https://github.com/tomasbjerre/gradle-scripts/commit/140a2a9bdbdff46) Tomas Bjerre *2021-04-02 17:27:48*
+
+**doc**
+
+
+[8f248d6830ee605](https://github.com/tomasbjerre/gradle-scripts/commit/8f248d6830ee605) Tomas Bjerre *2021-04-02 17:20:55*
+
+**Updating changelog with 2.0.0**
+
+
+[1756a1e1b6914cf](https://github.com/tomasbjerre/gradle-scripts/commit/1756a1e1b6914cf) Tomas Bjerre *2021-04-02 17:08:58*
+
+
 ## 2.0.0
 ### No issue
 
@@ -188,7 +212,7 @@ Changelog of gradle-scripts.
 
 
 ## 1.2
-### GitHub [#2](https://github.com/tomasbjerre/gradle-scripts/pull/2) Add missing dependency between tasks  
+### GitHub #2   
 
 **Verify Google Java Format on build**
 
@@ -274,7 +298,7 @@ Changelog of gradle-scripts.
 
 
 ## 1.0
-### GitHub [#1](https://github.com/tomasbjerre/gradle-scripts/issues/1) Tip for applying common scripts  
+### GitHub #1   
 
 **Updating README.md**
 
