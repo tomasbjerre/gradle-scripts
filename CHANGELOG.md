@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.0.4
+### No issue
+
+**Ignoreing commits from script in changelog**
+
+
+[5f5f5a2c13f7d34](https://github.com/tomasbjerre/gradle-scripts/commit/5f5f5a2c13f7d34) Tomas Bjerre *2021-04-02 17:59:11*
+
+
 ## 2.0.2
 ### No issue
 
