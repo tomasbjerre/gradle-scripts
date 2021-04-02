@@ -259,7 +259,7 @@ def configureRelease() {
   // https://github.com/researchgate/gradle-release
   release {
     failOnSnapshotDependencies = false
-
+    buildTasks = ['build', 'gitChangelogTask']
     git {
       requireBranch = ''
       signTag = true
