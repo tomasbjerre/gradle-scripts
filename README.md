@@ -9,6 +9,7 @@ Example usage can be found in:
 
  * [Git Changelog Lib](https://github.com/tomasbjerre/git-changelog-lib/blob/master/build.gradle)
  * [Violations Lib](https://github.com/tomasbjerre/violations-lib/blob/master/build.gradle)
+ * [Violations Gradle Plugin](https://github.com/tomasbjerre/violations-gradle-plugin/blob/master/build.gradle)
 
 # How does it work?
 

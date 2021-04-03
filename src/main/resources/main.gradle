@@ -247,7 +247,7 @@ def runCommand(args, int attempts = 5) {
   }
 }
 
-def doPost(String url, String authString, String payload, Integer attempts) {
+def doPost(String url, String authString, String payload, Integer attempts = 10) {
   logger.lifecycle("> POST ${url} ${payload}")
   def conn = url.toURL().openConnection()
   conn.setRequestMethod("POST")
@@ -272,7 +272,7 @@ def doPost(String url, String authString, String payload, Integer attempts) {
       throw new Exception(msg)
     } else {
       logger.lifecycle(msg+". ${attempts} left.")
-      sleep(2000)
+      sleep(5000)
       doPost(url, authString, payload, attempts - 1)
     }
   }
@@ -316,8 +316,7 @@ task nexusCloseAndRelease() {
     doPost(
       closeStagingUrl,
       authString,
-      "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}",
-      5
+      "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}"
     )
 
     def attempts = 30
@@ -332,8 +331,7 @@ task nexusCloseAndRelease() {
     doPost(
       promoteStagingUrl,
       authString,
-      "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}",
-      5
+      "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}"
     )
 
     logger.lifecycle("Nexus promotion done.")
