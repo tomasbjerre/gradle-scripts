@@ -313,11 +313,11 @@ task nexusCloseAndRelease() {
     )
 
     def attempts = 30
-    do {
+    loop {
       attempts--
       sleep(10000)
       logger.lifecycle("Waiting for ${repositoryIdsToClose} to be closed... ${attempts} attempts left.")
-    } while (getNexusOpenRepositories(listStagingUrl, authString).size() > 0 && retries != 0)
+    } until { getNexusOpenRepositories(listStagingUrl, authString).size() > 0 && retries != 0 }
 
     logger.lifecycle("Promoting (releasing) ${repositoryIdsToClose}")
     doPost(
