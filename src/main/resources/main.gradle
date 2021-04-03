@@ -523,7 +523,7 @@ def configureGradle() {
     plugins {
       thePlugin {
         id = project.group+'.'+project.name
-        displayName = project.projectDisplayName
+        displayName = (project.name.substring(0, 1).toUpperCase() + project.name.substring(1)).replaceAll('-',' ')
       }
     }
   }
