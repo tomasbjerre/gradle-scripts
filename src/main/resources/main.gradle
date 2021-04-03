@@ -271,7 +271,7 @@ def doPost(String url, String authString, String payload) {
   }
 }
 
-List<Map> getNexusRepositories(String url, String authString) {
+List<Map> getNexusOpenRepositories(String url, String authString) {
   def conn = url.toURL().openConnection()
   conn.setRequestProperty("Authorization", "Basic ${authString}")
   conn.setRequestProperty("Accept", "application/json")
@@ -280,8 +280,11 @@ List<Map> getNexusRepositories(String url, String authString) {
     try { logger.info("Content: "+conn.content) } catch(Exception e) {}
     throw new Exception("There was an error while retrieving the repositories from Nexus: ${conn.responseCode} ${conn.responseMessage}")
   }
-  def profiles = new groovy.json.JsonSlurper().parseText( conn.content.text )
-  return profiles.data
+  return new groovy.json.JsonSlurper()
+    .parseText( conn.content.text )
+    .data
+    .findAll { it.type=="open" && it.userId==nexusUsername }
+    .collect { it.repositoryId }
 }
 
 /**
@@ -296,34 +299,34 @@ task nexusCloseAndRelease() {
     def closeStagingUrl = baseUrl + "service/local/staging/bulk/close"
     def promoteStagingUrl = baseUrl + "service/local/staging/bulk/promote"
 
-    def repositoryList = getNexusRepositories(listStagingUrl, authString)
-    def repositoryIds = repositoryList
-      .findAll { it.type=="open" && it.userId==nexusUsername }
-      .collect { it.repositoryId }
-
-    if (repositoryIds) {
-      logger.lifecycle("Closing ${repositoryIds.size()} open repositories (${repositoryIds})")
-
-      doPost(
-        closeStagingUrl,
-        authString,
-        "{'data':{'stagedRepositoryIds':[${repositoryIds.collect { "'"+it+"'" }.join(",")}],'description':''}}"
-      )
-
-      logger.lifecycle "Waiting 120 seconds until the closing is done"
-      sleep(120000)
-    } else {
-      logger.lifecycle "No open repositories to close"
+    def repositoryIdsToClose = getNexusOpenRepositories(listStagingUrl, authString)
+    if (repositoryIdsToClose.isEmpty()) {
+      logger.lifecycle("No open repositories to close/promote")
+      return
     }
 
-    logger.lifecycle("Promoting (releasing) ${repositoryIds.size()} closed repositories")
+    logger.lifecycle("Closing ${repositoryIdsToClose}")
+    doPost(
+      closeStagingUrl,
+      authString,
+      "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}"
+    )
 
+    def attempts = 30
+    do {
+      attempts--
+      sleep(10000)
+      logger.lifecycle("Waiting for ${repositoryIdsToClose} to be closed... ${attempts} attempts left.")
+    } while (getNexusOpenRepositories(listStagingUrl, authString).size() > 0 && retries != 0)
+
+    logger.lifecycle("Promoting (releasing) ${repositoryIdsToClose}")
     doPost(
       promoteStagingUrl,
       authString,
-      "{'data':{'stagedRepositoryIds':[${repositoryIds.collect { "'"+it+"'" }.join(",")}],'description':''}}"
+      "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}"
     )
-    logger.lifecycle "Nexus promotion done."
+
+    logger.lifecycle("Nexus promotion done.")
   }
 }
 
