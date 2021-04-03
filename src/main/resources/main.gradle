@@ -248,6 +248,7 @@ def runCommand(args, int attempts = 5) {
 }
 
 def doPost(String url, String authString, String payload) {
+  logger.lifecycle("> POST ${url} ${payload}")
   def conn = url.toURL().openConnection()
   conn.setRequestMethod("POST")
   conn.setRequestProperty("Authorization", "Basic ${authString}")
@@ -261,7 +262,7 @@ def doPost(String url, String authString, String payload) {
   wr.close()
   conn.connect()
   if(conn.responseCode == 201){
-    logger.lifecycle "${repositoryIds.size()} repositories closed"
+    logger.lifecycle("OK")
   } else {
     try {
       logger.error("Content: "+conn.content)
