@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.2
+### No issue
+
+**gradle publish fix**
+
+
+[cdffe2ce5662756](https://github.com/tomasbjerre/gradle-scripts/commit/cdffe2ce5662756) Tomas Bjerre *2021-04-03 18:59:30*
+
+
 ## 2.2.1
 ### No issue
 
