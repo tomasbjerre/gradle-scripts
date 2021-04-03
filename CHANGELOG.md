@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.1.1
+### GitHub [#3](https://github.com/tomasbjerre/gradle-scripts/issues/3) Auto close / release staged nexus repositorys  
+
+**Auto close and release**
+
+
+[cd4603aba40c76e](https://github.com/tomasbjerre/gradle-scripts/commit/cd4603aba40c76e) Tomas Bjerre *2021-04-03 18:00:04*
+
+
 ## 2.1.0
 ### GitHub [#4](https://github.com/tomasbjerre/gradle-scripts/issues/4) Revert gradle.properties on failure  
 
