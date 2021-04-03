@@ -369,6 +369,7 @@ def configureRelease() {
   task commitNewVersionTask() {
     doLast {
       runCommand(['git', 'commit', '-a', '-m', "New version: ${version} [GRADLE SCRIPT]"])
+      runCommand(['git', 'push'])
       runCommand(['git', 'tag', "${version}"])
       runCommand(['git', 'push', 'origin', "${version}"])
     }
