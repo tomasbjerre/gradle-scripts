@@ -532,6 +532,7 @@ def configureGradle() {
     compile gradleApi()
   }
 
+  def name = project.name.replaceAll("[\"']","")
   pluginBundle {
     website = effectiveConfig.publishing.website
     vcsUrl = effectiveConfig.publishing.vcsUrl
@@ -541,7 +542,7 @@ def configureGradle() {
     plugins {
       thePlugin {
         id = project.group+'.'+project.name
-        displayName = (project.name.substring(0, 1).toUpperCase() + project.name.substring(1)).replaceAll('-',' ')
+        displayName = (name.substring(0, 1).toUpperCase() + name.substring(1)).replaceAll('-',' ')
       }
     }
   }
