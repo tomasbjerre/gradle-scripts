@@ -3,6 +3,41 @@
 
 Changelog of gradle-scripts.
 
+## 2.1.0
+### GitHub [#4](https://github.com/tomasbjerre/gradle-scripts/issues/4) Revert gradle.properties on failure  
+
+**restoring gradle.properties on build failure**
+
+
+[5bf3396406a30a8](https://github.com/tomasbjerre/gradle-scripts/commit/5bf3396406a30a8) Tomas Bjerre *2021-04-03 17:09:42*
+
+**store new version after publish successful**
+
+
+[3f9288b8b2a3c0a](https://github.com/tomasbjerre/gradle-scripts/commit/3f9288b8b2a3c0a) Tomas Bjerre *2021-04-03 16:59:13*
+
+
+### GitHub [#5](https://github.com/tomasbjerre/gradle-scripts/issues/5) Lock versions in releases  
+
+**publish resolved versions**
+
+
+[aec77b3f056a0d2](https://github.com/tomasbjerre/gradle-scripts/commit/aec77b3f056a0d2) Tomas Bjerre *2021-04-03 16:53:02*
+
+
+### No issue
+
+**doc: automate update defaultcontent**
+
+
+[71b41490e54da23](https://github.com/tomasbjerre/gradle-scripts/commit/71b41490e54da23) Tomas Bjerre *2021-04-03 07:26:51*
+
+**doc**
+
+
+[15e69a8f8d3b78b](https://github.com/tomasbjerre/gradle-scripts/commit/15e69a8f8d3b78b) Tomas Bjerre *2021-04-02 19:20:02*
+
+
 ## 2.0.4
 ### No issue
 
