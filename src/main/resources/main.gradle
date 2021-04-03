@@ -383,7 +383,8 @@ def configureRelease() {
         'gitChangelogTask', 
         'commitChangelogTask'
       ] +
-      (effectiveConfig.publishing.nexusCloseAndRelease ? [ "nexusCloseAndRelease" ] : [])
+      (effectiveConfig.publishing.nexusCloseAndRelease ? [ "nexusCloseAndRelease" ] : []) +
+      (effectiveConfig.repoType == "GRADLE" ? [ "publishPlugins" ] : [])
   }
 
   task sourcesJar(type: Jar, dependsOn: classes) {
@@ -526,10 +527,6 @@ def configureGradle() {
         displayName = (project.name.substring(0, 1).toUpperCase() + project.name.substring(1)).replaceAll('-',' ')
       }
     }
-  }
-
-  afterReleaseBuild.dependsOn {
-    [publishPlugins]
   }
 }
 
