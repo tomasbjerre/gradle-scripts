@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.4
+### No issue
+
+**gradle displayName cleanup**
+
+
+[8c36c963376bde3](https://github.com/tomasbjerre/gradle-scripts/commit/8c36c963376bde3) Tomas Bjerre *2021-04-03 19:18:42*
+
+
 ## 2.2.3
 ### No issue
 
