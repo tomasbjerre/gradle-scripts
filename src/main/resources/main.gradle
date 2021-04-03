@@ -198,9 +198,9 @@ def getNewVersion(String oldVersionName, String bump) {
   major = major.toInteger()
   minor = minor.toInteger()
   patch = patch.toInteger()
-  if (bump == "Major") major++
-  if (bump == "Minor") minor++
-  if (bump == "Patch") patch++
+  if (bump == "Major") { major++; minor = 0; patch = 0; }
+  if (bump == "Minor") { minor++; patch = 0; }
+  if (bump == "Patch") { patch++ }
   def newVersionName = "$major.$minor.$patch"
   logger.info("$oldVersionName → $newVersionName")
   return newVersionName
@@ -210,14 +210,21 @@ def bumpVersion(type) {
   logger.info("Bumping ${type.toLowerCase()} version…")
   String oldVersionName = project.version
   version = getNewVersion(oldVersionName, type)
-}
-
-def storeVersion() {
   def propertyFile = file("$projectDir/gradle.properties")
   def gradleProps = new Properties()
   propertyFile.withReader { gradleProps.load(it) }
   gradleProps.setProperty('version', version)
   propertyFile.withWriter { gradleProps.store(it, null) }
+  gradle.buildFinished { result ->
+    if (result.failure) {
+      [
+        "gradle.properties"
+      ].each {
+        logger.info("Restoring ${it} because of failure")
+        runCommand(["git", "checkout", it])
+      }
+    }
+  }
 }
 
 def runCommand(args, int attempts = 5) {
@@ -270,7 +277,6 @@ def configureRelease() {
 
   task commitNewVersionTask() {
     doLast {
-      storeVersion()
       runCommand(['git', 'commit', '-a', '-m', "New version: ${version} [GRADLE SCRIPT]"])
       runCommand(['git', 'tag', "${version}"])
       runCommand(['git', 'push', 'origin', "${version}"])
