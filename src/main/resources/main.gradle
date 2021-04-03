@@ -247,6 +247,85 @@ def runCommand(args, int attempts = 5) {
   }
 }
 
+def doPost(String url, String authString, String payload) {
+  def conn = url.toURL().openConnection()
+  conn.setRequestMethod("POST")
+  conn.setRequestProperty("Authorization", "Basic ${authString}")
+  conn.setRequestProperty("Accept", "application/json")
+  conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8")
+  conn.setDoOutput( true )
+
+  Writer wr = new OutputStreamWriter(conn.outputStream)
+  wr.write(payload);
+  wr.flush()
+  wr.close()
+  conn.connect()
+  if(conn.responseCode == 201){
+    logger.lifecycle "${repositoryIds.size()} repositories closed"
+  } else {
+    try {
+      logger.error("Content: "+conn.content)
+    } catch (Exception e) {}
+    throw new Exception("There was an error with repositories: ${conn.responseCode} ${conn.responseMessage}")
+  }
+}
+
+List<Map> getNexusRepositories(String url, String authString) {
+  def conn = url.toURL().openConnection()
+  conn.setRequestProperty("Authorization", "Basic ${authString}")
+  conn.setRequestProperty("Accept", "application/json")
+
+  if(conn.responseCode != 200){
+    try { logger.info("Content: "+conn.content) } catch(Exception e) {}
+    throw new Exception("There was an error while retrieving the repositories from Nexus: ${conn.responseCode} ${conn.responseMessage}")
+  }
+  def profiles = new groovy.json.JsonSlurper().parseText( conn.content.text )
+  return profiles.data
+}
+
+/**
+ * Inspired by: https://github.com/adaptivecomputing/plugins-gradle
+ */
+task nexusCloseAndRelease() {
+  doLast {
+    def authString = "${nexusUsername}:${nexusPassword}".getBytes().encodeBase64().toString()
+    URL urlObj = effectiveConfig.publishing.mavenRepositoryUrl.toURL()
+    def baseUrl = urlObj.getProtocol()+"://"+urlObj.getAuthority()+"/"
+    def listStagingUrl = baseUrl + "service/local/staging/profile_repositories"
+    def closeStagingUrl = baseUrl + "service/local/staging/bulk/close"
+    def promoteStagingUrl = baseUrl + "service/local/staging/bulk/promote"
+
+    def repositoryList = getNexusRepositories(listStagingUrl, authString)
+    def repositoryIds = repositoryList
+      .findAll { it.type=="open" && it.userId==username }
+      .collect { it.repositoryId }
+
+    if (repositoryIds) {
+      logger.lifecycle("Closing ${repositoryIds.size()} open repositories (${repositoryIds})")
+
+      doPost(
+        closeStagingUrl,
+        authString,
+        "{'data':{'stagedRepositoryIds':[${repositoryIds.collect { "'"+it+"'" }.join(",")}],'description':''}}"
+      )
+
+      logger.lifecycle "Waiting 120 seconds until the closing is done"
+      sleep(120000)
+    } else {
+      logger.lifecycle "No open repositories to close"
+    }
+
+    logger.lifecycle("Promoting (releasing) ${repositoryIds.size()} closed repositories")
+
+    doPost(
+      promoteStagingUrl,
+      authString,
+      "{'data':{'stagedRepositoryIds':[${repositoryIds.collect { "'"+it+"'" }.join(",")}],'description':''}}"
+    )
+    logger.lifecycle "Nexus promotion done."
+  }
+}
+
 def configureRelease() {
   apply plugin: "maven-publish"
   apply plugin: 'signing'
@@ -298,7 +377,8 @@ def configureRelease() {
         'commitNewVersionTask', 
         'gitChangelogTask', 
         'commitChangelogTask'
-      ]
+      ] +
+      (effectiveConfig.publishing.nexusCloseAndRelease ? [ "nexusCloseAndRelease" ] : [])
   }
 
   task sourcesJar(type: Jar, dependsOn: classes) {
@@ -492,6 +572,10 @@ def defaultConfig = [
     */
     mavenRepositoryName: "nexus",
     mavenRepositoryUrl: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/',
+    /**
+     * true, if you want the repository in Nexus to be closed and pomoted to Release.
+     */
+    nexusCloseAndRelease: true,
     /**
     * If using signing you will need to supply signing properties.
     * Perhaps in ~/.gradle/gradle.properties

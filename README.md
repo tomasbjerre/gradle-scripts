@@ -72,6 +72,10 @@ def defaultConfig = [
     mavenRepositoryName: "nexus",
     mavenRepositoryUrl: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/',
     /**
+     * true, if you want the repository in Nexus to be closed and pomoted to Release.
+     */
+    nexusCloseAndRelease: true,
+    /**
     * If using signing you will need to supply signing properties.
     * Perhaps in ~/.gradle/gradle.properties
     * https://docs.gradle.org/current/userguide/signing_plugin.html
