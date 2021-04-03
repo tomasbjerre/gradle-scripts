@@ -110,6 +110,7 @@ It can:
  * Publish release to repository (like Nexus or Maven Central)
  * Create a changelog
  * Commit/tag/push to Git
+ * Close and promote release in Nexus
 
 With:
 
