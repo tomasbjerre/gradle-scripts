@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.5
+### No issue
+
+**Allow empty changelog**
+
+
+[0ca2a75ddd87c55](https://github.com/tomasbjerre/gradle-scripts/commit/0ca2a75ddd87c55) Tomas Bjerre *2021-04-03 20:06:41*
+
+
 ## 2.2.4
 ### No issue
 
