@@ -378,8 +378,12 @@ def configureRelease() {
 
   task commitChangelogTask() {
     doLast {
-      runCommand(['git', 'commit', '-a', '-m', "Updating changelog with ${version} [GRADLE SCRIPT]"])
-      runCommand(['git', 'push'])
+      try {
+        runCommand(['git', 'commit', '-a', '-m', "Updating changelog with ${version} [GRADLE SCRIPT]"])
+        runCommand(['git', 'push'])
+      } catch (e) {
+        logger.error("Unable commit/push changelog, skipping that.",e.getMessage())
+      }
     }
   }
 
@@ -532,17 +536,23 @@ def configureGradle() {
     compile gradleApi()
   }
 
-  def name = project.name.replaceAll("[\"']","")
+  def pluginId = (project.group + '.' + project.name)
+    .replaceAll("[\"']","")
+  def displayNameValue = (name.substring(0, 1).toUpperCase() + name.substring(1))
+    .replaceAll('-',' ')
+    .replaceAll("[\"']","")
+  logger.lifecycle("pluginId ${pluginId} displayName ${displayNameValue}")
   pluginBundle {
     website = effectiveConfig.publishing.website
     vcsUrl = effectiveConfig.publishing.vcsUrl
     description = project.description
-    tags = effectiveConfig.gradlePlugin.tags
 
     plugins {
       thePlugin {
-        id = project.group+'.'+project.name
-        displayName = (name.substring(0, 1).toUpperCase() + name.substring(1)).replaceAll('-',' ')
+        tags = effectiveConfig.gradlePlugin.tags
+        description = project.description
+        id = pluginId
+        displayName = displayNameValue
       }
     }
   }
