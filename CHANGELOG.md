@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.3
+### No issue
+
+**attempts in nexus promotion**
+
+
+[0f82085470232df](https://github.com/tomasbjerre/gradle-scripts/commit/0f82085470232df) Tomas Bjerre *2021-04-03 19:08:43*
+
+
 ## 2.2.2
 ### No issue
 
