@@ -297,7 +297,7 @@ task nexusCloseAndRelease() {
 
     def repositoryList = getNexusRepositories(listStagingUrl, authString)
     def repositoryIds = repositoryList
-      .findAll { it.type=="open" && it.userId==username }
+      .findAll { it.type=="open" && it.userId==nexusUsername }
       .collect { it.repositoryId }
 
     if (repositoryIds) {
