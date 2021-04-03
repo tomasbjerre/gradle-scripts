@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.0
+### No issue
+
+**logging**
+
+
+[2744736465279e3](https://github.com/tomasbjerre/gradle-scripts/commit/2744736465279e3) Tomas Bjerre *2021-04-03 18:30:50*
+
+
 ## 2.1.6
 ### GitHub [#3](https://github.com/tomasbjerre/gradle-scripts/issues/3) Auto close / release staged nexus repositorys  
 
