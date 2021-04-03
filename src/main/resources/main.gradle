@@ -447,6 +447,7 @@ def pretty(it) {
   groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(it))
 }
 
+// ---- start of default config ----
 def defaultConfig = [
   /**
    * "DEFAULT" - Works for most Java projects.
@@ -497,6 +498,7 @@ def defaultConfig = [
     ignoreCommitsIfMessageMatches: "^\\[maven-release-plugin\\].*|^\\[Gradle Release Plugin\\].*|^Merge.*|.*\\[GRADLE SCRIPT\\].*"
   ],
 ]
+// ---- end of default config ----
 
 logger.info("----------- tomasbjerre/gradle-scripts ----------------")
 logger.info("Default config:\n\n" + pretty(defaultConfig) + "\n")

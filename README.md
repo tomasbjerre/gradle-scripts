@@ -29,8 +29,7 @@ buildscript {
  }
 }
 project.ext.buildConfig = [
-  // Your can supply a given config here and adjust parts of default config in:
-  // src/main/resources/main.gradle
+  // Your can supply a given config here, a subset of defaultConfig.
 ]
 apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 ```
@@ -41,6 +40,62 @@ Missing something? Pull requests are welcome =)
 
 All configuration options are documented in the [defaultConfig](src/main/resources/main.gradle).
 
+<!-- start default config -->
+```groovy
+
+def defaultConfig = [
+  /**
+   * "DEFAULT" - Works for most Java projects.
+   * "VIOLATIONS" - Much like Java projects, but with some common behavior of my violations lib and its tools.
+   * "GRADLE" - A Gradle plugin.
+   */
+  repoType: "DEFAULT",
+  staticCodeAnalysis: [
+    /**
+    * Maximum number of violations to accept from static code analysis.
+    */
+    maxViolations: 9999,
+  ],
+  publishing: [
+    website: 'https://github.com/tomasbjerre/' + project.name,
+    vcsUrl: 'https://github.com/tomasbjerre/'+project.name,
+    licenseName: 'The Apache Software License, Version 2.0',
+    licenseUrl: 'http://www.apache.org/licenses/LICENSE-2.0.txt',
+    developerId: 'tomasbjerre',
+    developerName: 'Tomas Bjerre',
+    developerEmail: 'tomas.bjerre85@gmail.com',
+    /**
+    * If using PasswordCredentials and repository name "nexus", you will
+    * need to supply username/password properties named "nexusUsername"
+    * and "nexusPassword". Perhaps in ~/.gradle/gradle.properties
+    */
+    mavenRepositoryName: "nexus",
+    mavenRepositoryUrl: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/',
+    /**
+    * If using signing you will need to supply signing properties.
+    * Perhaps in ~/.gradle/gradle.properties
+    * https://docs.gradle.org/current/userguide/signing_plugin.html
+    */
+    sign: true,
+    /**
+    * If not empty: creates a fat jar with relocated packages.
+    */
+    relocate: [], // Example: [ "com.google" ]
+  ],
+  gradlePlugin: [
+    tags: []
+  ],
+  changelog: [
+    enabled: true,
+    githubTokenEnvVariableName: 'GITHUB_OAUTH2TOKEN',
+    githubOrganization: 'tomasbjerre',
+    jiraIssuePattern: "\\bJENKINS-([0-9]+)\\b",
+    ignoreCommitsIfMessageMatches: "^\\[maven-release-plugin\\].*|^\\[Gradle Release Plugin\\].*|^Merge.*|.*\\[GRADLE SCRIPT\\].*"
+  ],
+]
+
+```
+<!-- end default config -->
 ## Publishing releases
 
 It can:

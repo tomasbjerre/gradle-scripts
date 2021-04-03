@@ -1,4 +1,24 @@
+def mainGradle = 'src/main/resources/main.gradle'
+
+def mainGradleContent = file(mainGradle).text
+def defaultConfigStart = "// ---- start of default config ----"
+def defaultConfigEnd = "// ---- end of default config ----"
+def defaultConfig = mainGradleContent.substring(mainGradleContent.indexOf(defaultConfigStart)+defaultConfigStart.size())
+defaultConfig = defaultConfig.substring(0, defaultConfig.indexOf(defaultConfigEnd))
+
+def readmeContent = file('README.md').text
+def readmeContentStart = "<!-- start default config -->"
+def readmeContentEnd = "<!-- end default config -->"
+def readmeContentFirstPart = readmeContent.split(readmeContentStart)[0]
+def readmeContentSecondPart = readmeContent.split(readmeContentEnd)[1]
+def newReadmeContent = """${readmeContentFirstPart}${readmeContentStart}
+```groovy
+${defaultConfig}
+```
+${readmeContentEnd}${readmeContentSecondPart}"""
+file('README.md').write(newReadmeContent)
+
 /**
  * See README.md for usage in a project.
  */
-apply from: 'src/main/resources/main.gradle'
+apply from: mainGradle
