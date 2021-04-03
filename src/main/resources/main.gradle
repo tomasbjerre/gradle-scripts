@@ -5,7 +5,7 @@ def configureChangelog() {
       gitHubApi = "https://api.github.com/repos/" + effectiveConfig.changelog.githubOrganization + "/" + project.name;
       gitHubToken = configuredGitHubToken;
     } else {
-      logger.info("Did not find Github token ${effectiveConfig.changelog.githubTokenEnvVariableName} env variable.")
+      logger.lifecycle("Did not find Github token ${effectiveConfig.changelog.githubTokenEnvVariableName} env variable.")
     }
     jiraIssuePattern = effectiveConfig.changelog.jiraIssuePattern;
     removeIssueFromMessage = true
@@ -51,14 +51,14 @@ def configureChangelog() {
 def findResource(String name, classLoader = project.buildscript.classLoader) {
   URL resource = classLoader.getResource(name)
   if (resource == null) {
-    logger.info("Cannot find resource \"${name}\"")
+    logger.lifecycle("Cannot find resource \"${name}\"")
     return null;
   }
   return resource
 }
 
 def copyResourceToFile(URL resource, String copyTo, classLoader = project.buildscript.classLoader) {
-  logger.info("Copying ${resource} to ${copyTo}")
+  logger.lifecycle("Copying ${resource} to ${copyTo}")
   def content = resource.text
   file(copyTo).getParentFile().mkdirs()
   FileWriter fw = new FileWriter(copyTo)
@@ -70,7 +70,7 @@ def copyResourceToFile(URL resource, String copyTo, classLoader = project.builds
 def copyIfFound(String name, classLoader = project.buildscript.classLoader) {
   URL resource = findResource(name, classLoader)
   if (resource != null) {
-    logger.info("Found resource ${name} as ${resource}")
+    logger.lifecycle("Found resource ${name} as ${resource}")
     def newFilename = "$buildDir/" + name
     copyResourceToFile(resource, newFilename)
     return file(newFilename)
@@ -80,9 +80,9 @@ def copyIfFound(String name, classLoader = project.buildscript.classLoader) {
 def File getFile(String name) {
   def f = file(name)
   if (!f.exists()) {
-    logger.info("Cannot find file \"${name}\"")
+    logger.lifecycle("Cannot find file \"${name}\"")
   } else {
-    logger.info("Found file \"${name}\"")
+    logger.lifecycle("Found file \"${name}\"")
   }
   return f
 }
@@ -202,12 +202,12 @@ def getNewVersion(String oldVersionName, String bump) {
   if (bump == "Minor") { minor++; patch = 0; }
   if (bump == "Patch") { patch++ }
   def newVersionName = "$major.$minor.$patch"
-  logger.info("$oldVersionName → $newVersionName")
+  logger.lifecycle("$oldVersionName → $newVersionName")
   return newVersionName
 }
 
 def bumpVersion(type) {
-  logger.info("Bumping ${type.toLowerCase()} version…")
+  logger.lifecycle("Bumping ${type.toLowerCase()} version…")
   String oldVersionName = project.version
   version = getNewVersion(oldVersionName, type)
   def propertyFile = file("$projectDir/gradle.properties")
@@ -220,7 +220,7 @@ def bumpVersion(type) {
       [
         "gradle.properties"
       ].each {
-        logger.info("Restoring ${it} because of failure")
+        logger.lifecycle("Restoring ${it} because of failure")
         runCommand(["git", "checkout", it])
       }
     }
@@ -228,7 +228,7 @@ def bumpVersion(type) {
 }
 
 def runCommand(args, int attempts = 5) {
-  logger.info("Executing ${args.join(' ')}")
+  logger.lifecycle("Executing ${args.join(' ')}")
   def stdout = new ByteArrayOutputStream()
   try {
     exec {
@@ -238,7 +238,7 @@ def runCommand(args, int attempts = 5) {
     return stdout.toString().trim()
   } catch (e) {
     def err = stdout.toString().trim() + "\n" + "Command: ${args.join(' ')}" + "\n" + "Trying ${attempts} more times"
-    logger.info(err)
+    logger.lifecycle(err)
     if (attempts == 0) {
       throw new RuntimeException(err, e)
     }
@@ -277,7 +277,7 @@ List<Map> getNexusOpenRepositories(String url, String authString) {
   conn.setRequestProperty("Accept", "application/json")
 
   if(conn.responseCode != 200){
-    try { logger.info("Content: "+conn.content) } catch(Exception e) {}
+    try { logger.lifecycle("Content: "+conn.content) } catch(Exception e) {}
     throw new Exception("There was an error while retrieving the repositories from Nexus: ${conn.responseCode} ${conn.responseMessage}")
   }
   return new groovy.json.JsonSlurper()
@@ -402,7 +402,7 @@ def configureRelease() {
     effectiveConfig.publishing.relocate.each { relocateFrom ->
       def relocateTo = (project.group + '.' + project.name + '.' + relocateFrom)
         .replaceAll('[^a-zA-Z\\.]','')
-      logger.info("Relocating ${relocateFrom} to ${relocateTo}")
+      logger.lifecycle("Relocating ${relocateFrom} to ${relocateTo}")
       shadowJar {
         relocate relocateFrom, relocateTo
       }
@@ -415,7 +415,7 @@ def configureRelease() {
     artifactsList = [sourcesJar, javadocJar, shadowJar]
     build.dependsOn shadowJar
   } else {
-    logger.info("Not including shadow jar.")
+    logger.lifecycle("Not including shadow jar.")
     artifactsList = [sourcesJar, javadocJar, jar]
   }
 
@@ -456,7 +456,7 @@ def configureRelease() {
           from project.components.java
         }
         setArtifacts artifactsList
-        logger.info("group: ${project.group} name: ${project.name}")
+        logger.lifecycle("group: ${project.group} name: ${project.name}")
         groupId project.group.replaceAll("[\"']","")
         artifactId project.name.replaceAll("[\"']","")
         version version
@@ -605,13 +605,13 @@ def defaultConfig = [
 ]
 // ---- end of default config ----
 
-logger.info("----------- tomasbjerre/gradle-scripts ----------------")
-logger.info("Default config:\n\n" + pretty(defaultConfig) + "\n")
+logger.lifecycle("----------- tomasbjerre/gradle-scripts ----------------")
+logger.lifecycle("Default config:\n\n" + pretty(defaultConfig) + "\n")
 def buildConfig = project.hasProperty('buildConfig') ? buildConfig : [:]
-logger.info("Given config:\n\n" + pretty(buildConfig) + "\n")
+logger.lifecycle("Given config:\n\n" + pretty(buildConfig) + "\n")
 ext.effectiveConfig = mergeMaps(defaultConfig, buildConfig)
-logger.info("Effective config:\n\n" + pretty(effectiveConfig) + "\n")
-logger.info("-------------------------------------------------------")
+logger.lifecycle("Effective config:\n\n" + pretty(effectiveConfig) + "\n")
+logger.lifecycle("-------------------------------------------------------")
 
 buildscript {
   repositories {
