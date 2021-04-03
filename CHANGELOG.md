@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.6
+### No issue
+
+**correcting attempts**
+
+
+[aaec2bb028835dd](https://github.com/tomasbjerre/gradle-scripts/commit/aaec2bb028835dd) Tomas Bjerre *2021-04-03 20:12:22*
+
+
 ## 2.2.5
 ### No issue
 
