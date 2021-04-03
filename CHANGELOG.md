@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.8
+### No issue
+
+**missing push**
+
+
+[43a2791ddfe2efd](https://github.com/tomasbjerre/gradle-scripts/commit/43a2791ddfe2efd) Tomas Bjerre *2021-04-03 20:22:56*
+
+
 ## 2.2.7
 ### No issue
 
