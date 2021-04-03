@@ -373,6 +373,12 @@ def configureRelease() {
           root.appendNode('inceptionYear', new Date().getYear() + 1900)
           root.children().last() + pomConfig
         }
+
+        versionMapping {
+          allVariants {
+            fromResolutionResult()
+          }
+        }
       }
     }
     repositories {
