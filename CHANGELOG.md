@@ -3,6 +3,20 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.1
+### No issue
+
+**gradle displayName**
+
+
+[c5a0aa6d4cc10b5](https://github.com/tomasbjerre/gradle-scripts/commit/c5a0aa6d4cc10b5) Tomas Bjerre *2021-04-03 18:49:46*
+
+**doc**
+
+
+[a5c9018f1e5f150](https://github.com/tomasbjerre/gradle-scripts/commit/a5c9018f1e5f150) Tomas Bjerre *2021-04-03 18:33:53*
+
+
 ## 2.2.0
 ### No issue
 
