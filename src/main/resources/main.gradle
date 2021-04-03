@@ -247,7 +247,7 @@ def runCommand(args, int attempts = 5) {
   }
 }
 
-def doPost(String url, String authString, String payload) {
+def doPost(String url, String authString, String payload, Integer attempts) {
   logger.lifecycle("> POST ${url} ${payload}")
   def conn = url.toURL().openConnection()
   conn.setRequestMethod("POST")
@@ -267,7 +267,14 @@ def doPost(String url, String authString, String payload) {
     try {
       logger.error("Content: "+conn.content)
     } catch (Exception e) {}
-    throw new Exception("There was an error with repositories: ${conn.responseCode} ${conn.responseMessage}")
+    def msg = "There was an error with repositories: ${conn.responseCode} ${conn.responseMessage}"
+    if (attempts == 0) {
+      throw new Exception(msg)
+    } else {
+      logger.lifecycle(msg+". ${attempts} left.")
+      sleep(2000)
+      doPost(url,authString,payload,attempts--)
+    }
   }
 }
 
@@ -309,7 +316,8 @@ task nexusCloseAndRelease() {
     doPost(
       closeStagingUrl,
       authString,
-      "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}"
+      "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}",
+      5
     )
 
     def attempts = 30
@@ -324,7 +332,8 @@ task nexusCloseAndRelease() {
     doPost(
       promoteStagingUrl,
       authString,
-      "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}"
+      "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}",
+      5
     )
 
     logger.lifecycle("Nexus promotion done.")
@@ -400,9 +409,17 @@ def configureRelease() {
   def artifactsList = []
   def useShadowJar = !effectiveConfig.publishing.relocate.isEmpty()
   if (useShadowJar) {
-    effectiveConfig.publishing.relocate.each { relocateFrom ->
-      def relocateTo = (project.group + '.' + project.name + '.' + relocateFrom)
+    effectiveConfig.publishing.relocate.each { it ->
+      def relocateFrom = ""
+      def relocateTo = ""
+      if (it.contains(":")) {
+        relocateFrom = it.split(":")[0]
+        relocateTo = it.split(":")[1]
+      } else {
+        relocateFrom = it
+        relocateTo = (project.group + '.' + project.name + '.' + relocateFrom)
         .replaceAll('[^a-zA-Z\\.]','')
+      }
       logger.lifecycle("Relocating ${relocateFrom} to ${relocateTo}")
       shadowJar {
         relocate relocateFrom, relocateTo
@@ -586,8 +603,10 @@ def defaultConfig = [
     sign: true,
     /**
     * If not empty: creates a fat jar with relocated packages.
+    * Example: [ "com.google", "a.b:se.bjurr.a.b" ]
+    * Will make up a relocation target for "com.google" and will use "se.bjurr.a.b" as target for "a.b".
     */
-    relocate: [], // Example: [ "com.google" ]
+    relocate: [],
   ],
   gradlePlugin: [
     tags: []

@@ -83,8 +83,10 @@ def defaultConfig = [
     sign: true,
     /**
     * If not empty: creates a fat jar with relocated packages.
+    * Example: [ "com.google", "a.b:se.bjurr.a.b" ]
+    * Will make up a relocation target for "com.google" and will use "se.bjurr.a.b" as target for "a.b".
     */
-    relocate: [], // Example: [ "com.google" ]
+    relocate: [],
   ],
   gradlePlugin: [
     tags: []
