@@ -273,7 +273,7 @@ def doPost(String url, String authString, String payload, Integer attempts) {
     } else {
       logger.lifecycle(msg+". ${attempts} left.")
       sleep(2000)
-      doPost(url,authString,payload,attempts--)
+      doPost(url, authString, payload, attempts - 1)
     }
   }
 }
