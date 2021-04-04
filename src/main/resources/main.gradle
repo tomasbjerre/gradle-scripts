@@ -506,10 +506,9 @@ def configureRelease() {
     }
   }
 
-  if (effectiveConfig.publishing.sign) {
-    signing {
-      sign publishing.publications.gradleScriptsPublication
-    }
+  signing {
+    required { effectiveConfig.publishing.sign && gradle.taskGraph.hasTask("publish") }
+    sign publishing.publications.gradleScriptsPublication
   }
 }
 
