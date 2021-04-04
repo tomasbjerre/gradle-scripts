@@ -189,6 +189,14 @@ def configureJava() {
       downloadJavadoc = true
     }
   }
+
+  if (effectiveConfig.manifest.mainClass != '') {
+    jar {
+      manifest {
+        attributes 'Main-Class': effectiveConfig.manifest.mainClass
+      }
+    }
+  }
 }
 
 def getNewVersion(String oldVersionName, String bump) {
@@ -631,6 +639,9 @@ def defaultConfig = [
      * Update README.md with table of parsers and reporters.
      */
     updateReadme: false
+  ],
+  manifest: [
+    mainClass: ''
   ]
 ]
 // ---- end of default config ----

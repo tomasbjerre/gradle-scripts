@@ -103,6 +103,9 @@ def defaultConfig = [
      * Update README.md with table of parsers and reporters.
      */
     updateReadme: false
+  ],
+  manifest: [
+    mainClass: ''
   ]
 ]
 
