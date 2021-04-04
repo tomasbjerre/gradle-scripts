@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.12
+### No issue
+
+**manifest support**
+
+
+[d3921a34cd3bb7d](https://github.com/tomasbjerre/gradle-scripts/commit/d3921a34cd3bb7d) Tomas Bjerre *2021-04-04 15:58:03*
+
+
 ## 2.2.11
 ### No issue
 
