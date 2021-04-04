@@ -47,7 +47,6 @@ All configuration options are documented in the [defaultConfig](src/main/resourc
 def defaultConfig = [
   /**
    * "DEFAULT" - Works for most Java projects.
-   * "VIOLATIONS" - Much like Java projects, but with some common behavior of my violations lib and its tools.
    * "GRADLE" - A Gradle plugin.
    */
   repoType: "DEFAULT",
@@ -99,6 +98,12 @@ def defaultConfig = [
     jiraIssuePattern: "\\bJENKINS-([0-9]+)\\b",
     ignoreCommitsIfMessageMatches: "^\\[maven-release-plugin\\].*|^\\[Gradle Release Plugin\\].*|^Merge.*|.*\\[GRADLE SCRIPT\\].*"
   ],
+  violations: [
+    /**
+     * Update README.md with table of parsers and reporters.
+     */
+    updateReadme: false
+  ]
 ]
 
 ```

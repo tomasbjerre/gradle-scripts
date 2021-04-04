@@ -519,11 +519,10 @@ def configureDefault() {
   configureFormatting()
   configureStaticCodeAnalysis()
   configureRelease()
-}
-
-def configureViolations() {
-  configureDefault()
-  se.bjurr.violations.lib.util.Utils.updateReadmeWithReporters()
+  if (effectiveConfig.violations.updateReadme) {
+    logger.lifecycle("Updating README with reporters")
+    se.bjurr.violations.lib.util.Utils.updateReadmeWithReporters()
+  }
 }
 
 def configureGradle() {
@@ -576,7 +575,6 @@ def pretty(it) {
 def defaultConfig = [
   /**
    * "DEFAULT" - Works for most Java projects.
-   * "VIOLATIONS" - Much like Java projects, but with some common behavior of my violations lib and its tools.
    * "GRADLE" - A Gradle plugin.
    */
   repoType: "DEFAULT",
@@ -628,6 +626,12 @@ def defaultConfig = [
     jiraIssuePattern: "\\bJENKINS-([0-9]+)\\b",
     ignoreCommitsIfMessageMatches: "^\\[maven-release-plugin\\].*|^\\[Gradle Release Plugin\\].*|^Merge.*|.*\\[GRADLE SCRIPT\\].*"
   ],
+  violations: [
+    /**
+     * Update README.md with table of parsers and reporters.
+     */
+    updateReadme: false
+  ]
 ]
 // ---- end of default config ----
 
@@ -657,9 +661,7 @@ buildscript {
   }
 }
 
-if (effectiveConfig.repoType == "VIOLATIONS") {
-  configureViolations()
-} else if (effectiveConfig.repoType == "GRADLE") {
+if (effectiveConfig.repoType == "GRADLE") {
   configureGradle()
 } else if (effectiveConfig.repoType == "DEFAULT") {
   configureDefault()
