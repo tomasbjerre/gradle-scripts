@@ -434,9 +434,6 @@ def configureRelease() {
       }
       logger.lifecycle("Relocating ${relocateFrom} to ${relocateTo}")
       shadowJar {
- mergeServiceFiles() {
-  exclude 'META-INF/services/*'
- }
         relocate relocateFrom, relocateTo
       }
     }
