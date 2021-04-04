@@ -3,6 +3,20 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.13
+### No issue
+
+**removing merge services**
+
+
+[3477fdc428c83ba](https://github.com/tomasbjerre/gradle-scripts/commit/3477fdc428c83ba) Tomas Bjerre *2021-04-04 18:12:53*
+
+**doc**
+
+
+[7841aa48b18103b](https://github.com/tomasbjerre/gradle-scripts/commit/7841aa48b18103b) Tomas Bjerre *2021-04-04 17:02:14*
+
+
 ## 2.2.12
 ### No issue
 
