@@ -8,9 +8,9 @@ This is a gradle script, written in a highly configurable way, much like I've [b
 Example usage can be found in:
 
  * [Git Changelog Lib](https://github.com/tomasbjerre/git-changelog-lib/blob/master/build.gradle)
+ * [Git Changelog Command Line](https://github.com/tomasbjerre/git-changelog-command-line/blob/master/build.gradle)
  * [Violations Lib](https://github.com/tomasbjerre/violations-lib/blob/master/build.gradle)
  * [Violations Gradle Plugin](https://github.com/tomasbjerre/violations-gradle-plugin/blob/master/build.gradle)
-
 # How does it work?
 
 It packages a `jar`. Uploads it to a Maven repository. Users can add the `jar` to their classpath and apply the `main.gradle` script from that `jar`.
