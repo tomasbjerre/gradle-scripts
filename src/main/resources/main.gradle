@@ -1,9 +1,10 @@
 def configureChangelog() {
-  def configuredGitHubToken = System.properties[effectiveConfig.changelog.githubTokenEnvVariableName]
+  def configuredGitHubToken = System.getenv(effectiveConfig.changelog.githubTokenEnvVariableName)
   task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
     if (configuredGitHubToken != null) {
       gitHubApi = "https://api.github.com/repos/" + effectiveConfig.changelog.githubOrganization + "/" + project.name;
       gitHubToken = configuredGitHubToken;
+      logger.lifecycle("Using Github API ${gitHubApi}")
     } else {
       logger.lifecycle("Did not find Github token ${effectiveConfig.changelog.githubTokenEnvVariableName} env variable.")
     }
@@ -177,7 +178,7 @@ def configureJava() {
   if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
       tasks.withType(Javadoc) {
-      options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('Xdoclint:none', '-quiet')
       }
     }
   }
