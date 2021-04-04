@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.11
+### No issue
+
+**removing violations repoType**
+
+
+[5764ceabcfc19e3](https://github.com/tomasbjerre/gradle-scripts/commit/5764ceabcfc19e3) Tomas Bjerre *2021-04-04 14:07:20*
+
+
 ## 2.2.10
 ### No issue
 
