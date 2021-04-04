@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.10
+### No issue
+
+**github api token**
+
+
+[dc3eae710d7cec6](https://github.com/tomasbjerre/gradle-scripts/commit/dc3eae710d7cec6) Tomas Bjerre *2021-04-04 06:01:36*
+
+
 ## 2.2.9
 ### No issue
 
