@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.9
+### No issue
+
+**dont sign when doing publishToMavenLocal**
+
+
+[284b9102a5596dd](https://github.com/tomasbjerre/gradle-scripts/commit/284b9102a5596dd) Tomas Bjerre *2021-04-04 05:50:42*
+
+
 ## 2.2.8
 ### No issue
 
