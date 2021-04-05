@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.17
+### No issue
+
+**only allow SNAPSHOT-dependency if project is a SNAPSHOT**
+
+
+[67cc449994208b3](https://github.com/tomasbjerre/gradle-scripts/commit/67cc449994208b3) Tomas Bjerre *2021-04-05 15:32:11*
+
+
 ## 2.2.16
 ### No issue
 
