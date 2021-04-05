@@ -3,6 +3,16 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.16
+### No issue
+
+**Revert "only allow SNAPSHOT-dependency if project is a SNAPSHOT"**
+
+* This reverts commit 5c4e5f1726725eeaade6bebfbc2c3dbe1fd50fac. 
+
+[2bc9c8736c04556](https://github.com/tomasbjerre/gradle-scripts/commit/2bc9c8736c04556) Tomas Bjerre *2021-04-05 15:19:44*
+
+
 ## 2.2.15
 ### No issue
 
