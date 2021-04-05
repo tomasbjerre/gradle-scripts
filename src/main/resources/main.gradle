@@ -137,7 +137,7 @@ def configureStaticCodeAnalysis() {
     minSeverity = 'INFO'
     detailLevel = 'VERBOSE' // PER_FILE_COMPACT, COMPACT or VERBOSE
     maxViolations = effectiveConfig.staticCodeAnalysis.maxViolations
-    printViolations = true // Will print violations found in diff
+    printViolations = true
 
     // Many more formats available, see: https://github.com/tomasbjerre/violations-lib
     violations = [
