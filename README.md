@@ -121,7 +121,7 @@ def defaultConfig = [
     "src/test/generated"
   ],
   /**
-   * Used as "from" in jar if it exists.
+   * Used as "from" in jar if it exists. Can be used to do annotation processing.
    */
   jarResourcesFolder: 'src/jar/resources'
 ]
