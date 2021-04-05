@@ -106,7 +106,24 @@ def defaultConfig = [
   ],
   manifest: [
     mainClass: ''
-  ]
+  ],
+  /**
+   * Will be configured if they exist.
+   */
+  generatedSourceFolders: [
+    "src/gen/java",
+    "src/generated/java"
+  ],
+  /**
+   * Will be configured if they exist.
+   */
+  extraTestSourceFolders: [
+    "src/test/generated"
+  ],
+  /**
+   * Used as "from" in jar if it exists.
+   */
+  jarResourcesFolder: 'src/jar/resources'
 ]
 
 ```

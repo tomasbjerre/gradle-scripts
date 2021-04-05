@@ -154,6 +154,30 @@ def configureFormatting() {
   apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
   build.dependsOn 'googleJavaFormat'
   verifyGoogleJavaFormat.enabled = false
+
+  googleJavaFormat {
+    include '**/*.java'
+  }
+
+  effectiveConfig.generatedSourceFolders.each {
+    googleJavaFormat {
+      exclude "${it}/**/*.java"
+    }
+  }
+}
+
+def addSourceFolderIfExists(String folder) {
+  if (new File(folder).exists()) {
+    logger.lifecycle("Detected ${folder}, adding it as source folder")
+    sourceSets.main.java.srcDirs += [ folder ]
+  }
+}
+
+def addTestSourceFolderIfExists(String folder) {
+  if (new File(folder).exists()) {
+    logger.lifecycle("Detected ${folder}, adding it as test source folder")
+    sourceSets.test.java.srcDirs += [ folder ]
+  }
 }
 
 def configureJava() {
@@ -167,6 +191,14 @@ def configureJava() {
   repositories {
     mavenLocal()
     mavenCentral()
+  }
+
+  effectiveConfig.generatedSourceFolders.each {
+    addSourceFolderIfExists(it)
+  }
+
+  effectiveConfig.extraTestSourceFolders.each {
+    addTestSourceFolderIfExists(it)
   }
 
   test {
@@ -194,6 +226,9 @@ def configureJava() {
     jar {
       manifest {
         attributes 'Main-Class': effectiveConfig.manifest.mainClass
+      }
+      if (new File(effectiveConfig.jarResourcesFolder).exists()) {
+        from effectiveConfig.jarResourcesFolder
       }
     }
   }
@@ -642,7 +677,24 @@ def defaultConfig = [
   ],
   manifest: [
     mainClass: ''
-  ]
+  ],
+  /**
+   * Will be configured if they exist.
+   */
+  generatedSourceFolders: [
+    "src/gen/java",
+    "src/generated/java"
+  ],
+  /**
+   * Will be configured if they exist.
+   */
+  extraTestSourceFolders: [
+    "src/test/generated"
+  ],
+  /**
+   * Used as "from" in jar if it exists. Can be used to do annotation processing.
+   */
+  jarResourcesFolder: 'src/jar/resources'
 ]
 // ---- end of default config ----
 
