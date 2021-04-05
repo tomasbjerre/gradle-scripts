@@ -433,7 +433,8 @@ def configureRelease() {
   task releaseAfterMath(type: GradleBuild) {
       tasks = [
         'clean', 
-        'build', 
+        'build',
+        'checkForSnapshotDependencies',
         'publish', 
         'commitNewVersionTask', 
         'gitChangelogTask', 
@@ -451,6 +452,24 @@ def configureRelease() {
   task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
+  }
+
+  task checkForSnapshotDependencies {
+    doLast {
+      if (project.version.contains("-SNAPSHOT")) {
+        logger.lifecycle("Allowing SNAPSHOT dependencies in SNAPSHOT version (${project.version})")
+        return
+      }
+      allprojects { project ->
+        project.configurations.runtime.each {
+          if (it.toString().contains("-SNAPSHOT")) {
+            def msg = "SNAPSHOT dependency not allowed, unless project is a SNAPSHOT. " + it
+            logger.lifecycle(msg)
+            throw new Exception(msg)
+          }
+        }
+      }
+    }
   }
 
   def artifactsList = []
