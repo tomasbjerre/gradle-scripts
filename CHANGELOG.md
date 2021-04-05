@@ -3,6 +3,20 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.14
+### No issue
+
+**generated source folders**
+
+
+[51f469c66fa9ef7](https://github.com/tomasbjerre/gradle-scripts/commit/51f469c66fa9ef7) Tomas Bjerre *2021-04-05 07:55:33*
+
+**doc**
+
+
+[648224e88cad93b](https://github.com/tomasbjerre/gradle-scripts/commit/648224e88cad93b) Tomas Bjerre *2021-04-05 05:15:50*
+
+
 ## 2.2.13
 ### No issue
 
