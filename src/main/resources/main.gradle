@@ -453,6 +453,21 @@ def configureRelease() {
     from javadoc.destinationDir
   }
 
+  task checkForSnapshotDependencies {
+    if (project.version.endsWith("-SNAPSHOT")) {
+      return
+    }
+    allprojects { project ->
+      project.configurations.runtime.each {
+        if (it.toString().endsWith("-SNAPSHOT")) {
+          throw new Exception("SNAPSHOT-dependency not allowed, unless project is a SNAPSHOT-version. " + it)
+        }
+      }
+    }
+  }
+  test { dependsOn checkForSnapshotDependencies }
+
+
   def artifactsList = []
   def useShadowJar = !effectiveConfig.publishing.relocate.isEmpty()
   if (useShadowJar) {
