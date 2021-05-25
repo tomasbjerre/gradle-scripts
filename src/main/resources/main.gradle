@@ -435,7 +435,8 @@ def configureRelease() {
         'clean', 
         'build',
         'checkForSnapshotDependencies',
-        'publish', 
+        'publish',
+        'publishToMavenLocal',
         'commitNewVersionTask', 
         'gitChangelogTask', 
         'commitChangelogTask'
