@@ -3,6 +3,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.2.18
+### No issue
+
+**feat: publishToMavenLocal**
+
+
+[b3f98bf5618501b](https://github.com/tomasbjerre/gradle-scripts/commit/b3f98bf5618501b) Tomas Bjerre *2021-05-25 18:31:26*
+
+
 ## 2.2.17
 ### No issue
 
