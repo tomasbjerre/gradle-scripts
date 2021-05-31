@@ -18,32 +18,34 @@ def configureChangelog() {
     Changelog of {{repoName}}.
 
     {{#tags}}
-    ## {{name}}
-    {{#issues}}
-      {{#hasIssue}}
-      {{#hasLink}}
-    ### {{name}} [{{issue}}]({{link}}) {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
-      {{/hasLink}}
-      {{^hasLink}}
-    ### {{name}} {{issue}} {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
-      {{/hasLink}}
-      {{/hasIssue}}
-      {{^hasIssue}}
-    ### {{name}}
-      {{/hasIssue}}
+      {{#ifReleaseTag .}}
+        ## {{name}}
+        {{#issues}}
+          {{#hasIssue}}
+          {{#hasLink}}
+            ### {{name}} [{{issue}}]({{link}}) {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
+          {{/hasLink}}
+          {{^hasLink}}
+            ### {{name}} {{issue}} {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
+          {{/hasLink}}
+          {{/hasIssue}}
+          {{^hasIssue}}
+            ### {{name}}
+          {{/hasIssue}}
 
-      {{#commits}}
-    **{{{messageTitle}}}**
+          {{#commits}}
+            **{{{messageTitle}}}**
 
-    {{#messageBodyItems}}
-    * {{.}} 
-    {{/messageBodyItems}}
+            {{#messageBodyItems}}
+            * {{.}} 
+            {{/messageBodyItems}}
 
-    [{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
+            [{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
 
-      {{/commits}}
+          {{/commits}}
 
-    {{/issues}}
+        {{/issues}}
+      {{/ifReleaseTag}}
     {{/tags}}
     """.stripIndent();
   }
@@ -412,7 +414,7 @@ def configureRelease() {
 
   task commitNewVersionTask() {
     doLast {
-      runCommand(['git', 'commit', '-a', '-m', "New version: ${version} [GRADLE SCRIPT]"])
+      runCommand(['git', 'commit', '-a', '-m', "chore(release): ${version} [GRADLE SCRIPT]"])
       runCommand(['git', 'push'])
       runCommand(['git', 'tag', "${version}"])
       runCommand(['git', 'push', 'origin', "${version}"])
@@ -422,7 +424,7 @@ def configureRelease() {
   task commitChangelogTask() {
     doLast {
       try {
-        runCommand(['git', 'commit', '-a', '-m', "Updating changelog with ${version} [GRADLE SCRIPT]"])
+        runCommand(['git', 'commit', '-a', '-m', "chore(release): Updating changelog with ${version} [GRADLE SCRIPT]"])
         runCommand(['git', 'push'])
       } catch (e) {
         logger.error("Unable commit/push changelog, skipping that.",e.getMessage())
