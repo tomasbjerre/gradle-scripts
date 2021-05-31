@@ -12,40 +12,38 @@ def configureChangelog() {
     removeIssueFromMessage = true
     file = file("CHANGELOG.md");
     ignoreCommitsIfMessageMatches = effectiveConfig.changelog.ignoreCommitsIfMessageMatches;
-    templateContent = """
+    templateContent = """\
     # {{repoName}} changelog
 
     Changelog of {{repoName}}.
 
     {{#tags}}
-      {{#ifReleaseTag .}}
-        ## {{name}}
-        {{#issues}}
-          {{#hasIssue}}
-          {{#hasLink}}
-            ### {{name}} [{{issue}}]({{link}}) {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
-          {{/hasLink}}
-          {{^hasLink}}
-            ### {{name}} {{issue}} {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
-          {{/hasLink}}
-          {{/hasIssue}}
-          {{^hasIssue}}
-            ### {{name}}
-          {{/hasIssue}}
+      ## {{name}}
+      {{#issues}}
+        {{#hasIssue}}
+        {{#hasLink}}
+          ### {{name}} [{{issue}}]({{link}}) {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
+        {{/hasLink}}
+        {{^hasLink}}
+          ### {{name}} {{issue}} {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
+        {{/hasLink}}
+        {{/hasIssue}}
+        {{^hasIssue}}
+          ### {{name}}
+        {{/hasIssue}}
 
-          {{#commits}}
-            **{{{messageTitle}}}**
+        {{#commits}}
+          **{{{messageTitle}}}**
 
-            {{#messageBodyItems}}
-            * {{.}} 
-            {{/messageBodyItems}}
+          {{#messageBodyItems}}
+          * {{.}} 
+          {{/messageBodyItems}}
 
-            [{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
+          [{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
 
-          {{/commits}}
+        {{/commits}}
 
-        {{/issues}}
-      {{/ifReleaseTag}}
+      {{/issues}}
     {{/tags}}
     """.stripIndent();
   }
