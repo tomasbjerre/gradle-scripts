@@ -436,6 +436,7 @@ def configureRelease() {
         'publish',
         'publishToMavenLocal',
         'commitNewVersionTask', 
+        'gitChangelogTask', 
         'commitChangelogTask'
       ] +
       (effectiveConfig.publishing.nexusCloseAndRelease ? [ "nexusCloseAndRelease" ] : []) +
