@@ -2,6 +2,15 @@
 
 Changelog of gradle-scripts.
 
+## 2.4.6
+### No issue
+
+**fix: setting fromRepo in git-changelog config**
+
+
+[168af21df30758a](https://github.com/tomasbjerre/gradle-scripts/commit/168af21df30758a) Tomas Bjerre *2021-06-01 15:53:34*
+
+
 ## 2.4.4
 ### No issue
 
