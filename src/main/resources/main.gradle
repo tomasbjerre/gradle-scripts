@@ -112,7 +112,7 @@ def configureStaticCodeAnalysis() {
 
   dependencies {
     spotbugs 'com.github.spotbugs:spotbugs:4.2.1'
-    compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
+    implementation "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
   }
 
   tasks.withType(com.github.spotbugs.snom.SpotBugsTask) {
@@ -183,7 +183,6 @@ def addTestSourceFolderIfExists(String folder) {
 def configureJava() {
   apply plugin: 'java'
   apply plugin: 'eclipse'
-  apply plugin: com.github.ksoichiro.build.info.BuildInfoPlugin
 
   sourceCompatibility = 1.8
   targetCompatibility = 1.8
@@ -594,7 +593,7 @@ def configureGradle() {
   apply plugin: com.gradle.publish.PublishPlugin
 
   dependencies {
-    compile gradleApi()
+    implementation gradleApi()
   }
 
   def pluginId = (project.group + '.' + project.name)
