@@ -10,6 +10,7 @@ def configureChangelog() {
     }
     jiraIssuePattern = effectiveConfig.changelog.jiraIssuePattern;
     removeIssueFromMessage = true
+    fromRepo = file(".")
     file = file("CHANGELOG.md");
     ignoreCommitsIfMessageMatches = effectiveConfig.changelog.ignoreCommitsIfMessageMatches;
     templateContent = """\
