@@ -2,6 +2,38 @@
 
 Changelog of gradle-scripts.
 
+## 2.4.2
+### No issue
+
+**revert: temporary removing plugins not working with Gradle 7**
+
+
+[3185d99119363de](https://github.com/tomasbjerre/gradle-scripts/commit/3185d99119363de) Tomas Bjerre *2021-06-01 14:52:36*
+
+
+## 2.4.1
+### No issue
+
+**fix: temporary removing plugins not working with Gradle 7**
+
+
+[20db4a868608dfb](https://github.com/tomasbjerre/gradle-scripts/commit/20db4a868608dfb) Tomas Bjerre *2021-06-01 14:43:02*
+
+**feat: adding changelog generation again after release**
+
+
+[53feedb3348aa9f](https://github.com/tomasbjerre/gradle-scripts/commit/53feedb3348aa9f) Tomas Bjerre *2021-06-01 13:50:40*
+
+
+## 2.3.0
+### No issue
+
+**feat: support Gradle 7**
+
+
+[67d4897dd590181](https://github.com/tomasbjerre/gradle-scripts/commit/67d4897dd590181) Tomas Bjerre *2021-06-01 13:40:25*
+
+
 ## 2.2.20
 ### No issue
 
