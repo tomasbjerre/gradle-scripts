@@ -2,6 +2,20 @@
 
 Changelog of gradle-scripts.
 
+## 2.4.4
+### No issue
+
+**feat: google-java-format-gradle-plugin 0.9**
+
+
+[25fdd37449e2a1e](https://github.com/tomasbjerre/gradle-scripts/commit/25fdd37449e2a1e) Tomas Bjerre *2021-06-01 15:20:37*
+
+**chore: latest git-changelog**
+
+
+[db691005129a7d1](https://github.com/tomasbjerre/gradle-scripts/commit/db691005129a7d1) Tomas Bjerre *2021-06-01 15:05:04*
+
+
 ## 2.4.2
 ### No issue
 
