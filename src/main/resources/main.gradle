@@ -436,8 +436,8 @@ def configureRelease() {
         'publish',
         'publishToMavenLocal',
         'commitNewVersionTask', 
-        //'gitChangelogTask', 
-        //'commitChangelogTask'
+        'gitChangelogTask', 
+        'commitChangelogTask'
       ] +
       (effectiveConfig.publishing.nexusCloseAndRelease ? [ "nexusCloseAndRelease" ] : []) +
       (effectiveConfig.repoType == "GRADLE" ? [ "publishPlugins" ] : [])
@@ -557,10 +557,10 @@ def configureRelease() {
 }
 
 def configureDefault() {
-  //configureChangelog()
+  configureChangelog()
   configureJava()
-  //configureFormatting()
-  //configureStaticCodeAnalysis()
+  configureFormatting()
+  configureStaticCodeAnalysis()
   configureRelease()
   if (effectiveConfig.violations.updateReadme) {
     logger.lifecycle("Updating README with reporters")
