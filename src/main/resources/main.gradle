@@ -277,10 +277,7 @@ def getNewVersion(String oldVersionName, String bump) {
   return newVersionName
 }
 
-def bumpVersion(type) {
-  logger.lifecycle("Bumping ${type.toLowerCase()} version…")
-  String oldVersionName = project.version
-  version = getNewVersion(oldVersionName, type)
+def bumpVersionTo(version) {
   def propertyFile = file("$projectDir/gradle.properties")
   def gradleProps = new Properties()
   propertyFile.withReader { gradleProps.load(it) }
@@ -296,6 +293,13 @@ def bumpVersion(type) {
       }
     }
   }
+}
+
+def bumpVersion(type) {
+  logger.lifecycle("Bumping ${type.toLowerCase()} version…")
+  String oldVersionName = project.version
+  version = getNewVersion(oldVersionName, type)
+  bumpVersionTo(version)
 }
 
 def runCommand(args, int attempts = 5) {
@@ -435,6 +439,21 @@ def configureRelease() {
         finalizedBy "releaseAfterMath"
       }
     }
+  }
+
+  // Release with version from conventional commits
+  task release() {
+    doFirst {
+      def nextVersion = se.bjurr.gitchangelog.api.GitChangelogApi.gitChangelogApiBuilder()
+        .withFromRepo(file('.'))
+        .withSemanticMajorVersionPattern("^[Bb]reaking")
+        .withSemanticMinorVersionPattern("[Ff]eature")
+        .getNextSemanticVersion().toString();
+
+      logger.lifecycle("Releasing version ${nextVersion}...")
+      bumpVersionTo(nextVersion)
+    }
+    finalizedBy "releaseAfterMath"
   }
 
   task commitNewVersionTask() {
@@ -744,6 +763,7 @@ buildscript {
     classpath 'se.bjurr.violations:violations-lib:+'
     classpath 'com.google.guava:guava:16.0.1'
     classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:+"
+    classpath 'se.bjurr.gitchangelog:git-changelog-lib:1.+'
     classpath "com.gradle.publish:plugin-publish-plugin:0.11.0"
     classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.9'
     classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'

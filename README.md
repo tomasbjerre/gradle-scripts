@@ -7,11 +7,12 @@ This is a gradle script, written in a highly configurable way, much like I've [b
 
 Example usage can be found in:
 
- * [Git Changelog Lib](https://github.com/tomasbjerre/git-changelog-lib/blob/master/build.gradle)
- * [Git Changelog Command Line](https://github.com/tomasbjerre/git-changelog-command-line/blob/master/build.gradle)
- * [Violations Lib](https://github.com/tomasbjerre/violations-lib/blob/master/build.gradle)
- * [Violations Gradle Plugin](https://github.com/tomasbjerre/violations-gradle-plugin/blob/master/build.gradle)
-# How does it work?
+- [Git Changelog Lib](https://github.com/tomasbjerre/git-changelog-lib/blob/master/build.gradle)
+- [Git Changelog Command Line](https://github.com/tomasbjerre/git-changelog-command-line/blob/master/build.gradle)
+- [Violations Lib](https://github.com/tomasbjerre/violations-lib/blob/master/build.gradle)
+- [Violations Gradle Plugin](https://github.com/tomasbjerre/violations-gradle-plugin/blob/master/build.gradle)
+
+## How does it work?
 
 It packages a `jar`. Uploads it to a Maven repository. Users can add the `jar` to their classpath and apply the `main.gradle` script from that `jar`.
 
@@ -35,7 +36,7 @@ project.ext.buildConfig = [
 apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 ```
 
-# Features
+## Features
 
 Missing something? Pull requests are welcome =)
 
@@ -128,17 +129,18 @@ def defaultConfig = [
 
 ```
 <!-- end default config -->
-## Publishing releases
+
+### Publishing releases
 
 It can:
 
- * Step version
- * Package release
- * Sign release
- * Publish release to repository (like Nexus or Maven Central)
- * Create a changelog
- * Commit/tag/push to Git
- * Close and promote release in Nexus
+- Step version
+- Package release
+- Sign release
+- Publish release to repository (like Nexus or Maven Central)
+- Create a changelog
+- Commit/tag/push to Git
+- Close and promote release in Nexus
 
 With:
 
@@ -148,27 +150,33 @@ With:
 ./gradlew releaseMajor
 ```
 
-## Static code analysis
+Or by relying on [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) and just doing:
+
+```sh
+./gradlew release
+```
+
+### Static code analysis
 
 It has `Spotbugs` configured in combination with [Violations Gradle Plugin](https://github.com/tomasbjerre/violations-gradle-plugin). Any violations will be printed nicely in the build log. And build can optionally be failed based on number of violations.
 
-## Other features
+### Other features
 
- * Automated changelog
- * Code formatting, with Google Java Format.
- * Shadowing, producing fat-jar
- * Signing artifacts with PGP
- * ...
+- Automated changelog
+- Code formatting, with Google Java Format.
+- Shadowing, producing fat-jar
+- Signing artifacts with PGP
+- ...
 
-# Requirements
+## Requirements
 
-Tested with Gradle 6.8.3.
+Tested with Gradle 7.0.2.
 
 ```sh
 ./gradlew wrapper --gradle-version=6.8.3 --distribution-type=bin
 ```
 
-# Developer instructions
+## Developer instructions
 
 You can fiddle with the script localy by installning it with:
 
