@@ -13,40 +13,67 @@ def configureChangelog() {
     fromRepo = file(".")
     file = file("CHANGELOG.md");
     ignoreCommitsIfMessageMatches = effectiveConfig.changelog.ignoreCommitsIfMessageMatches;
-    templateContent = """\
+    templateContent = '''\
 # {{repoName}} changelog
 
 Changelog of {{repoName}}.
 
 {{#tags}}
-## {{name}}
-  {{#issues}}
-    {{#hasIssue}}
-    {{#hasLink}}
-### {{name}} [{{issue}}]({{link}}) {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
-    {{/hasLink}}
-    {{^hasLink}}
-### {{name}} {{issue}} {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
-    {{/hasLink}}
-    {{/hasIssue}}
-    {{^hasIssue}}
-### {{name}}
-    {{/hasIssue}}
+{{#ifEquals name "Unreleased"}}{{else}}
+## [{{name}}](https://gitlab.com/html-validate/html-validate/compare/{{name}}) ({{tagDate .}})
 
-    {{#commits}}
+{{#ifContainsBreaking commits}}
+### Breaking changes
+
+{{#commits}}
+{{#ifCommitBreaking .}}
+- {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}))
+{{/ifCommitBreaking}}
+{{/commits}}
+{{/ifContainsBreaking}}
+
+
+{{#ifContainsType commits type='feat'}}
+### Features
+
+{{#commits}}
+{{#ifCommitType . type='feat'}}
+- {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}))
+{{/ifCommitType}}
+{{/commits}}
+{{/ifContainsType}}
+
+
+{{#ifContainsType commits type='fix'}}
+### Bug Fixes
+
+{{#commits}}
+{{#ifCommitType . type='fix'}}
+  - {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}))
+{{/ifCommitType}}
+{{/commits}}
+{{/ifContainsType}}
+
+
+{{#ifContainsType commits type='^($|(?!fix|feat|breaking))'}}
+### Other changes
+
+{{#commits}}
+{{#ifCommitType . type='^($|(?!fix|feat|breaking))'}}
 **{{{messageTitle}}}**
 
 {{#messageBodyItems}}
-  * {{.}} 
+* {{.}} 
 {{/messageBodyItems}}
 
 [{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
+{{/ifCommitType}}
+{{/commits}}
+{{/ifContainsType}}
 
-    {{/commits}}
-
-  {{/issues}}
+{{/ifEquals}}
 {{/tags}}
-    """.stripIndent();
+    ''';
   }
 }
 
