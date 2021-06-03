@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.5.1](https://gitlab.com/html-validate/html-validate/compare/2.5.1) (2021-06-03)
+
+
+
+
+
+### Bug Fixes
+
+-  tweaking changelog ([ce180](https://github.com/tomasbjerre/gradle-scripts/commit/ce1805660592c8d))  
+
+
+
 ## [2.5.0](https://gitlab.com/html-validate/html-validate/compare/2.5.0) (2021-06-03)
 
 
