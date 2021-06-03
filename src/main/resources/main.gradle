@@ -446,8 +446,8 @@ def configureRelease() {
     doFirst {
       def nextVersion = se.bjurr.gitchangelog.api.GitChangelogApi.gitChangelogApiBuilder()
         .withFromRepo(file('.'))
-        .withSemanticMajorVersionPattern("^[Bb]reaking")
-        .withSemanticMinorVersionPattern("[Ff]eature")
+        .withSemanticMajorVersionPattern("^[Bb]reak")
+        .withSemanticMinorVersionPattern("^[Ff]eat")
         .getNextSemanticVersion().toString();
 
       logger.lifecycle("Releasing version ${nextVersion}...")
