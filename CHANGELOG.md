@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.6.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.6.0) (2021-06-03)
+
+
+
+### Features
+
+-  chaning versioning pattern ([2203b](https://github.com/tomasbjerre/gradle-scripts/commit/2203bc471480162))  
+
+
+
+
+
 ## [2.5.3](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.5.3) (2021-06-03)
 
 
