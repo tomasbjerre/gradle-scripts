@@ -20,7 +20,7 @@ Changelog of {{repoName}}.
 
 {{#tags}}
 {{#ifEquals name "Unreleased"}}{{else}}
-## [{{name}}](https://gitlab.com/html-validate/html-validate/compare/{{name}}) ({{tagDate .}})
+## [{{name}}](https://github.com/{{ownerName}}/{{repoName}}/releases/tag/{{name}}) ({{tagDate .}})
 
 {{#ifContainsBreaking commits}}
 ### Breaking changes
