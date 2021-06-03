@@ -2,7 +2,19 @@
 
 Changelog of gradle-scripts.
 
-## [2.5.1](https://gitlab.com/html-validate/html-validate/compare/2.5.1) (2021-06-03)
+## [2.5.2](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.5.2) (2021-06-03)
+
+
+
+
+
+### Bug Fixes
+
+-  tweaking changelog ([7dc0d](https://github.com/tomasbjerre/gradle-scripts/commit/7dc0d9cd6fc9de3))  
+
+
+
+## [2.5.1](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.5.1) (2021-06-03)
 
 
 
@@ -14,7 +26,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.5.0](https://gitlab.com/html-validate/html-validate/compare/2.5.0) (2021-06-03)
+## [2.5.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.5.0) (2021-06-03)
 
 
 
@@ -27,7 +39,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.4.6](https://gitlab.com/html-validate/html-validate/compare/2.4.6) (2021-06-01)
+## [2.4.6](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.4.6) (2021-06-01)
 
 
 
@@ -39,7 +51,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.4.4](https://gitlab.com/html-validate/html-validate/compare/2.4.4) (2021-06-01)
+## [2.4.4](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.4.4) (2021-06-01)
 
 
 
@@ -51,7 +63,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.4.2](https://gitlab.com/html-validate/html-validate/compare/2.4.2) (2021-06-01)
+## [2.4.2](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.4.2) (2021-06-01)
 
 
 
@@ -60,7 +72,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.4.1](https://gitlab.com/html-validate/html-validate/compare/2.4.1) (2021-06-01)
+## [2.4.1](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.4.1) (2021-06-01)
 
 
 
@@ -75,7 +87,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.3.0](https://gitlab.com/html-validate/html-validate/compare/2.3.0) (2021-06-01)
+## [2.3.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.3.0) (2021-06-01)
 
 
 
@@ -87,7 +99,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.2.20](https://gitlab.com/html-validate/html-validate/compare/2.2.20) (2021-05-31)
+## [2.2.20](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.20) (2021-05-31)
 
 
 
@@ -99,7 +111,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.2.19](https://gitlab.com/html-validate/html-validate/compare/2.2.19) (2021-05-31)
+## [2.2.19](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.19) (2021-05-31)
 
 
 
@@ -111,7 +123,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.2.18](https://gitlab.com/html-validate/html-validate/compare/2.2.18) (2021-05-25)
+## [2.2.18](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.18) (2021-05-25)
 
 
 
@@ -123,7 +135,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.2.17](https://gitlab.com/html-validate/html-validate/compare/2.2.17) (2021-04-05)
+## [2.2.17](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.17) (2021-04-05)
 
 
 
@@ -138,7 +150,7 @@ Changelog of gradle-scripts.
 
 [67cc4](https://github.com/tomasbjerre/gradle-scripts/commit/67cc449994208b3) Tomas Bjerre *2021-04-05 15:32:11*
 
-## [2.2.16](https://gitlab.com/html-validate/html-validate/compare/2.2.16) (2021-04-05)
+## [2.2.16](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.16) (2021-04-05)
 
 
 
@@ -147,7 +159,7 @@ Changelog of gradle-scripts.
 
 
 
-## [2.2.15](https://gitlab.com/html-validate/html-validate/compare/2.2.15) (2021-04-05)
+## [2.2.15](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.15) (2021-04-05)
 
 
 
@@ -162,7 +174,7 @@ Changelog of gradle-scripts.
 
 [5c4e5](https://github.com/tomasbjerre/gradle-scripts/commit/5c4e5f1726725ee) Tomas Bjerre *2021-04-05 15:14:29*
 
-## [2.2.14](https://gitlab.com/html-validate/html-validate/compare/2.2.14) (2021-04-05)
+## [2.2.14](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.14) (2021-04-05)
 
 
 
@@ -181,7 +193,7 @@ Changelog of gradle-scripts.
 
 [64822](https://github.com/tomasbjerre/gradle-scripts/commit/648224e88cad93b) Tomas Bjerre *2021-04-05 05:15:50*
 
-## [2.2.13](https://gitlab.com/html-validate/html-validate/compare/2.2.13) (2021-04-04)
+## [2.2.13](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.13) (2021-04-04)
 
 
 
@@ -200,7 +212,7 @@ Changelog of gradle-scripts.
 
 [7841a](https://github.com/tomasbjerre/gradle-scripts/commit/7841aa48b18103b) Tomas Bjerre *2021-04-04 17:02:14*
 
-## [2.2.12](https://gitlab.com/html-validate/html-validate/compare/2.2.12) (2021-04-04)
+## [2.2.12](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.12) (2021-04-04)
 
 
 
@@ -215,7 +227,7 @@ Changelog of gradle-scripts.
 
 [d3921](https://github.com/tomasbjerre/gradle-scripts/commit/d3921a34cd3bb7d) Tomas Bjerre *2021-04-04 15:58:03*
 
-## [2.2.11](https://gitlab.com/html-validate/html-validate/compare/2.2.11) (2021-04-04)
+## [2.2.11](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.11) (2021-04-04)
 
 
 
@@ -230,7 +242,7 @@ Changelog of gradle-scripts.
 
 [5764c](https://github.com/tomasbjerre/gradle-scripts/commit/5764ceabcfc19e3) Tomas Bjerre *2021-04-04 14:07:20*
 
-## [2.2.10](https://gitlab.com/html-validate/html-validate/compare/2.2.10) (2021-04-04)
+## [2.2.10](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.10) (2021-04-04)
 
 
 
@@ -245,7 +257,7 @@ Changelog of gradle-scripts.
 
 [dc3ea](https://github.com/tomasbjerre/gradle-scripts/commit/dc3eae710d7cec6) Tomas Bjerre *2021-04-04 06:01:36*
 
-## [2.2.9](https://gitlab.com/html-validate/html-validate/compare/2.2.9) (2021-04-04)
+## [2.2.9](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.9) (2021-04-04)
 
 
 
@@ -260,7 +272,7 @@ Changelog of gradle-scripts.
 
 [284b9](https://github.com/tomasbjerre/gradle-scripts/commit/284b9102a5596dd) Tomas Bjerre *2021-04-04 05:50:42*
 
-## [2.2.8](https://gitlab.com/html-validate/html-validate/compare/2.2.8) (2021-04-03)
+## [2.2.8](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.8) (2021-04-03)
 
 
 
@@ -275,7 +287,7 @@ Changelog of gradle-scripts.
 
 [43a27](https://github.com/tomasbjerre/gradle-scripts/commit/43a2791ddfe2efd) Tomas Bjerre *2021-04-03 20:22:56*
 
-## [2.2.7](https://gitlab.com/html-validate/html-validate/compare/2.2.7) (2021-04-03)
+## [2.2.7](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.7) (2021-04-03)
 
 
 
@@ -290,7 +302,7 @@ Changelog of gradle-scripts.
 
 [1665d](https://github.com/tomasbjerre/gradle-scripts/commit/1665d3df6c9d5a5) Tomas Bjerre *2021-04-03 20:15:16*
 
-## [2.2.6](https://gitlab.com/html-validate/html-validate/compare/2.2.6) (2021-04-03)
+## [2.2.6](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.6) (2021-04-03)
 
 
 
@@ -305,7 +317,7 @@ Changelog of gradle-scripts.
 
 [aaec2](https://github.com/tomasbjerre/gradle-scripts/commit/aaec2bb028835dd) Tomas Bjerre *2021-04-03 20:12:22*
 
-## [2.2.5](https://gitlab.com/html-validate/html-validate/compare/2.2.5) (2021-04-03)
+## [2.2.5](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.5) (2021-04-03)
 
 
 
@@ -320,7 +332,7 @@ Changelog of gradle-scripts.
 
 [0ca2a](https://github.com/tomasbjerre/gradle-scripts/commit/0ca2a75ddd87c55) Tomas Bjerre *2021-04-03 20:06:41*
 
-## [2.2.4](https://gitlab.com/html-validate/html-validate/compare/2.2.4) (2021-04-03)
+## [2.2.4](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.4) (2021-04-03)
 
 
 
@@ -335,7 +347,7 @@ Changelog of gradle-scripts.
 
 [8c36c](https://github.com/tomasbjerre/gradle-scripts/commit/8c36c963376bde3) Tomas Bjerre *2021-04-03 19:18:42*
 
-## [2.2.3](https://gitlab.com/html-validate/html-validate/compare/2.2.3) (2021-04-03)
+## [2.2.3](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.3) (2021-04-03)
 
 
 
@@ -350,7 +362,7 @@ Changelog of gradle-scripts.
 
 [0f820](https://github.com/tomasbjerre/gradle-scripts/commit/0f82085470232df) Tomas Bjerre *2021-04-03 19:08:43*
 
-## [2.2.2](https://gitlab.com/html-validate/html-validate/compare/2.2.2) (2021-04-03)
+## [2.2.2](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.2) (2021-04-03)
 
 
 
@@ -365,7 +377,7 @@ Changelog of gradle-scripts.
 
 [cdffe](https://github.com/tomasbjerre/gradle-scripts/commit/cdffe2ce5662756) Tomas Bjerre *2021-04-03 18:59:30*
 
-## [2.2.1](https://gitlab.com/html-validate/html-validate/compare/2.2.1) (2021-04-03)
+## [2.2.1](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.1) (2021-04-03)
 
 
 
@@ -384,7 +396,7 @@ Changelog of gradle-scripts.
 
 [a5c90](https://github.com/tomasbjerre/gradle-scripts/commit/a5c9018f1e5f150) Tomas Bjerre *2021-04-03 18:33:53*
 
-## [2.2.0](https://gitlab.com/html-validate/html-validate/compare/2.2.0) (2021-04-03)
+## [2.2.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.2.0) (2021-04-03)
 
 
 
@@ -399,7 +411,7 @@ Changelog of gradle-scripts.
 
 [27447](https://github.com/tomasbjerre/gradle-scripts/commit/2744736465279e3) Tomas Bjerre *2021-04-03 18:30:50*
 
-## [2.1.6](https://gitlab.com/html-validate/html-validate/compare/2.1.6) (2021-04-03)
+## [2.1.6](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.1.6) (2021-04-03)
 
 
 
@@ -414,7 +426,7 @@ Changelog of gradle-scripts.
 
 [606f9](https://github.com/tomasbjerre/gradle-scripts/commit/606f9c7de184060) Tomas Bjerre *2021-04-03 18:25:55*
 
-## [2.1.5](https://gitlab.com/html-validate/html-validate/compare/2.1.5) (2021-04-03)
+## [2.1.5](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.1.5) (2021-04-03)
 
 
 
@@ -429,7 +441,7 @@ Changelog of gradle-scripts.
 
 [1c8a8](https://github.com/tomasbjerre/gradle-scripts/commit/1c8a82946c5923b) Tomas Bjerre *2021-04-03 18:24:34*
 
-## [2.1.4](https://gitlab.com/html-validate/html-validate/compare/2.1.4) (2021-04-03)
+## [2.1.4](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.1.4) (2021-04-03)
 
 
 
@@ -448,7 +460,7 @@ Changelog of gradle-scripts.
 
 [6e73c](https://github.com/tomasbjerre/gradle-scripts/commit/6e73c1497572a72) Tomas Bjerre *2021-04-03 18:19:52*
 
-## [2.1.3](https://gitlab.com/html-validate/html-validate/compare/2.1.3) (2021-04-03)
+## [2.1.3](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.1.3) (2021-04-03)
 
 
 
@@ -463,7 +475,7 @@ Changelog of gradle-scripts.
 
 [46abb](https://github.com/tomasbjerre/gradle-scripts/commit/46abb261d2c0775) Tomas Bjerre *2021-04-03 18:04:19*
 
-## [2.1.2](https://gitlab.com/html-validate/html-validate/compare/2.1.2) (2021-04-03)
+## [2.1.2](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.1.2) (2021-04-03)
 
 
 
@@ -478,7 +490,7 @@ Changelog of gradle-scripts.
 
 [48966](https://github.com/tomasbjerre/gradle-scripts/commit/48966b0908daa0e) Tomas Bjerre *2021-04-03 18:01:39*
 
-## [2.1.1](https://gitlab.com/html-validate/html-validate/compare/2.1.1) (2021-04-03)
+## [2.1.1](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.1.1) (2021-04-03)
 
 
 
@@ -493,7 +505,7 @@ Changelog of gradle-scripts.
 
 [cd460](https://github.com/tomasbjerre/gradle-scripts/commit/cd4603aba40c76e) Tomas Bjerre *2021-04-03 18:00:04*
 
-## [2.1.0](https://gitlab.com/html-validate/html-validate/compare/2.1.0) (2021-04-03)
+## [2.1.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.1.0) (2021-04-03)
 
 
 
@@ -520,7 +532,7 @@ Changelog of gradle-scripts.
 
 [15e69](https://github.com/tomasbjerre/gradle-scripts/commit/15e69a8f8d3b78b) Tomas Bjerre *2021-04-02 19:20:02*
 
-## [2.0.4](https://gitlab.com/html-validate/html-validate/compare/2.0.4) (2021-04-02)
+## [2.0.4](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.0.4) (2021-04-02)
 
 
 
@@ -535,7 +547,7 @@ Changelog of gradle-scripts.
 
 [5f5f5](https://github.com/tomasbjerre/gradle-scripts/commit/5f5f5a2c13f7d34) Tomas Bjerre *2021-04-02 17:59:11*
 
-## [2.0.2](https://gitlab.com/html-validate/html-validate/compare/2.0.2) (2021-04-02)
+## [2.0.2](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.0.2) (2021-04-02)
 
 
 
@@ -558,7 +570,7 @@ Changelog of gradle-scripts.
 
 [493df](https://github.com/tomasbjerre/gradle-scripts/commit/493df493260e0bb) Tomas Bjerre *2021-04-02 17:28:35*
 
-## [2.0.1](https://gitlab.com/html-validate/html-validate/compare/2.0.1) (2021-04-02)
+## [2.0.1](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.0.1) (2021-04-02)
 
 
 
@@ -585,7 +597,7 @@ Changelog of gradle-scripts.
 
 [1756a](https://github.com/tomasbjerre/gradle-scripts/commit/1756a1e1b6914cf) Tomas Bjerre *2021-04-02 17:08:58*
 
-## [2.0.0](https://gitlab.com/html-validate/html-validate/compare/2.0.0) (2021-04-02)
+## [2.0.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.0.0) (2021-04-02)
 
 
 
@@ -604,7 +616,7 @@ Changelog of gradle-scripts.
 
 [82cfd](https://github.com/tomasbjerre/gradle-scripts/commit/82cfddc503c3cef) Tomas Bjerre *2021-04-02 17:07:28*
 
-## [1.17](https://gitlab.com/html-validate/html-validate/compare/1.17) (2021-01-29)
+## [1.17](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.17) (2021-01-29)
 
 
 
@@ -619,7 +631,7 @@ Changelog of gradle-scripts.
 
 [9ce1e](https://github.com/tomasbjerre/gradle-scripts/commit/9ce1ed4c2cd6d8d) Tomas Bjerre *2021-01-29 19:11:50*
 
-## [1.16](https://gitlab.com/html-validate/html-validate/compare/1.16) (2021-01-29)
+## [1.16](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.16) (2021-01-29)
 
 
 
@@ -634,7 +646,7 @@ Changelog of gradle-scripts.
 
 [35369](https://github.com/tomasbjerre/gradle-scripts/commit/35369da8ef644e3) Tomas Bjerre *2021-01-29 19:05:02*
 
-## [1.15](https://gitlab.com/html-validate/html-validate/compare/1.15) (2021-01-29)
+## [1.15](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.15) (2021-01-29)
 
 
 
@@ -649,7 +661,7 @@ Changelog of gradle-scripts.
 
 [52c40](https://github.com/tomasbjerre/gradle-scripts/commit/52c40362a0624f2) Tomas Bjerre *2021-01-29 18:45:54*
 
-## [1.13](https://gitlab.com/html-validate/html-validate/compare/1.13) (2021-01-29)
+## [1.13](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.13) (2021-01-29)
 
 
 
@@ -664,7 +676,7 @@ Changelog of gradle-scripts.
 
 [f5fe9](https://github.com/tomasbjerre/gradle-scripts/commit/f5fe9f82f39f0b9) Tomas Bjerre *2021-01-29 18:40:24*
 
-## [1.12](https://gitlab.com/html-validate/html-validate/compare/1.12) (2021-01-29)
+## [1.12](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.12) (2021-01-29)
 
 
 
@@ -683,7 +695,7 @@ Changelog of gradle-scripts.
 
 [a3df3](https://github.com/tomasbjerre/gradle-scripts/commit/a3df39dc84c4973) Tomas Bjerre *2020-06-12 18:10:01*
 
-## [sec](https://gitlab.com/html-validate/html-validate/compare/sec) (2020-05-20)
+## [sec](https://github.com/tomasbjerre/gradle-scripts/releases/tag/sec) (2020-05-20)
 
 
 
@@ -698,7 +710,7 @@ Changelog of gradle-scripts.
 
 [b7e42](https://github.com/tomasbjerre/gradle-scripts/commit/b7e42a62aade155) Tomas Bjerre *2020-05-20 13:47:58*
 
-## [ny](https://gitlab.com/html-validate/html-validate/compare/ny) (2020-04-28)
+## [ny](https://github.com/tomasbjerre/gradle-scripts/releases/tag/ny) (2020-04-28)
 
 
 
@@ -721,7 +733,7 @@ Changelog of gradle-scripts.
 
 [b8228](https://github.com/tomasbjerre/gradle-scripts/commit/b82285a3a7ef9c2) Tomas Bjerre *2020-02-16 09:23:12*
 
-## [1.11](https://gitlab.com/html-validate/html-validate/compare/1.11) (2019-10-10)
+## [1.11](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.11) (2019-10-10)
 
 
 
@@ -736,7 +748,7 @@ Changelog of gradle-scripts.
 
 [a4793](https://github.com/tomasbjerre/gradle-scripts/commit/a479313f214779c) Tomas Bjerre *2019-10-10 14:39:57*
 
-## [1.10](https://gitlab.com/html-validate/html-validate/compare/1.10) (2019-10-09)
+## [1.10](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.10) (2019-10-09)
 
 
 
@@ -755,7 +767,7 @@ Changelog of gradle-scripts.
 
 [672b3](https://github.com/tomasbjerre/gradle-scripts/commit/672b3246adbf15f) Tomas Bjerre *2019-10-09 16:20:47*
 
-## [1.9](https://gitlab.com/html-validate/html-validate/compare/1.9) (2019-10-08)
+## [1.9](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.9) (2019-10-08)
 
 
 
@@ -778,7 +790,7 @@ Changelog of gradle-scripts.
 
 [b37b3](https://github.com/tomasbjerre/gradle-scripts/commit/b37b36ba9f1b9d5) Tomas Bjerre *2019-10-08 17:26:18*
 
-## [1.8](https://gitlab.com/html-validate/html-validate/compare/1.8) (2019-10-08)
+## [1.8](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.8) (2019-10-08)
 
 
 
@@ -793,7 +805,7 @@ Changelog of gradle-scripts.
 
 [309ea](https://github.com/tomasbjerre/gradle-scripts/commit/309ea92a4718f99) Tomas Bjerre *2019-10-08 17:21:39*
 
-## [1.7](https://gitlab.com/html-validate/html-validate/compare/1.7) (2019-10-08)
+## [1.7](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.7) (2019-10-08)
 
 
 
@@ -808,7 +820,7 @@ Changelog of gradle-scripts.
 
 [11934](https://github.com/tomasbjerre/gradle-scripts/commit/1193463b645cafe) Tomas Bjerre *2019-10-08 17:17:52*
 
-## [1.6](https://gitlab.com/html-validate/html-validate/compare/1.6) (2019-10-08)
+## [1.6](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.6) (2019-10-08)
 
 
 
@@ -823,7 +835,7 @@ Changelog of gradle-scripts.
 
 [278b8](https://github.com/tomasbjerre/gradle-scripts/commit/278b8462e219710) Tomas Bjerre *2019-10-08 17:12:52*
 
-## [1.5](https://gitlab.com/html-validate/html-validate/compare/1.5) (2019-10-08)
+## [1.5](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.5) (2019-10-08)
 
 
 
@@ -838,7 +850,7 @@ Changelog of gradle-scripts.
 
 [9ba44](https://github.com/tomasbjerre/gradle-scripts/commit/9ba4486a8277cae) Tomas Bjerre *2019-10-08 17:09:46*
 
-## [1.4](https://gitlab.com/html-validate/html-validate/compare/1.4) (2019-10-08)
+## [1.4](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.4) (2019-10-08)
 
 
 
@@ -857,7 +869,7 @@ Changelog of gradle-scripts.
 
 [2e1f1](https://github.com/tomasbjerre/gradle-scripts/commit/2e1f148cfbd9ad6) Tomas Bjerre *2019-10-08 16:39:20*
 
-## [1.2](https://gitlab.com/html-validate/html-validate/compare/1.2) (2019-10-07)
+## [1.2](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.2) (2019-10-07)
 
 
 
@@ -876,7 +888,7 @@ Changelog of gradle-scripts.
 
 [51003](https://github.com/tomasbjerre/gradle-scripts/commit/51003549720c292) Tomas Bjerre *2019-10-07 15:28:50*
 
-## [1.1](https://gitlab.com/html-validate/html-validate/compare/1.1) (2019-10-05)
+## [1.1](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.1) (2019-10-05)
 
 
 
@@ -939,7 +951,7 @@ Changelog of gradle-scripts.
 
 [f2be4](https://github.com/tomasbjerre/gradle-scripts/commit/f2be47a63b1acb5) Tomas Bjerre *2019-04-28 07:33:28*
 
-## [1.0](https://gitlab.com/html-validate/html-validate/compare/1.0) (2019-01-08)
+## [1.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/1.0) (2019-01-08)
 
 
 
