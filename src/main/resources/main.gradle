@@ -27,7 +27,7 @@ Changelog of {{repoName}}.
 
 {{#commits}}
 {{#ifCommitBreaking .}}
-- {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{subString hash 0 5}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}})) {{#eachCommitRefs .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}} {{/ifMatches}}{{/eachCommitRefs}} {{#eachCommitFixes .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}}) {{/ifMatches}}{{/eachCommitFixes}}
+- {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{subString hash 0 5}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}})) {{#eachCommitRefs .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}}) {{/ifMatches}}{{/eachCommitRefs}} {{#eachCommitFixes .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}}) {{/ifMatches}}{{/eachCommitFixes}}
 {{/ifCommitBreaking}}
 {{/commits}}
 {{/ifContainsBreaking}}
@@ -38,7 +38,7 @@ Changelog of {{repoName}}.
 
 {{#commits}}
 {{#ifCommitType . type='feat'}}
-- {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{subString hash 0 5}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}})) {{#eachCommitRefs .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}} {{/ifMatches}}{{/eachCommitRefs}} {{#eachCommitFixes .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}}) {{/ifMatches}}{{/eachCommitFixes}}
+- {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{subString hash 0 5}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}})) {{#eachCommitRefs .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}}) {{/ifMatches}}{{/eachCommitRefs}} {{#eachCommitFixes .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}}) {{/ifMatches}}{{/eachCommitFixes}}
 {{/ifCommitType}}
 {{/commits}}
 {{/ifContainsType}}
@@ -49,7 +49,7 @@ Changelog of {{repoName}}.
 
 {{#commits}}
 {{#ifCommitType . type='fix'}}
-- {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{subString hash 0 5}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}})) {{#eachCommitRefs .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}} {{/ifMatches}}{{/eachCommitRefs}} {{#eachCommitFixes .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}}) {{/ifMatches}}{{/eachCommitFixes}}
+- {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{subString hash 0 5}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}})) {{#eachCommitRefs .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}}) {{/ifMatches}}{{/eachCommitRefs}} {{#eachCommitFixes .}}{{#ifMatches . "^#[0-9]+"}} [{{.}}](https://github.com/{{ownerName}}/{{repoName}}/issues/{{subString . 1}}) {{/ifMatches}}{{/eachCommitFixes}}
 {{/ifCommitType}}
 {{/commits}}
 {{/ifContainsType}}
