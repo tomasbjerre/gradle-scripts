@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.5.3](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.5.3) (2021-06-03)
+
+
+
+### Features
+
+-  automate versioning with conventional commits ([b10c5](https://github.com/tomasbjerre/gradle-scripts/commit/b10c5226525530f))  
+
+
+
+
+
 ## [2.5.2](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.5.2) (2021-06-03)
 
 
