@@ -67,6 +67,7 @@ Changelog of {{repoName}}.
 {{/messageBodyItems}}
 
 [{{subString hash 0 5}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
+
 {{/ifCommitType}}
 {{/commits}}
 {{/ifContainsType}}
