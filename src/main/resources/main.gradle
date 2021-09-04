@@ -231,7 +231,9 @@ def configureJava() {
 
   test {
     if (System.getProperty('DEBUG', 'false') == 'true') {
-      jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9009'
+      jvmArgs '-Xdebug',
+        '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9009',
+        '-parameters'
     }
   }
 
@@ -501,6 +503,11 @@ def configureRelease() {
     from javadoc.destinationDir
   }
 
+  task testJar(type: Jar, dependsOn: testClasses) {
+    classifier = 'test'
+    from sourceSets.test.allSource
+  }
+
   def artifactsList = []
   def useShadowJar = !effectiveConfig.publishing.relocate.isEmpty()
   if (useShadowJar) {
@@ -525,11 +532,11 @@ def configureRelease() {
       classifier = null
       version = project.version
     }
-    artifactsList = [sourcesJar, javadocJar, shadowJar]
+    artifactsList = [sourcesJar, javadocJar, testJar, shadowJar]
     build.dependsOn shadowJar
   } else {
     logger.lifecycle("Not including shadow jar.")
-    artifactsList = [sourcesJar, javadocJar, jar]
+    artifactsList = [sourcesJar, javadocJar, testJar, jar]
   }
 
   artifacts {

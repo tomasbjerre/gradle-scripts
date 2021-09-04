@@ -173,7 +173,7 @@ It has `Spotbugs` configured in combination with [Violations Gradle Plugin](http
 Tested with Gradle 7.0.2.
 
 ```sh
-./gradlew wrapper --gradle-version=6.8.3 --distribution-type=bin
+./gradlew wrapper --gradle-version=7.0.2 --distribution-type=bin
 ```
 
 ## Developer instructions
