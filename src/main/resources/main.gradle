@@ -504,7 +504,7 @@ def configureRelease() {
   }
 
   task testJar(type: Jar, dependsOn: testClasses) {
-    classifier = 'test'
+    classifier = 'tests'
     from sourceSets.test.allSource
   }
 
