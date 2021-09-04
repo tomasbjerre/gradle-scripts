@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.9.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.9.0) (2021-09-04)
+
+
+
+### Features
+
+-  renaming test to tests ([b734a](https://github.com/tomasbjerre/gradle-scripts/commit/b734a10400aa671))  
+
+
+
+
+
 ## [2.8.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.8.0) (2021-09-04)
 
 
