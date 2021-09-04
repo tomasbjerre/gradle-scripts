@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.8.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.8.0) (2021-09-04)
+
+
+
+### Features
+
+-  include ([d550e](https://github.com/tomasbjerre/gradle-scripts/commit/d550e6bf79574b4))  
+
+
+
+
+
 ## [2.7.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.7.0) (2021-07-13)
 
 
