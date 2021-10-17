@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.9.2](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.9.2) (2021-10-17)
+
+
+
+
+
+### Bug Fixes
+
+-  using method to get version ([735ba](https://github.com/tomasbjerre/gradle-scripts/commit/735baea640c3a32))  [#104](https://github.com/tomasbjerre/gradle-scripts/issues/104)  
+
+
+
 ## [2.9.1](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.9.1) (2021-10-17)
 
 
