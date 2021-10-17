@@ -451,10 +451,11 @@ def configureRelease() {
         .withFromRepo(file('.'))
         .withSemanticMajorVersionPattern("^[Bb]reak")
         .withSemanticMinorVersionPattern("^[Ff]eat")
-        .getNextSemanticVersion().toString();
-
-      logger.lifecycle("Releasing version ${nextVersion}...")
-      bumpVersionTo(nextVersion)
+        .getNextSemanticVersion();
+      //TODO: Use nextVersion.getVersion() here
+      def nextVersionName = "${nextVersion.getMajor()}.${nextVersion.getMinor()}.${nextVersion.getPatch()}"
+      logger.lifecycle("Releasing version ${nextVersionName}...")
+      bumpVersionTo(nextVersionName)
     }
     finalizedBy "releaseAfterMath"
   }
