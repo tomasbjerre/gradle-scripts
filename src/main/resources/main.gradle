@@ -141,7 +141,7 @@ def configureStaticCodeAnalysis() {
 
   dependencies {
     spotbugs 'com.github.spotbugs:spotbugs:4.2.1'
-    implementation "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
+    compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
   }
 
   tasks.withType(com.github.spotbugs.snom.SpotBugsTask) {
