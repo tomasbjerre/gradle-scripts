@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.11.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.11.0) (2021-11-08)
+
+
+
+### Features
+
+-  attempts ([9ab21](https://github.com/tomasbjerre/gradle-scripts/commit/9ab216734d10652))  
+
+
+
+
+
 ## [2.10.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.10.0) (2021-11-08)
 
 
