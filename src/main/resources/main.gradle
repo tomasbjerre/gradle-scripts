@@ -325,7 +325,7 @@ def runCommand(args, int attempts = 5) {
   }
 }
 
-def doPost(String url, String authString, String payload, Integer attempts = 10) {
+def doPost(String url, String authString, String payload, Integer attempts = 20) {
   logger.lifecycle("> POST ${url} ${payload}")
   def conn = url.toURL().openConnection()
   conn.setRequestMethod("POST")
@@ -397,7 +397,7 @@ task nexusCloseAndRelease() {
       "{'data':{'stagedRepositoryIds':[${repositoryIdsToClose.collect { "'"+it+"'" }.join(",")}],'description':''}}"
     )
 
-    def attempts = 30
+    def attempts = 40
     sleep(10000)
     while (getNexusOpenRepositories(listStagingUrl, authString).size() > 0 && attempts != 0) {
       attempts--
