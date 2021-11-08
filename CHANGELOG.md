@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.11.1](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.11.1) (2021-11-08)
+
+
+
+
+
+### Bug Fixes
+
+-  spotbugs compile only ([66124](https://github.com/tomasbjerre/gradle-scripts/commit/66124b38eec8fdd))  
+
+
+
 ## [2.11.0](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.11.0) (2021-11-08)
 
 
