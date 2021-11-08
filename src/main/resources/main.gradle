@@ -213,8 +213,8 @@ def configureJava() {
   apply plugin: 'java'
   apply plugin: 'eclipse'
 
-  sourceCompatibility = 1.8
-  targetCompatibility = 1.8
+  sourceCompatibility = effectiveConfig.sourceCompatibility
+  targetCompatibility = effectiveConfig.targetCompatibility
 
   repositories {
     mavenLocal()
@@ -676,6 +676,8 @@ def defaultConfig = [
    * "GRADLE" - A Gradle plugin.
    */
   repoType: "DEFAULT",
+  sourceCompatibility: 1.8,
+  targetCompatibility: 1.8,
   staticCodeAnalysis: [
     /**
     * Maximum number of violations to accept from static code analysis.

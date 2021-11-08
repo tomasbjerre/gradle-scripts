@@ -51,6 +51,8 @@ def defaultConfig = [
    * "GRADLE" - A Gradle plugin.
    */
   repoType: "DEFAULT",
+  sourceCompatibility: 1.8,
+  targetCompatibility: 1.8,
   staticCodeAnalysis: [
     /**
     * Maximum number of violations to accept from static code analysis.
