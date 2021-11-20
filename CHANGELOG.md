@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.12.3](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.12.3) (2021-11-20)
+
+
+
+
+
+### Bug Fixes
+
+-  COMMAND type ([69844](https://github.com/tomasbjerre/gradle-scripts/commit/6984473143d7f1c))  
+
+
+
 ## [2.12.2](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.12.2) (2021-11-20)
 
 
