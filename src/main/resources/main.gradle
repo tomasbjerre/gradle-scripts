@@ -329,6 +329,7 @@ def doPost(String url, String authString, String payload, Integer attempts = 20)
   logger.lifecycle("> POST ${url} ${payload}")
   def responseCode = 0
   def content = ""
+  def responseMessage = ""
   try {
     def conn = url.toURL().openConnection()
     conn.setRequestMethod("POST")
@@ -344,6 +345,7 @@ def doPost(String url, String authString, String payload, Integer attempts = 20)
     conn.connect()
     responseCode = conn.responseCode
     content = conn.content
+    responseMessage = conn.responseMessage
   } catch (e) {
     // Ignore
   }
