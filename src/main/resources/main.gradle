@@ -101,7 +101,7 @@ def copyIfFound(String name, String target=null, classLoader = project.buildscri
   URL resource = findResource(name, classLoader)
   if (resource != null) {
     logger.lifecycle("Found resource ${name} as ${resource}")
-    def newFilename = "$buildDir/" + (target == null ? name : target)
+    def newFilename = target == null ? "$buildDir/$name" : target
     copyResourceToFile(resource, newFilename)
     return file(newFilename)
   }
