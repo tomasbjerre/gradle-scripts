@@ -641,7 +641,7 @@ def configureRelease() {
 }
 
 def shouldGitIgnore(filename) {
-  if (!file('.gitignore').find(filename)) {
+  if (!file('.gitignore').text.contains(filename)) {
     throw new RuntimeException("The .gitignore should include '${filename}'")
   }
   logger.lifecycle("${filename} is ignored")
