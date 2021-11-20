@@ -49,6 +49,7 @@ def defaultConfig = [
   /**
    * "DEFAULT" - Works for most Java projects.
    * "GRADLE" - A Gradle plugin.
+   * "COMMAND" - Runnable JAR, distributed in Central and NPM.
    */
   repoType: "DEFAULT",
   sourceCompatibility: 1.8,

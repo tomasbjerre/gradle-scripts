@@ -1,0 +1,17 @@
+{
+    "version": "PKG_VERSION",
+    "name": "PKG_NAME",
+    "homepage": "PKG_WEBSITE",
+    "repository": "PKG_GIT",
+    "author": "PKG_AUTHOR",
+    "description": "PKG_DESCRIPTION",
+    "runnable-jar-regexp": ".*build/libs/.*\\d+\\.\\d+\\.\\d+\\.jar$",
+    "files": [
+      "build/libs"
+    ],
+    "bin": "./index.js",
+    "license": "Apache 2",
+    "dependencies": {
+      "npm-java-runner": "0.0.14"
+    }
+  }

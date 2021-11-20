@@ -97,11 +97,11 @@ def copyResourceToFile(URL resource, String copyTo, classLoader = project.builds
   bw.close()
 }
 
-def copyIfFound(String name, classLoader = project.buildscript.classLoader) {
+def copyIfFound(String name, String target=null, classLoader = project.buildscript.classLoader) {
   URL resource = findResource(name, classLoader)
   if (resource != null) {
     logger.lifecycle("Found resource ${name} as ${resource}")
-    def newFilename = "$buildDir/" + name
+    def newFilename = "$buildDir/" + (target == null ? name : target)
     copyResourceToFile(resource, newFilename)
     return file(newFilename)
   }
@@ -327,19 +327,26 @@ def runCommand(args, int attempts = 5) {
 
 def doPost(String url, String authString, String payload, Integer attempts = 20) {
   logger.lifecycle("> POST ${url} ${payload}")
-  def conn = url.toURL().openConnection()
-  conn.setRequestMethod("POST")
-  conn.setRequestProperty("Authorization", "Basic ${authString}")
-  conn.setRequestProperty("Accept", "application/json")
-  conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8")
-  conn.setDoOutput( true )
+  def responseCode = 0
+  try {
+    def conn = url.toURL().openConnection()
+    conn.setRequestMethod("POST")
+    conn.setRequestProperty("Authorization", "Basic ${authString}")
+    conn.setRequestProperty("Accept", "application/json")
+    conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8")
+    conn.setDoOutput( true )
 
-  Writer wr = new OutputStreamWriter(conn.outputStream)
-  wr.write(payload);
-  wr.flush()
-  wr.close()
-  conn.connect()
-  if(conn.responseCode == 201){
+    Writer wr = new OutputStreamWriter(conn.outputStream)
+    wr.write(payload);
+    wr.flush()
+    wr.close()
+    conn.connect()
+    responseCode = conn.responseCode
+  } catch (e) {
+    responseCode = 500
+  }
+
+  if(responseCode == 201){
     logger.lifecycle("OK")
   } else {
     try {
@@ -479,6 +486,27 @@ def configureRelease() {
     }
   }
 
+  task publishNpm() {
+    doLast {
+      runCommand(['npm', 'publish'])
+    }
+  }
+
+  task setupNpmJavaRunnerFiles() {
+    doLast {
+      shouldGitIgnore('index.js')
+      copyIfFound("npm-java-runner-index.js", "index.js")
+      shouldGitIgnore('package.json')
+      copyIfFound("npm-java-runner-package.json", "package.json")
+      ant.replace(file: file("package.json"), token: "PKG_NAME", value: project.name)
+      ant.replace(file: file("package.json"), token: "PKG_VERSION", value: version)
+      ant.replace(file: file("package.json"), token: "PKG_WEBSITE", value: effectiveConfig.publishing.website)
+      ant.replace(file: file("package.json"), token: "PKG_GIT", value: effectiveConfig.publishing.vcsUrl)
+      ant.replace(file: file("package.json"), token: "PKG_AUTHOR", value: effectiveConfig.publishing.developerName)
+      ant.replace(file: file("package.json"), token: "PKG_DESCRIPTION", value: project.description)
+    }
+  }
+
   task releaseAfterMath(type: GradleBuild) {
       tasks = [
         'clean', 
@@ -490,7 +518,8 @@ def configureRelease() {
         'commitChangelogTask'
       ] +
       (effectiveConfig.publishing.nexusCloseAndRelease ? [ "nexusCloseAndRelease" ] : []) +
-      (effectiveConfig.repoType == "GRADLE" ? [ "publishPlugins" ] : [])
+      (effectiveConfig.repoType == "GRADLE" ? [ "publishPlugins" ] : []) +
+      (effectiveConfig.repoType == "COMMAND" ? [ "setupNpmJavaRunnerFiles", "publishNpm" ] : [])
   }
 
   task sourcesJar(type: Jar, dependsOn: classes) {
@@ -611,6 +640,13 @@ def configureRelease() {
   }
 }
 
+def shouldGitIgnore(filename) {
+  if (!file('.gitignore').find(filename)) {
+    throw new RuntimeException("The .gitignore should include '${filename}'")
+  }
+  logger.lifecycle("${filename} is ignored")
+}
+
 def configureDefault() {
   configureChangelog()
   configureJava()
@@ -621,6 +657,10 @@ def configureDefault() {
     logger.lifecycle("Updating README with reporters")
     se.bjurr.violations.lib.util.Utils.updateReadmeWithReporters()
   }
+}
+
+def configureCommand() {
+  configureDefault()
 }
 
 def configureGradle() {
@@ -674,6 +714,7 @@ def defaultConfig = [
   /**
    * "DEFAULT" - Works for most Java projects.
    * "GRADLE" - A Gradle plugin.
+   * "COMMAND" - Runnable JAR, distributed in Central and NPM.
    */
   repoType: "DEFAULT",
   sourceCompatibility: 1.8,
@@ -783,7 +824,9 @@ buildscript {
   }
 }
 
-if (effectiveConfig.repoType == "GRADLE") {
+if (effectiveConfig.repoType == "COMMAND") {
+  configureCommand()
+} else if (effectiveConfig.repoType == "GRADLE") {
   configureGradle()
 } else if (effectiveConfig.repoType == "DEFAULT") {
   configureDefault()
