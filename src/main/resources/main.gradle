@@ -328,6 +328,7 @@ def runCommand(args, int attempts = 5) {
 def doPost(String url, String authString, String payload, Integer attempts = 20) {
   logger.lifecycle("> POST ${url} ${payload}")
   def responseCode = 0
+  def content = ""
   try {
     def conn = url.toURL().openConnection()
     conn.setRequestMethod("POST")
@@ -342,17 +343,16 @@ def doPost(String url, String authString, String payload, Integer attempts = 20)
     wr.close()
     conn.connect()
     responseCode = conn.responseCode
+    content = conn.content
   } catch (e) {
-    responseCode = 500
+    // Ignore
   }
 
   if(responseCode == 201){
     logger.lifecycle("OK")
   } else {
-    try {
-      logger.error("Content: "+conn.content)
-    } catch (Exception e) {}
-    def msg = "There was an error with repositories: ${conn.responseCode} ${conn.responseMessage}"
+    logger.error("Content: "+content)
+    def msg = "There was an error with repositories: ${responseCode} ${responseMessage}"
     if (attempts == 0) {
       throw new Exception(msg)
     } else {
