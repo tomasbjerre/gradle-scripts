@@ -499,6 +499,8 @@ def configureRelease() {
       shouldGitIgnore('index.js')
       copyIfFound("npm-java-runner-index.js", "index.js")
       shouldGitIgnore('package.json')
+      shouldGitIgnore('package-lock.json')
+      shouldGitIgnore('node_modules')
       copyIfFound("npm-java-runner-package.json", "package.json")
       ant.replace(file: file("package.json"), token: "PKG_NAME", value: project.name)
       ant.replace(file: file("package.json"), token: "PKG_VERSION", value: version)
