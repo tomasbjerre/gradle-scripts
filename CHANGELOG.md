@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.12.7](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.12.7) (2021-11-21)
+
+
+
+
+
+### Bug Fixes
+
+-  skip googleJavaFormat for JDK8 ([e5f15](https://github.com/tomasbjerre/gradle-scripts/commit/e5f155bf696df0e))  
+
+
+
 ## [2.12.6](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.12.6) (2021-11-21)
 
 
