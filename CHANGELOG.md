@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.12.8](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.12.8) (2021-11-21)
+
+
+
+
+
+### Bug Fixes
+
+-  multiline in COMMAND type ([9eab8](https://github.com/tomasbjerre/gradle-scripts/commit/9eab85f2254072d))  
+
+
+
 ## [2.12.7](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.12.7) (2021-11-21)
 
 
