@@ -180,8 +180,12 @@ def configureStaticCodeAnalysis() {
 }
 
 def configureFormatting() {
-  apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
-  build.dependsOn 'googleJavaFormat'
+  if (JavaVersion.current() != JavaVersion.VERSION_1_8) {
+    apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
+    build.dependsOn 'googleJavaFormat'
+  } else {
+    logger.lifecycle("Skipping googleJavaFormat for ${JavaVersion.current()}")
+  }
   verifyGoogleJavaFormat.enabled = false
 
   googleJavaFormat {
