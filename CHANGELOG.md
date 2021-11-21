@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## [2.12.9](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.12.9) (2021-11-21)
+
+
+
+
+
+### Bug Fixes
+
+-  multiline in npm ([5fe44](https://github.com/tomasbjerre/gradle-scripts/commit/5fe4498b76b8d34))  
+
+
+
 ## [2.12.8](https://github.com/tomasbjerre/gradle-scripts/releases/tag/2.12.8) (2021-11-21)
 
 
