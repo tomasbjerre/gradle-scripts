@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## 2.12.12 (2022-02-26)
+
+
+
+
+
+### Bug Fixes
+
+-  avoid spotbugs annotations on java 7 ([43854](https://github.com/tomasbjerre/gradle-scripts/commit/4385448aa81434d) Tomas Bjerre)  
+
+
+
 ## 2.12.11 (2022-02-26)
 
 
