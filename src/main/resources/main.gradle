@@ -121,27 +121,28 @@ def configureStaticCodeAnalysis() {
 }
 
 def configureFormatting() {
-  if (JavaVersion.current() != JavaVersion.VERSION_17) {
-    apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
-    build.dependsOn 'googleJavaFormat'
-    verifyGoogleJavaFormat.enabled = false
-
-    googleJavaFormat {
-      include '**/*.java'
-      if (JavaVersion.current() == JavaVersion.VERSION_1_8) {
-        toolVersion = '1.7'
-      }else{
-        toolVersion = '1.14.0'
-      }
-    }
-
-    effectiveConfig.generatedSourceFolders.each {
-      googleJavaFormat {
-        exclude "${it}/**/*.java"
-      }
-    }
-  } else {
+  if (JavaVersion.current() == JavaVersion.VERSION_17) {
     logger.lifecycle("Skipping googleJavaFormat for ${JavaVersion.current()}")
+    return
+  }
+
+  apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
+  build.dependsOn 'googleJavaFormat'
+  verifyGoogleJavaFormat.enabled = false
+
+  googleJavaFormat {
+    include '**/*.java'
+    if (JavaVersion.current() == JavaVersion.VERSION_1_8) {
+      toolVersion = '1.7'
+    }else{
+      toolVersion = '1.14.0'
+    }
+  }
+
+  effectiveConfig.generatedSourceFolders.each {
+    googleJavaFormat {
+      exclude "${it}/**/*.java"
+    }
   }
 }
 
