@@ -121,15 +121,18 @@ def configureStaticCodeAnalysis() {
 }
 
 def configureFormatting() {
-  if (JavaVersion.current() != JavaVersion.VERSION_1_8
-      && JavaVersion.current() != JavaVersion.VERSION_17) {
+  if (JavaVersion.current() != JavaVersion.VERSION_17) {
     apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
     build.dependsOn 'googleJavaFormat'
     verifyGoogleJavaFormat.enabled = false
 
     googleJavaFormat {
       include '**/*.java'
-      toolVersion = '1.14.0'
+      if (JavaVersion.current() == JavaVersion.VERSION_1_8) {
+        toolVersion = '1.7'
+      }else{
+        toolVersion = '1.14.0'
+      }
     }
 
     effectiveConfig.generatedSourceFolders.each {
