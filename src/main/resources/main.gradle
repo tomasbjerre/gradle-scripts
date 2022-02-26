@@ -77,7 +77,7 @@ def configureStaticCodeAnalysis() {
   }
 
     dependencies {
-      spotbugs 'com.github.spotbugs:spotbugs:4.2.1'
+      spotbugs 'com.github.spotbugs:spotbugs:4.5.3'
       if (effectiveConfig.sourceCompatibility > 1.7) {
         compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
       } else {
@@ -768,7 +768,7 @@ buildscript {
     classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.9'
     classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'
     classpath 'gradle.plugin.com.github.ksoichiro:gradle-build-info-plugin:0.+'
-    classpath "gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.7.0"
+    classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:5.0.6"
     classpath 'com.github.jengelman.gradle.plugins:shadow:5.2.0'
   }
 }
