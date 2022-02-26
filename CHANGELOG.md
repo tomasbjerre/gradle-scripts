@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## 2.14.2 (2022-02-26)
+
+
+
+
+
+### Bug Fixes
+
+-  skipping google java format for java 17 ([0f263](https://github.com/tomasbjerre/gradle-scripts/commit/0f26317c2594962) Tomas Bjerre)  
+
+
+
 ## 2.14.1 (2022-02-26)
 
 
