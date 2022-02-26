@@ -76,10 +76,12 @@ def configureStaticCodeAnalysis() {
     copyIfFound("spotbugs-exclude.xml")
   }
 
-  dependencies {
-    spotbugs 'com.github.spotbugs:spotbugs:4.2.1'
-    compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
-  }
+    dependencies {
+      spotbugs 'com.github.spotbugs:spotbugs:4.2.1'
+      if (effectiveConfig.sourceCompatibility > 1.7) {
+        compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
+      }
+    }
 
   tasks.withType(com.github.spotbugs.snom.SpotBugsTask) {
     enabled = false
