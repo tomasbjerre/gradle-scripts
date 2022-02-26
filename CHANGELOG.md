@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## 2.13.0 (2022-02-26)
+
+
+
+### Features
+
+-  stepping spotbugs-gradle-plugin ([2183e](https://github.com/tomasbjerre/gradle-scripts/commit/2183e1e121faccd) Tomas Bjerre)  
+
+
+
+
+
 ## 2.12.12 (2022-02-26)
 
 
