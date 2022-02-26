@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## 2.14.0 (2022-02-26)
+
+
+
+### Features
+
+-  stepping google java format ([23771](https://github.com/tomasbjerre/gradle-scripts/commit/23771839c13d47a) Tomas Bjerre)  
+
+
+
+
+
 ## 2.13.0 (2022-02-26)
 
 
