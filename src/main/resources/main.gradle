@@ -80,6 +80,8 @@ def configureStaticCodeAnalysis() {
       spotbugs 'com.github.spotbugs:spotbugs:4.2.1'
       if (effectiveConfig.sourceCompatibility > 1.7) {
         compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
+      } else {
+        logger.lifecycle("Not adding spotbugs-annotations for sourceCompatibility ${effectiveConfig.sourceCompatibility}.")
       }
     }
 
