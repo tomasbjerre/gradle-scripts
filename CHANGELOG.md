@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## 2.14.8 (2022-04-03)
+
+
+
+
+
+### Bug Fixes
+
+-  producing spotbugs report ([26875](https://github.com/tomasbjerre/gradle-scripts/commit/26875091eb73ed4) Tomas Bjerre)  
+
+
+
 ## 2.14.7 (2022-04-03)
 
 
