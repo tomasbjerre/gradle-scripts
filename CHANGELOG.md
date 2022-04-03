@@ -2,6 +2,18 @@
 
 Changelog of gradle-scripts.
 
+## 2.14.7 (2022-04-03)
+
+
+
+
+
+### Bug Fixes
+
+-  correcting violations paths ([f6ecb](https://github.com/tomasbjerre/gradle-scripts/commit/f6ecb198b516d0e) Tomas Bjerre)  
+
+
+
 ## 2.14.3 (2022-02-26)
 
 
