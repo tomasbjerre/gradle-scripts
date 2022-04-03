@@ -97,6 +97,12 @@ def configureStaticCodeAnalysis() {
     showStackTraces = false
     reportLevel = "low"
     excludeFilter = file("$buildDir/spotbugs-exclude.xml")
+    reportsDir = file("$buildDir/reports/spotbugs/")
+    reports {
+      xml {
+        enabled true
+      }
+    }
   }
 
   dependencies {
@@ -111,8 +117,8 @@ def configureStaticCodeAnalysis() {
 
     // Many more formats available, see: https://github.com/tomasbjerre/violations-lib
     violations = [
-      ["FINDBUGS", ".", ".*/build/resources/test/findbugs/.*\\.xml\$","Findbugs"],
-      ["FINDBUGS", ".", ".*/build/resources/test/spotbugs/.*\\.xml\$","Spotbugs"],
+      ["FINDBUGS", ".", ".*/build/reports/findbugs/.*\\.xml\$","Findbugs"],
+      ["FINDBUGS", ".", ".*/build/reports/spotbugs/.*\\.xml\$","Spotbugs"],
       ["GOOGLEERRORPRONE", ".", ".*/build/googleErrorProne.*\\.log\$","Error Prone"]
     ]
   }
