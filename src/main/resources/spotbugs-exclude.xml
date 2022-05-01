@@ -8,7 +8,11 @@
 	</Match>
 	<Match>
 		<Bug pattern="SIC_INNER_SHOULD_BE_STATIC_ANON"/>
+	</Match>
+	<Match>
 		<Bug pattern="EI_EXPOSE_REP"/>
+	</Match>
+	<Match>
 		<Bug pattern="EI_EXPOSE_REP2"/>
 	</Match>
 </FindBugsFilter>
