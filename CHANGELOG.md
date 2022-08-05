@@ -2,503 +2,256 @@
 
 Changelog of gradle-scripts.
 
+## 2.15.0 (2022-08-05)
+
+### Features
+
+-  versions plugin ([043c9](https://github.com/tomasbjerre/gradle-scripts/commit/043c9153e35e3b0) Tomas Bjerre)  
+
 ## 2.14.8 (2022-04-03)
-
-
-
-
 
 ### Bug Fixes
 
 -  producing spotbugs report ([26875](https://github.com/tomasbjerre/gradle-scripts/commit/26875091eb73ed4) Tomas Bjerre)  
 
-
-
 ## 2.14.7 (2022-04-03)
-
-
-
-
 
 ### Bug Fixes
 
 -  correcting violations paths ([f6ecb](https://github.com/tomasbjerre/gradle-scripts/commit/f6ecb198b516d0e) Tomas Bjerre)  
 
-
-
 ## 2.14.3 (2022-02-26)
-
-
-
-
 
 ### Bug Fixes
 
 -  skipping google java format for java 17 ([c325d](https://github.com/tomasbjerre/gradle-scripts/commit/c325d01074f0e41) Tomas Bjerre)  
 
-
-
 ## 2.14.2 (2022-02-26)
-
-
-
-
 
 ### Bug Fixes
 
 -  skipping google java format for java 17 ([0f263](https://github.com/tomasbjerre/gradle-scripts/commit/0f26317c2594962) Tomas Bjerre)  
 
-
-
 ## 2.14.1 (2022-02-26)
-
-
-
-
 
 ### Bug Fixes
 
 -  skipping google java format for java 17 ([7aba2](https://github.com/tomasbjerre/gradle-scripts/commit/7aba2bee41e49d5) Tomas Bjerre)  
 
-
-
 ## 2.14.0 (2022-02-26)
-
-
 
 ### Features
 
 -  stepping google java format ([23771](https://github.com/tomasbjerre/gradle-scripts/commit/23771839c13d47a) Tomas Bjerre)  
 
-
-
-
-
 ## 2.13.0 (2022-02-26)
-
-
 
 ### Features
 
 -  stepping spotbugs-gradle-plugin ([2183e](https://github.com/tomasbjerre/gradle-scripts/commit/2183e1e121faccd) Tomas Bjerre)  
 
-
-
-
-
 ## 2.12.12 (2022-02-26)
-
-
-
-
 
 ### Bug Fixes
 
 -  avoid spotbugs annotations on java 7 ([43854](https://github.com/tomasbjerre/gradle-scripts/commit/4385448aa81434d) Tomas Bjerre)  
 
-
-
 ## 2.12.11 (2022-02-26)
-
-
-
-
 
 ### Bug Fixes
 
 -  avoid spotbugs annotations on java 7 ([d7c3b](https://github.com/tomasbjerre/gradle-scripts/commit/d7c3b0d019c83a3) Tomas Bjerre)  
 
-
-
 ## 2.12.10 (2022-01-16)
 
-
-
-
-
-
-
-
 ## 2.12.9 (2021-11-21)
-
-
-
-
 
 ### Bug Fixes
 
 -  multiline in npm ([5fe44](https://github.com/tomasbjerre/gradle-scripts/commit/5fe4498b76b8d34) Tomas Bjerre)  
 
-
-
 ## 2.12.8 (2021-11-21)
-
-
-
-
 
 ### Bug Fixes
 
 -  multiline in COMMAND type ([9eab8](https://github.com/tomasbjerre/gradle-scripts/commit/9eab85f2254072d) Tomas Bjerre)  
 
-
-
 ## 2.12.7 (2021-11-21)
-
-
-
-
 
 ### Bug Fixes
 
 -  skip googleJavaFormat for JDK8 ([e5f15](https://github.com/tomasbjerre/gradle-scripts/commit/e5f155bf696df0e) Tomas Bjerre)  
 
-
-
 ## 2.12.6 (2021-11-21)
-
-
-
-
 
 ### Bug Fixes
 
 -  skip googleJavaFormat for JDK8 ([44b00](https://github.com/tomasbjerre/gradle-scripts/commit/44b0041cfbfa395) Tomas Bjerre)  
 
-
-
 ## 2.12.5 (2021-11-20)
-
-
-
-
 
 ### Bug Fixes
 
 -  COMMAND type ([fe51f](https://github.com/tomasbjerre/gradle-scripts/commit/fe51f1c6cde1f1b) Tomas Bjerre)  
 
-
-
 ## 2.12.4 (2021-11-20)
-
-
-
-
 
 ### Bug Fixes
 
 -  COMMAND type ([160b8](https://github.com/tomasbjerre/gradle-scripts/commit/160b86da91ba22a) Tomas Bjerre)  
 
-
-
 ## 2.12.3 (2021-11-20)
-
-
-
-
 
 ### Bug Fixes
 
 -  COMMAND type ([69844](https://github.com/tomasbjerre/gradle-scripts/commit/6984473143d7f1c) Tomas Bjerre)  
 
-
-
 ## 2.12.2 (2021-11-20)
-
-
-
-
 
 ### Bug Fixes
 
 -  COMMAND type ([4ff81](https://github.com/tomasbjerre/gradle-scripts/commit/4ff8149d9671241) Tomas Bjerre)  
 
-
-
 ## 2.12.1 (2021-11-20)
-
-
-
-
 
 ### Bug Fixes
 
 -  COMMAND type ([a84c7](https://github.com/tomasbjerre/gradle-scripts/commit/a84c764c01eda0f) Tomas Bjerre)  
 
-
-
 ## 2.12.0 (2021-11-20)
-
-
 
 ### Features
 
 -  COMMAND type ([f3694](https://github.com/tomasbjerre/gradle-scripts/commit/f3694ce378af2bc) Tomas Bjerre)  
 
-
-
-
-
 ## 2.11.1 (2021-11-08)
-
-
-
-
 
 ### Bug Fixes
 
 -  spotbugs compile only ([66124](https://github.com/tomasbjerre/gradle-scripts/commit/66124b38eec8fdd) Tomas Bjerre)  
 
-
-
 ## 2.11.0 (2021-11-08)
-
-
 
 ### Features
 
 -  attempts ([9ab21](https://github.com/tomasbjerre/gradle-scripts/commit/9ab216734d10652) Tomas Bjerre)  
 
-
-
-
-
 ## 2.10.0 (2021-11-08)
-
-
 
 ### Features
 
 -  source/target compatibility ([55072](https://github.com/tomasbjerre/gradle-scripts/commit/550722cc0832a3e) Tomas Bjerre)  
 
-
-
-
-
 ## 2.9.2 (2021-10-17)
-
-
-
-
 
 ### Bug Fixes
 
 -  using method to get version ([735ba](https://github.com/tomasbjerre/gradle-scripts/commit/735baea640c3a32) Tomas Bjerre)  [#104](https://github.com/tomasbjerre/gradle-scripts/issues/104)  
 
-
-
 ## 2.9.1 (2021-10-17)
-
-
-
-
 
 ### Bug Fixes
 
 -  correcting version ([73381](https://github.com/tomasbjerre/gradle-scripts/commit/7338110c49ce80b) Tomas Bjerre)  [#104](https://github.com/tomasbjerre/gradle-scripts/issues/104)  
 
-
-
 ## 2.9.0 (2021-09-04)
-
-
 
 ### Features
 
 -  renaming test to tests ([b734a](https://github.com/tomasbjerre/gradle-scripts/commit/b734a10400aa671) Tomas Bjerre)  
 
-
-
-
-
 ## 2.8.0 (2021-09-04)
-
-
 
 ### Features
 
 -  include ([d550e](https://github.com/tomasbjerre/gradle-scripts/commit/d550e6bf79574b4) Tomas Bjerre)  
 
-
-
-
-
 ## 2.7.0 (2021-07-13)
-
-
 
 ### Features
 
 -  extra new line in changelog ([e145f](https://github.com/tomasbjerre/gradle-scripts/commit/e145fe14b26acfe) Tomas Bjerre)  
 
-
-
-
-
 ## 2.6.0 (2021-06-03)
-
-
 
 ### Features
 
 -  chaning versioning pattern ([2203b](https://github.com/tomasbjerre/gradle-scripts/commit/2203bc471480162) Tomas Bjerre)  
 
-
-
-
-
 ## 2.5.3 (2021-06-03)
-
-
 
 ### Features
 
 -  automate versioning with conventional commits ([b10c5](https://github.com/tomasbjerre/gradle-scripts/commit/b10c5226525530f) Tomas Bjerre)  
 
-
-
-
-
 ## 2.5.2 (2021-06-03)
-
-
-
-
 
 ### Bug Fixes
 
 -  tweaking changelog ([7dc0d](https://github.com/tomasbjerre/gradle-scripts/commit/7dc0d9cd6fc9de3) Tomas Bjerre)  
 
-
-
 ## 2.5.1 (2021-06-03)
-
-
-
-
 
 ### Bug Fixes
 
 -  tweaking changelog ([ce180](https://github.com/tomasbjerre/gradle-scripts/commit/ce1805660592c8d) Tomas Bjerre)  
 
-
-
 ## 2.5.0 (2021-06-03)
-
-
 
 ### Features
 
 -  tweaking changelog template ([cf0df](https://github.com/tomasbjerre/gradle-scripts/commit/cf0df59434f67dc) Tomas Bjerre)  
 -  tweaking changelog ([c26bd](https://github.com/tomasbjerre/gradle-scripts/commit/c26bdfb23c90f40) Tomas Bjerre)  
 
-
-
-
-
 ## 2.4.6 (2021-06-01)
-
-
-
-
 
 ### Bug Fixes
 
 -  setting fromRepo in git-changelog config ([168af](https://github.com/tomasbjerre/gradle-scripts/commit/168af21df30758a) Tomas Bjerre)  
 
-
-
 ## 2.4.4 (2021-06-01)
-
-
 
 ### Features
 
 -  google-java-format-gradle-plugin 0.9 ([25fdd](https://github.com/tomasbjerre/gradle-scripts/commit/25fdd37449e2a1e) Tomas Bjerre)  
 
-
-
-
-
 ## 2.4.2 (2021-06-01)
 
-
-
-
-
-
-
-
 ## 2.4.1 (2021-06-01)
-
-
 
 ### Features
 
 -  adding changelog generation again after release ([53fee](https://github.com/tomasbjerre/gradle-scripts/commit/53feedb3348aa9f) Tomas Bjerre)  
 
-
 ### Bug Fixes
 
 -  temporary removing plugins not working with Gradle 7 ([20db4](https://github.com/tomasbjerre/gradle-scripts/commit/20db4a868608dfb) Tomas Bjerre)  
 
-
-
 ## 2.3.0 (2021-06-01)
-
-
 
 ### Features
 
 -  support Gradle 7 ([67d48](https://github.com/tomasbjerre/gradle-scripts/commit/67d4897dd590181) Tomas Bjerre)  
 
-
-
-
-
 ## 2.2.20 (2021-05-31)
-
-
-
-
 
 ### Bug Fixes
 
 -  indentation in changelog ([e90dd](https://github.com/tomasbjerre/gradle-scripts/commit/e90dde8f75adc4c) Tomas Bjerre)  
 
-
-
 ## 2.2.19 (2021-05-31)
-
-
 
 ### Features
 
 -  conventional commits when releasing ([56712](https://github.com/tomasbjerre/gradle-scripts/commit/567128116058123) Tomas Bjerre)  
 
-
-
-
-
 ## 2.2.18 (2021-05-25)
-
-
 
 ### Features
 
 -  publishToMavenLocal ([b3f98](https://github.com/tomasbjerre/gradle-scripts/commit/b3f98bf5618501b) Tomas Bjerre)  
 
-
-
-
-
 ## 2.2.17 (2021-04-05)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -510,20 +263,7 @@ Changelog of gradle-scripts.
 
 ## 2.2.16 (2021-04-05)
 
-
-
-
-
-
-
-
 ## 2.2.15 (2021-04-05)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -534,12 +274,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.2.14 (2021-04-05)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -556,12 +290,6 @@ Changelog of gradle-scripts.
 
 ## 2.2.13 (2021-04-04)
 
-
-
-
-
-
-
 ### Other changes
 
 **removing merge services**
@@ -577,12 +305,6 @@ Changelog of gradle-scripts.
 
 ## 2.2.12 (2021-04-04)
 
-
-
-
-
-
-
 ### Other changes
 
 **manifest support**
@@ -592,12 +314,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.2.11 (2021-04-04)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -609,12 +325,6 @@ Changelog of gradle-scripts.
 
 ## 2.2.10 (2021-04-04)
 
-
-
-
-
-
-
 ### Other changes
 
 **github api token**
@@ -624,12 +334,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.2.9 (2021-04-04)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -641,12 +345,6 @@ Changelog of gradle-scripts.
 
 ## 2.2.8 (2021-04-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **missing push**
@@ -656,12 +354,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.2.7 (2021-04-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -673,12 +365,6 @@ Changelog of gradle-scripts.
 
 ## 2.2.6 (2021-04-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **correcting attempts**
@@ -688,12 +374,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.2.5 (2021-04-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -705,12 +385,6 @@ Changelog of gradle-scripts.
 
 ## 2.2.4 (2021-04-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **gradle displayName cleanup**
@@ -720,12 +394,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.2.3 (2021-04-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -737,12 +405,6 @@ Changelog of gradle-scripts.
 
 ## 2.2.2 (2021-04-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **gradle publish fix**
@@ -752,12 +414,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.2.1 (2021-04-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -774,12 +430,6 @@ Changelog of gradle-scripts.
 
 ## 2.2.0 (2021-04-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **logging**
@@ -789,12 +439,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.1.6 (2021-04-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -806,12 +450,6 @@ Changelog of gradle-scripts.
 
 ## 2.1.5 (2021-04-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **Spelling #3**
@@ -821,12 +459,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.1.4 (2021-04-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -843,12 +475,6 @@ Changelog of gradle-scripts.
 
 ## 2.1.3 (2021-04-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **Spelling #3**
@@ -858,12 +484,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.1.2 (2021-04-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -875,12 +495,6 @@ Changelog of gradle-scripts.
 
 ## 2.1.1 (2021-04-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **Auto close and release #3**
@@ -890,12 +504,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.1.0 (2021-04-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -922,12 +530,6 @@ Changelog of gradle-scripts.
 
 ## 2.0.4 (2021-04-02)
 
-
-
-
-
-
-
 ### Other changes
 
 **Ignoreing commits from script in changelog**
@@ -937,12 +539,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.0.2 (2021-04-02)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -963,12 +559,6 @@ Changelog of gradle-scripts.
 
 
 ## 2.0.1 (2021-04-02)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -995,12 +585,6 @@ Changelog of gradle-scripts.
 
 ## 2.0.0 (2021-04-02)
 
-
-
-
-
-
-
 ### Other changes
 
 **New version: 2.0.0**
@@ -1016,12 +600,6 @@ Changelog of gradle-scripts.
 
 ## 1.17 (2021-01-29)
 
-
-
-
-
-
-
 ### Other changes
 
 **changelog filter**
@@ -1031,12 +609,6 @@ Changelog of gradle-scripts.
 
 
 ## 1.16 (2021-01-29)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1048,12 +620,6 @@ Changelog of gradle-scripts.
 
 ## 1.15 (2021-01-29)
 
-
-
-
-
-
-
 ### Other changes
 
 **changelog filter**
@@ -1064,12 +630,6 @@ Changelog of gradle-scripts.
 
 ## 1.13 (2021-01-29)
 
-
-
-
-
-
-
 ### Other changes
 
 **changelog filter**
@@ -1079,12 +639,6 @@ Changelog of gradle-scripts.
 
 
 ## 1.12 (2021-01-29)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1101,12 +655,6 @@ Changelog of gradle-scripts.
 
 ## sec (2020-05-20)
 
-
-
-
-
-
-
 ### Other changes
 
 **findbugssec**
@@ -1116,12 +664,6 @@ Changelog of gradle-scripts.
 
 
 ## ny (2020-04-28)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1143,12 +685,6 @@ Changelog of gradle-scripts.
 
 ## 1.11 (2019-10-10)
 
-
-
-
-
-
-
 ### Other changes
 
 **Turning off central sync by default, sonatype is having problems!**
@@ -1158,12 +694,6 @@ Changelog of gradle-scripts.
 
 
 ## 1.10 (2019-10-09)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1179,12 +709,6 @@ Changelog of gradle-scripts.
 
 
 ## 1.9 (2019-10-08)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1206,12 +730,6 @@ Changelog of gradle-scripts.
 
 ## 1.8 (2019-10-08)
 
-
-
-
-
-
-
 ### Other changes
 
 **Spotbugs exclude**
@@ -1221,12 +739,6 @@ Changelog of gradle-scripts.
 
 
 ## 1.7 (2019-10-08)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1238,12 +750,6 @@ Changelog of gradle-scripts.
 
 ## 1.6 (2019-10-08)
 
-
-
-
-
-
-
 ### Other changes
 
 **Spotbugs exclude**
@@ -1254,12 +760,6 @@ Changelog of gradle-scripts.
 
 ## 1.5 (2019-10-08)
 
-
-
-
-
-
-
 ### Other changes
 
 **Spotbugs exclude**
@@ -1269,12 +769,6 @@ Changelog of gradle-scripts.
 
 
 ## 1.4 (2019-10-08)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1291,12 +785,6 @@ Changelog of gradle-scripts.
 
 ## 1.2 (2019-10-07)
 
-
-
-
-
-
-
 ### Other changes
 
 **Verify Google Java Format on build #2**
@@ -1311,12 +799,6 @@ Changelog of gradle-scripts.
 
 
 ## 1.1 (2019-10-05)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1387,12 +869,6 @@ Changelog of gradle-scripts.
 
 
 ## 1.0 (2019-01-08)
-
-
-
-
-
-
 
 ### Other changes
 
