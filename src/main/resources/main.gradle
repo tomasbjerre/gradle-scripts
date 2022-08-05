@@ -601,6 +601,73 @@ def configureRelease() {
   }
 }
 
+def getUpdatableDependencies(dependencies) {
+  dependencies
+    .collect { [
+      d: it,
+      newVersion: it.available.release ?: (it.available.milestone ?: it.available.integration)
+    ] }
+    .collect { [
+      prettyPrint: "${it.d.group}:${it.d.name}:${it.d.version} -> ${it.newVersion}",
+      newVersion: it.newVersion,
+      compactFrom: "[\"']${it.d.group}:${it.d.name}:${it.d.version}[\"']",
+      compactTo: "'${it.d.group}:${it.d.name}:${it.newVersoin}'",
+      verboseFrom: "group:\s*[\"']${it.d.group}[\"'],\s*name:\s*[\"']${it.d.name}[\"'],\s*version:\s*[\"']${it.d.version}[\"']"
+    ] }
+}
+
+def configureVersions() {
+  apply plugin: com.github.benmanes.gradle.versions.VersionsPlugin
+
+  task showUpdateableDependencies(type: com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask) {
+    checkForGradleUpdate = false
+    outputFormatter = { result ->
+      def updatable = getUpdatableDependencies(result.outdated.dependencies)
+      if (updatable.isEmpty()) {
+        println """\
+
+        All dependencies are up-to-date.
+        """.stripIndent()
+      } else {
+        println "\nThere are dependencies that can be updated:\n"
+        updatable.each { dependency->
+          println "  ${dependency.prettyPrint}"
+        }
+        println """\
+
+        Update dependencies with:
+
+        ./gradlew updateDependencies
+        """.stripIndent()
+      }
+    }
+  }
+
+  task updateDependencies(type: com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask) {
+    checkForGradleUpdate = false
+    outputFormatter = { result ->
+      def updatable = getUpdatableDependencies(result.outdated.dependencies)
+      if (!updatable.isEmpty()) {
+        def buildGradleFile = file("$rootDir/build.gradle")
+        def buildGradleContent = buildGradleFile.text
+        println "\nStepping dependencies:\n"
+        updatable.each { dependency->
+          println "  ${dependency.prettyPrint}"
+          [dependency.compactFrom, dependency.verboseFrom].each { from ->
+            buildGradleContent = java.util.regex.Pattern.compile(from, java.util.regex.Pattern.DOTALL)
+              .matcher(buildGradleContent)
+              .replaceAll(dependency.compactTo)
+          }
+        }
+        println "\nWriting ${buildGradleFile}"
+        buildGradleFile.text = buildGradleContent
+      }
+    }
+  }
+
+  tasks.named("build") { finalizedBy("showUpdateableDependencies") }
+}
+
 def shouldGitIgnore(filename) {
   if (!file('.gitignore').text.contains(filename)) {
     throw new RuntimeException("The .gitignore should include '${filename}'")
@@ -614,6 +681,7 @@ def configureDefault() {
   configureFormatting()
   configureStaticCodeAnalysis()
   configureRelease()
+  configureVersions()
   if (effectiveConfig.violations.updateReadme) {
     logger.lifecycle("Updating README with reporters")
     se.bjurr.violations.lib.util.Utils.updateReadmeWithReporters()
@@ -782,6 +850,7 @@ buildscript {
     classpath 'gradle.plugin.com.github.ksoichiro:gradle-build-info-plugin:0.+'
     classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:5.0.6"
     classpath 'com.github.jengelman.gradle.plugins:shadow:5.2.0'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.42.0'
   }
 }
 
