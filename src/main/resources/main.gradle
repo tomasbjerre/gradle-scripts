@@ -611,7 +611,7 @@ def getUpdatableDependencies(dependencies) {
       prettyPrint: "${it.d.group}:${it.d.name}:${it.d.version} -> ${it.newVersion}",
       newVersion: it.newVersion,
       compactFrom: "[\"']${it.d.group}:${it.d.name}:${it.d.version}[\"']",
-      compactTo: "'${it.d.group}:${it.d.name}:${it.newVersoin}'",
+      compactTo: "'${it.d.group}:${it.d.name}:${it.newVersion}'",
       verboseFrom: "group:\s*[\"']${it.d.group}[\"'],\s*name:\s*[\"']${it.d.name}[\"'],\s*version:\s*[\"']${it.d.version}[\"']"
     ] }
 }
