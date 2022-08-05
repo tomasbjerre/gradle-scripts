@@ -603,17 +603,27 @@ def configureRelease() {
 
 def getUpdatableDependencies(dependencies) {
   dependencies
-    .collect { [
-      d: it,
-      newVersion: it.available.release ?: (it.available.milestone ?: it.available.integration)
-    ] }
-    .collect { [
-      prettyPrint: "${it.d.group}:${it.d.name}:${it.d.version} -> ${it.newVersion}",
-      newVersion: it.newVersion,
-      compactFrom: "[\"']${it.d.group}:${it.d.name}:${it.d.version}[\"']",
-      compactTo: "'${it.d.group}:${it.d.name}:${it.newVersion}'",
-      verboseFrom: "group:\s*[\"']${it.d.group}[\"'],\s*name:\s*[\"']${it.d.name}[\"'],\s*version:\s*[\"']${it.d.version}[\"']"
-    ] }
+    .findAll {
+      !([
+      "com.github.spotbugs",
+      "com.h3xstream.findsecbugs"
+      ].contains(it.group))
+    }
+    .collect {
+      [
+        d: it,
+        newVersion: it.available.release ?: (it.available.milestone ?: it.available.integration)
+      ]
+    }
+    .collect {
+      [
+        prettyPrint: "${it.d.group}:${it.d.name}:${it.d.version} -> ${it.newVersion}",
+        newVersion: it.newVersion,
+        compactFrom: "[\"']${it.d.group}:${it.d.name}:${it.d.version}[\"']",
+        compactTo: "'${it.d.group}:${it.d.name}:${it.newVersion}'",
+        verboseFrom: "group:\s*[\"']${it.d.group}[\"'],\s*name:\s*[\"']${it.d.name}[\"'],\s*version:\s*[\"']${it.d.version}[\"']"
+      ]
+    }
 }
 
 def configureVersions() {
