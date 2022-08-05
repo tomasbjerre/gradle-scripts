@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.15.2 (2022-08-05)
+
+### Bug Fixes
+
+-  versions plugin ([45693](https://github.com/tomasbjerre/gradle-scripts/commit/4569357c12e3c37) Tomas Bjerre)  
+
 ## 2.15.1 (2022-08-05)
 
 ### Bug Fixes
