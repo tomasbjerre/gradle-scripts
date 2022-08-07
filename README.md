@@ -172,10 +172,12 @@ It has `Spotbugs` configured in combination with [Violations Gradle Plugin](http
 
 ## Requirements
 
-Tested with Gradle 7.0.2.
+Tested with Gradle:
 
 ```sh
-./gradlew wrapper --gradle-version=7.0.2 --distribution-type=bin
+./gradlew wrapper \
+  --gradle-version=7.5.1 \
+  --distribution-type=bin
 ```
 
 ## Developer instructions
