@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.16.0 (2022-08-27)
+
+### Features
+
+-  adjusting spotbugs rules ([0878b](https://github.com/tomasbjerre/gradle-scripts/commit/0878b0c99b73901) Tomas Bjerre)  
+
 ## 2.15.3 (2022-08-05)
 
 ### Bug Fixes
