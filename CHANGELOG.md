@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.17.0 (2022-09-10)
+
+### Features
+
+-  ignore DCN_NULLPOINTER_EXCEPTION ([314fc](https://github.com/tomasbjerre/gradle-scripts/commit/314fc5acb1368d5) Tomas Bjerre)  
+
 ## 2.16.0 (2022-08-27)
 
 ### Features
