@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.18.0 (2022-09-24)
+
+### Features
+
+-  blacklist jgit ([1ed38](https://github.com/tomasbjerre/gradle-scripts/commit/1ed38eeba0eba47) Tomas Bjerre)  
+
 ## 2.17.0 (2022-09-10)
 
 ### Features
