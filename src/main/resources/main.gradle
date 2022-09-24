@@ -607,7 +607,8 @@ def getUpdatableDependencies(dependencies) {
       !([
       "com.github.spotbugs",
       "com.h3xstream.findsecbugs",
-      "com.google.googlejavaformat"
+      "com.google.googlejavaformat",
+      "org.eclipse.jgit"
       ].contains(it.group))
     }
     .collect {
