@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.19.1 (2022-12-03)
+
+### Bug Fixes
+
+-  adjusting to Gradle 7.6 ([c3438](https://github.com/tomasbjerre/gradle-scripts/commit/c3438b03e9e6008) Tomas Bjerre)  
+
 ## 2.19.0 (2022-12-03)
 
 ### Features
