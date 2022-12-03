@@ -10,7 +10,6 @@ def configureChangelog() {
     }
     jiraIssuePattern = effectiveConfig.changelog.jiraIssuePattern;
     fromRepo = new File(".").absolutePath
-    file = new File("CHANGELOG.md");
     ignoreCommitsIfMessageMatches = effectiveConfig.changelog.ignoreCommitsIfMessageMatches;
   }
 }
