@@ -9,8 +9,8 @@ def configureChangelog() {
       logger.lifecycle("Did not find Github token ${effectiveConfig.changelog.githubTokenEnvVariableName} env variable.")
     }
     jiraIssuePattern = effectiveConfig.changelog.jiraIssuePattern;
-    fromRepo = file(".")
-    file = file("CHANGELOG.md");
+    fromRepo = new File(".").absolutePath
+    file = new File("CHANGELOG.md");
     ignoreCommitsIfMessageMatches = effectiveConfig.changelog.ignoreCommitsIfMessageMatches;
   }
 }
