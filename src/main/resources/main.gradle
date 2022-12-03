@@ -27,7 +27,7 @@ def findResource(String name, classLoader = project.buildscript.classLoader) {
 def copyResourceToFile(URL resource, String copyTo, classLoader = project.buildscript.classLoader) {
   logger.lifecycle("Copying ${resource} to ${copyTo}")
   def content = resource.text
-  file(copyTo).getParentFile().mkdirs()
+  new File(copyTo).getParentFile().mkdirs()
   FileWriter fw = new FileWriter(copyTo)
   BufferedWriter bw = new BufferedWriter(fw)
   bw.write(content)
@@ -40,12 +40,12 @@ def copyIfFound(String name, String target=null, classLoader = project.buildscri
     logger.lifecycle("Found resource ${name} as ${resource}")
     def newFilename = target == null ? "$buildDir/$name" : target
     copyResourceToFile(resource, newFilename)
-    return file(newFilename)
+    return new File(newFilename)
   }
 }
 
 def File getFile(String name) {
-  def f = file(name)
+  def f = new File(name)
   if (!f.exists()) {
     logger.lifecycle("Cannot find file \"${name}\"")
   } else {
@@ -96,8 +96,8 @@ def configureStaticCodeAnalysis() {
     showProgress = true
     showStackTraces = false
     reportLevel = "low"
-    excludeFilter = file("$buildDir/spotbugs-exclude.xml")
-    reportsDir = file("$buildDir/reports/spotbugs/")
+    excludeFilter = new File("$buildDir/spotbugs-exclude.xml")
+    reportsDir = new File("$buildDir/reports/spotbugs/")
     reports {
       xml {
         enabled true
@@ -238,7 +238,7 @@ def getNewVersion(String oldVersionName, String bump) {
 }
 
 def bumpVersionTo(version) {
-  def propertyFile = file("$projectDir/gradle.properties")
+  def propertyFile = new File("$projectDir/gradle.properties")
   def gradleProps = new Properties()
   propertyFile.withReader { gradleProps.load(it) }
   gradleProps.setProperty('version', version)
@@ -459,12 +459,12 @@ def configureRelease() {
       shouldGitIgnore('package-lock.json')
       shouldGitIgnore('node_modules')
       copyIfFound("npm-java-runner-package.json", "package.json")
-      ant.replace(file: file("package.json"), token: "PKG_NAME", value: project.name)
-      ant.replace(file: file("package.json"), token: "PKG_VERSION", value: version)
-      ant.replace(file: file("package.json"), token: "PKG_WEBSITE", value: effectiveConfig.publishing.website)
-      ant.replace(file: file("package.json"), token: "PKG_GIT", value: effectiveConfig.publishing.vcsUrl)
-      ant.replace(file: file("package.json"), token: "PKG_AUTHOR", value: effectiveConfig.publishing.developerName)
-      ant.replace(file: file("package.json"), token: "PKG_DESCRIPTION", value: project.description)
+      ant.replace(file: new File("package.json"), token: "PKG_NAME", value: project.name)
+      ant.replace(file: new File("package.json"), token: "PKG_VERSION", value: version)
+      ant.replace(file: new File("package.json"), token: "PKG_WEBSITE", value: effectiveConfig.publishing.website)
+      ant.replace(file: new File("package.json"), token: "PKG_GIT", value: effectiveConfig.publishing.vcsUrl)
+      ant.replace(file: new File("package.json"), token: "PKG_AUTHOR", value: effectiveConfig.publishing.developerName)
+      ant.replace(file: new File("package.json"), token: "PKG_DESCRIPTION", value: project.description)
     }
   }
 
@@ -660,7 +660,7 @@ def configureVersions() {
     outputFormatter = { result ->
       def updatable = getUpdatableDependencies(result.outdated.dependencies)
       if (!updatable.isEmpty()) {
-        def buildGradleFile = file("$rootDir/build.gradle")
+        def buildGradleFile = new File("$rootDir/build.gradle")
         def buildGradleContent = buildGradleFile.text
         println "\nStepping dependencies:\n"
         updatable.each { dependency->
