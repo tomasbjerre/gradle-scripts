@@ -26,7 +26,10 @@ def findResource(String name, classLoader = project.buildscript.classLoader) {
 def copyResourceToFile(URL resource, String copyTo, classLoader = project.buildscript.classLoader) {
   logger.lifecycle("Copying ${resource} to ${copyTo}")
   def content = resource.text
-  new File(copyTo).getParentFile().mkdirs()
+  def parentFile = new File(copyTo).getParentFile()
+  if (parentFile != null) {
+    parentFile.mkdirs()
+  }
   FileWriter fw = new FileWriter(copyTo)
   BufferedWriter bw = new BufferedWriter(fw)
   bw.write(content)
