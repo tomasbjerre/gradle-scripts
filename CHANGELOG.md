@@ -2,6 +2,24 @@
 
 Changelog of gradle-scripts.
 
+## 2.20.2 (2022-12-12)
+
+### Bug Fixes
+
+-  changelog ([8e2ef](https://github.com/tomasbjerre/gradle-scripts/commit/8e2ef063a72d638) Tomas Bjerre)  
+
+## 2.20.1 (2022-12-12)
+
+### Bug Fixes
+
+-  copy file ([996de](https://github.com/tomasbjerre/gradle-scripts/commit/996de72002262fe) Tomas Bjerre)  
+
+## 2.20.0 (2022-12-03)
+
+### Features
+
+-  adjusting to new git-changelog-gradle-plugin ([77304](https://github.com/tomasbjerre/gradle-scripts/commit/7730453897d3453) Tomas Bjerre)  
+
 ## 2.19.1 (2022-12-03)
 
 ### Bug Fixes
