@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.20.3 (2022-12-28)
+
+### Bug Fixes
+
+-  default changelog-file and git-repo ([cbcc9](https://github.com/tomasbjerre/gradle-scripts/commit/cbcc9820ecfc556) Tomas Bjerre)  
+
 ## 2.20.2 (2022-12-12)
 
 ### Bug Fixes
