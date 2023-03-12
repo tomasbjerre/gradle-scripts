@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.21.0 (2023-03-12)
+
+### Features
+
+-  black list slf4j from updating ([692b9](https://github.com/tomasbjerre/gradle-scripts/commit/692b9139476b838) Tomas Bjerre)  
+
 ## 2.20.3 (2022-12-28)
 
 ### Bug Fixes
