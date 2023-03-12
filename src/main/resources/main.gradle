@@ -610,7 +610,7 @@ def getUpdatableDependencies(dependencies) {
       "com.h3xstream.findsecbugs",
       "com.google.googlejavaformat",
       "org.eclipse.jgit",
-      "slf4j"
+      "org.slf4j"
       ].contains(it.group))
     }
     .collect {
