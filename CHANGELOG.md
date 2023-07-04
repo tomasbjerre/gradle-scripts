@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.22.1 (2023-07-04)
+
+### Bug Fixes
+
+-  handle project descriptions that are strings ([cb5fc](https://github.com/tomasbjerre/gradle-scripts/commit/cb5fc1907a13314) Tomas Bjerre)  
+
 ## 2.22.0 (2023-03-12)
 
 ### Features
