@@ -465,7 +465,7 @@ def configureRelease() {
       ant.replace(file: new File("package.json"), token: "PKG_WEBSITE", value: effectiveConfig.publishing.website)
       ant.replace(file: new File("package.json"), token: "PKG_GIT", value: effectiveConfig.publishing.vcsUrl)
       ant.replace(file: new File("package.json"), token: "PKG_AUTHOR", value: effectiveConfig.publishing.developerName)
-      ant.replace(file: new File("package.json"), token: "PKG_DESCRIPTION", value: project.description)
+      ant.replace(file: new File("package.json"), token: "PKG_DESCRIPTION", value: project.description.replaceAll("[\"']",""))
     }
   }
 
@@ -573,7 +573,7 @@ def configureRelease() {
         version version
         pom.withXml {
           def root = asNode()
-          root.appendNode('description', project.description)
+          root.appendNode('description', project.description.replaceAll("[\"']",""))
           root.appendNode('name', project.name)
           root.appendNode('url', effectiveConfig.publishing.website)
           root.appendNode('inceptionYear', new Date().getYear() + 1900)
@@ -724,12 +724,12 @@ def configureGradle() {
   pluginBundle {
     website = effectiveConfig.publishing.website
     vcsUrl = effectiveConfig.publishing.vcsUrl
-    description = project.description
+    description = project.description.replaceAll("[\"']","")
 
     plugins {
       thePlugin {
         tags = effectiveConfig.gradlePlugin.tags
-        description = project.description
+        description = project.description.replaceAll("[\"']","")
         id = pluginId
         displayName = displayNameValue
       }
