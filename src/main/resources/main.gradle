@@ -128,6 +128,11 @@ def configureStaticCodeAnalysis() {
 }
 
 def configureFormatting() {
+  if (JavaVersion.current() == JavaVersion.VERSION_17) {
+    logger.lifecycle("Skipping googleJavaFormat for ${JavaVersion.current()}")
+    return
+  }
+
   apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
   build.dependsOn 'googleJavaFormat'
   verifyGoogleJavaFormat.enabled = false
@@ -137,7 +142,7 @@ def configureFormatting() {
     if (JavaVersion.current() == JavaVersion.VERSION_1_8) {
       toolVersion = '1.7'
     }else{
-      toolVersion = '1.17.0'
+      toolVersion = '1.14.0'
     }
   }
 
@@ -853,13 +858,13 @@ buildscript {
     classpath 'com.google.guava:guava:16.0.1'
     classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:+"
     classpath 'se.bjurr.gitchangelog:git-changelog-lib:1.+'
-    classpath "com.gradle.publish:plugin-publish-plugin:1.2.0"
+    classpath "com.gradle.publish:plugin-publish-plugin:0.11.0"
     classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.9'
     classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'
     classpath 'gradle.plugin.com.github.ksoichiro:gradle-build-info-plugin:0.+'
-    classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:5.0.14"
+    classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:5.0.6"
     classpath 'com.github.jengelman.gradle.plugins:shadow:5.2.0'
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.47.0'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.42.0'
   }
 }
 
