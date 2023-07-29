@@ -2,6 +2,8 @@
 
 Changelog of gradle-scripts.
 
+## 2.22.3 (2023-07-29)
+
 ## 2.22.2 (2023-07-29)
 
 ### Bug Fixes
