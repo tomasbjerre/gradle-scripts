@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.22.2 (2023-07-29)
+
+### Bug Fixes
+
+-  stepping dependencies and enabling java 17 formatting ([f632b](https://github.com/tomasbjerre/gradle-scripts/commit/f632bcd8a6988fd) Tomas Bjerre)  
+
 ## 2.22.1 (2023-07-04)
 
 ### Bug Fixes
