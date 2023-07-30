@@ -130,7 +130,6 @@ def configureStaticCodeAnalysis() {
 def configureFormatting() {
   if (JavaVersion.current() == JavaVersion.VERSION_17) {
     logger.lifecycle("Skipping googleJavaFormat for ${JavaVersion.current()}")
-    verifyGoogleJavaFormat.enabled = false
     return
   }
 
