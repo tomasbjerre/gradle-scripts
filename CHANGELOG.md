@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.22.9 (2023-07-30)
+
+### Bug Fixes
+
+-  skip verifyGoogleJavaFormat on java 17 ([d6379](https://github.com/tomasbjerre/gradle-scripts/commit/d637962a28d4a63) Tomas Bjerre)  
+
 ## 2.22.8 (2023-07-30)
 
 ### Bug Fixes
