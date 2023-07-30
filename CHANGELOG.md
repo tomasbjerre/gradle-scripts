@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.22.5 (2023-07-30)
+
+### Bug Fixes
+
+-  exclude CRLF_INJECTION_LOGS URLCONNECTION_SSRF_FD PATH_TRAVERSAL_IN ([61b32](https://github.com/tomasbjerre/gradle-scripts/commit/61b3271bbeb3ab7) Tomas Bjerre)  
+
 ## 2.22.4 (2023-07-30)
 
 ### Bug Fixes
