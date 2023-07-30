@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.22.4 (2023-07-30)
+
+### Bug Fixes
+
+-  exclude REC_CATCH_EXCEPTION ([296ff](https://github.com/tomasbjerre/gradle-scripts/commit/296ffb0502c15b1) Tomas Bjerre)  
+
 ## 2.22.3 (2023-07-29)
 
 ## 2.22.2 (2023-07-29)
