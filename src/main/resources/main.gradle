@@ -134,7 +134,7 @@ def configureFormatting() {
   }
 
   apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
-  processResources.dependsOn 'googleJavaFormat'
+  verifyGoogleJavaFormat.dependsOn 'googleJavaFormat'
 
   googleJavaFormat {
     include '**/*.java'
