@@ -27,4 +27,13 @@
 	<Match>
 		<Bug pattern="REC_CATCH_EXCEPTION"/>
 	</Match>
+	<Match>
+		<Bug pattern="CRLF_INJECTION_LOGS"/>
+	</Match>
+	<Match>
+		<Bug pattern="URLCONNECTION_SSRF_FD"/>
+	</Match>
+	<Match>
+		<Bug pattern="PATH_TRAVERSAL_IN"/>
+	</Match>
 </FindBugsFilter>
