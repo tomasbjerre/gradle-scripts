@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.22.7 (2023-07-30)
+
+### Bug Fixes
+
+-  googleJavaFormat first ([6c382](https://github.com/tomasbjerre/gradle-scripts/commit/6c3826f1a1c18c2) Tomas Bjerre)  
+
 ## 2.22.6 (2023-07-30)
 
 ### Bug Fixes
