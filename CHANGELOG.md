@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.23.0 (2023-11-09)
+
+### Features
+
+-  only including stable releases in update notification ([f46b5](https://github.com/tomasbjerre/gradle-scripts/commit/f46b5b20e411809) Tomas Bjerre)  
+
 ## 2.22.9 (2023-07-30)
 
 ### Bug Fixes
