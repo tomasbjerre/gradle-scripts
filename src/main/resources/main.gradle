@@ -629,11 +629,19 @@ def getUpdatableDependencies(dependencies) {
     }
 }
 
+def isNonStable(v) {
+  def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> v.candidate.version.toUpperCase().contains(it) }
+  def stableVersion = v.candidate.version ==~ /^[0-9,.v-]+(-r)?$/
+  return !stableKeyword && !stableVersion
+}
+
 def configureVersions() {
   apply plugin: com.github.benmanes.gradle.versions.VersionsPlugin
 
   task showUpdateableDependencies(type: com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask) {
     checkForGradleUpdate = false
+    dependencyUpdates.gradleReleaseChannel = "current"
+    rejectVersionIf { isNonStable(it) }
     outputFormatter = { result ->
       def updatable = getUpdatableDependencies(result.outdated.dependencies)
       if (updatable.isEmpty()) {
@@ -658,6 +666,8 @@ def configureVersions() {
 
   task updateDependencies(type: com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask) {
     checkForGradleUpdate = false
+    dependencyUpdates.gradleReleaseChannel = "current"
+    rejectVersionIf { isNonStable(it) }
     outputFormatter = { result ->
       def updatable = getUpdatableDependencies(result.outdated.dependencies)
       if (!updatable.isEmpty()) {
