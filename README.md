@@ -176,7 +176,7 @@ Tested with Gradle:
 
 ```sh
 ./gradlew wrapper \
-  --gradle-version=7.6 \
+  --gradle-version=8.2.1 \
   --distribution-type=bin
 ```
 
