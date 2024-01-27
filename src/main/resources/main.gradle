@@ -78,12 +78,8 @@ def configureStaticCodeAnalysis() {
   }
 
     dependencies {
-      spotbugs 'com.github.spotbugs:spotbugs:4.5.3'
-      if (effectiveConfig.sourceCompatibility > 1.7) {
-        compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
-      } else {
-        logger.lifecycle("Not adding spotbugs-annotations for sourceCompatibility ${effectiveConfig.sourceCompatibility}.")
-      }
+      spotbugs 'com.github.spotbugs:spotbugs:4.8.3'
+      compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
     }
 
   tasks.withType(com.github.spotbugs.snom.SpotBugsTask) {
@@ -608,7 +604,6 @@ def getUpdatableDependencies(dependencies) {
       "com.github.spotbugs",
       "com.h3xstream.findsecbugs",
       "com.google.googlejavaformat",
-      "org.eclipse.jgit",
       "org.slf4j"
       ].contains(it.group))
     }
@@ -769,8 +764,8 @@ def defaultConfig = [
    * "COMMAND" - Runnable JAR, distributed in Central and NPM.
    */
   repoType: "DEFAULT",
-  sourceCompatibility: 1.8,
-  targetCompatibility: 1.8,
+  sourceCompatibility: 11,
+  targetCompatibility: 11,
   staticCodeAnalysis: [
     /**
     * Maximum number of violations to accept from static code analysis.
