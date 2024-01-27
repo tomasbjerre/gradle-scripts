@@ -2,6 +2,16 @@
 
 Changelog of gradle-scripts.
 
+## 2.24.1 (2024-01-27)
+
+### Other changes
+
+**spotbugs 4.5.3**
+
+
+[6d146](https://github.com/tomasbjerre/gradle-scripts/commit/6d146effe7d9727) Tomas Bjerre *2024-01-27 07:39:02*
+
+
 ## 2.24.0 (2024-01-27)
 
 ### Features
