@@ -78,7 +78,7 @@ def configureStaticCodeAnalysis() {
   }
 
     dependencies {
-      spotbugs 'com.github.spotbugs:spotbugs:4.8.3'
+      spotbugs 'com.github.spotbugs:spotbugs:4.5.3'
       compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
     }
 
