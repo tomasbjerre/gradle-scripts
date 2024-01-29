@@ -20,6 +20,7 @@
         <exclude name="AvoidDuplicateLiterals"/>
         <exclude name="AvoidCatchingNPE"/>
         <exclude name="AvoidFieldNameMatchingMethodName"/>
+        <exclude name="AvoidFieldNameMatchingTypeName"/>
     </rule>
 
     <rule ref="category/java/bestpractices.xml">
@@ -50,6 +51,8 @@
         <exclude name="FormalParameterNamingConventions"/>
         <exclude name="MethodNamingConventions"/>
         <exclude name="UselessQualifiedThis"/>
+        <exclude name="ShortClassName"/>
+        <exclude name="BooleanGetMethodName"/>
     </rule>
 
     <rule ref="category/java/design.xml">
