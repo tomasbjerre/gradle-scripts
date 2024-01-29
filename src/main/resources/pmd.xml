@@ -17,6 +17,7 @@
         <exclude name="AvoidCatchingThrowable"/>
         <exclude name="AvoidLiteralsInIfCondition"/>
         <exclude name="NullAssignment"/>
+        <exclude name="AvoidDuplicateLiterals"/>
     </rule>
 
     <rule ref="category/java/bestpractices.xml">
@@ -39,6 +40,9 @@
         <exclude name="TooManyStaticImports"/>
         <exclude name="MethodArgumentCouldBeFinal"/>
         <exclude name="UselessParentheses"/>
+        <exclude name="FieldNamingConventions"/>
+        <exclude name="ConfusingTernary"/>
+        <exclude name="LocalVariableCouldBeFinal"/>
     </rule>
 
     <rule ref="category/java/design.xml">
@@ -56,6 +60,9 @@
         <exclude name="NPathComplexity"/>
         <exclude name="NcssCount"/>
         <exclude name="ExcessiveMethodLength"/>
+        <exclude name="DataClass"/>
+        <exclude name="TooManyMethods"/>
+        <exclude name="GodClass"/>
     </rule>
 
     <rule ref="category/java/security.xml">
@@ -72,6 +79,7 @@
         <exclude name="ConsecutiveAppendsShouldReuse"/>
         <exclude name="ConsecutiveLiteralAppends"/>
         <exclude name="AvoidInstantiatingObjectsInLoops"/>
+        <exclude name="InefficientEmptyStringCheck"/>
     </rule>
 
     <rule ref="category/java/multithreading.xml">
