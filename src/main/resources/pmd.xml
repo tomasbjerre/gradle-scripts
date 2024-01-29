@@ -97,5 +97,6 @@
 
     <rule ref="category/java/multithreading.xml">
         <exclude name="UseConcurrentHashMap"/>
+        <exclude name="AvoidSynchronizedAtMethodLevel"/>
     </rule>
 </ruleset>
