@@ -72,15 +72,17 @@ def File getResourceAsFile(String name, classLoader = project.buildscript.classL
 def configureStaticCodeAnalysis() {
   apply plugin: com.github.spotbugs.snom.SpotBugsPlugin
   apply plugin: se.bjurr.violations.gradle.plugin.ViolationsGradlePlugin
+  apply plugin: 'pmd'
 
   assemble.doLast {
     copyIfFound("spotbugs-exclude.xml")
+    copyIfFound("pmd.xml")
   }
 
-    dependencies {
-      spotbugs 'com.github.spotbugs:spotbugs:4.5.3'
-      compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
-    }
+  dependencies {
+    spotbugs 'com.github.spotbugs:spotbugs:4.5.3'
+    compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
+  }
 
   tasks.withType(com.github.spotbugs.snom.SpotBugsTask) {
     enabled = false
@@ -105,6 +107,21 @@ def configureStaticCodeAnalysis() {
   dependencies {
     spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.10.1'
   }
+
+  pmd {
+    sourceSets = [sourceSets.main]
+    toolVersion = '6.37.0'
+    ruleSetFiles = files("$buildDir/pmd.xml")
+  }
+  pmdMain {
+    source = "src/main/java"
+    ignoreFailures = true
+    reports {
+      xml.required = true
+      html.required = true
+    }
+  }
+
 
   task violations(type: se.bjurr.violations.gradle.plugin.ViolationsTask) {
     minSeverity = 'INFO'
