@@ -44,6 +44,10 @@
         <exclude name="FieldNamingConventions"/>
         <exclude name="ConfusingTernary"/>
         <exclude name="LocalVariableCouldBeFinal"/>
+        <exclude name="UnnecessaryConstructor"/>
+        <exclude name="LocalVariableNamingConventions"/>
+        <exclude name="FormalParameterNamingConventions"/>
+        <exclude name="MethodNamingConventions"/>
     </rule>
 
     <rule ref="category/java/design.xml">
@@ -83,6 +87,7 @@
         <exclude name="AvoidInstantiatingObjectsInLoops"/>
         <exclude name="InefficientEmptyStringCheck"/>
         <exclude name="UseIndexOfChar"/>
+        <exclude name="AppendCharacterWithChar"/>
     </rule>
 
     <rule ref="category/java/multithreading.xml">
