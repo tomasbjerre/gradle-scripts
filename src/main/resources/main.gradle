@@ -133,6 +133,7 @@ def configureStaticCodeAnalysis() {
     violations = [
       ["FINDBUGS", ".", ".*/build/reports/findbugs/.*\\.xml\$","Findbugs"],
       ["FINDBUGS", ".", ".*/build/reports/spotbugs/.*\\.xml\$","Spotbugs"],
+      ["PMD", ".", ".*/build/reports/pmd/.*\\.xml\$","Pmd"],
       ["GOOGLEERRORPRONE", ".", ".*/build/googleErrorProne.*\\.log\$","Error Prone"]
     ]
   }
