@@ -9,9 +9,11 @@
         Nada
     </description>
 
-    <exclude-pattern>.*/(generated-source|test)/.*</exclude-pattern>
+    <exclude-pattern>.*/(generated-source|generated|test)/.*</exclude-pattern>
 
-    <rule ref="category/java/errorprone.xml" />
+    <rule ref="category/java/errorprone.xml">
+        <exclude name="DataflowAnomalyAnalysis"/>
+    </rule>
     <rule ref="category/java/bestpractices.xml" />
     <rule ref="category/java/codestyle.xml">
         <exclude name="ShortVariable"/>
@@ -21,6 +23,9 @@
     <rule ref="category/java/design.xml">
         <exclude name="AvoidThrowingRawExceptionTypes"/>
         <exclude name="AvoidThrowingRawExceptionTypes"/>
+        <exclude name="SignatureDeclareThrowsException"/>
+        <exclude name="AvoidCatchingGenericException"/>
+        <exclude name="LawOfDemeter"/>
     </rule>
     <rule ref="category/java/security.xml" />
     <!-- rule ref="category/java/documentation.xml" //-->
