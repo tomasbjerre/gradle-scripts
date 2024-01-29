@@ -16,6 +16,7 @@
         <exclude name="BeanMembersShouldSerialize"/>
         <exclude name="AvoidCatchingThrowable"/>
         <exclude name="AvoidLiteralsInIfCondition"/>
+        <exclude name="NullAssignment"/>
     </rule>
 
     <rule ref="category/java/bestpractices.xml">
@@ -37,6 +38,7 @@
         <exclude name="AtLeastOneConstructor"/>
         <exclude name="TooManyStaticImports"/>
         <exclude name="MethodArgumentCouldBeFinal"/>
+        <exclude name="UselessParentheses"/>
     </rule>
 
     <rule ref="category/java/design.xml">
