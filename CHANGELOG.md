@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.25.2 (2024-01-29)
+
+### Bug Fixes
+
+-  pmd static code analysis ([f528b](https://github.com/tomasbjerre/gradle-scripts/commit/f528bd91d2d6852) Tomas Bjerre)  
+
 ## 2.25.1 (2024-01-29)
 
 ### Bug Fixes
