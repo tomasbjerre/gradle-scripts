@@ -19,6 +19,7 @@
         <exclude name="NullAssignment"/>
         <exclude name="AvoidDuplicateLiterals"/>
         <exclude name="AvoidCatchingNPE"/>
+        <exclude name="AvoidFieldNameMatchingMethodName"/>
     </rule>
 
     <rule ref="category/java/bestpractices.xml">
@@ -48,6 +49,7 @@
         <exclude name="LocalVariableNamingConventions"/>
         <exclude name="FormalParameterNamingConventions"/>
         <exclude name="MethodNamingConventions"/>
+        <exclude name="UselessQualifiedThis"/>
     </rule>
 
     <rule ref="category/java/design.xml">
@@ -69,6 +71,9 @@
         <exclude name="TooManyMethods"/>
         <exclude name="GodClass"/>
         <exclude name="AvoidDeeplyNestedIfStmts"/>
+        <exclude name="ExcessivePublicCount"/>
+        <exclude name="TooManyFields"/>
+        <exclude name="ExcessiveParameterList"/>
     </rule>
 
     <rule ref="category/java/security.xml">
