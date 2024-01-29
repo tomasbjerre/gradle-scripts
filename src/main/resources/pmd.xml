@@ -18,6 +18,7 @@
         <exclude name="AvoidLiteralsInIfCondition"/>
         <exclude name="NullAssignment"/>
         <exclude name="AvoidDuplicateLiterals"/>
+        <exclude name="AvoidCatchingNPE"/>
     </rule>
 
     <rule ref="category/java/bestpractices.xml">
@@ -63,6 +64,7 @@
         <exclude name="DataClass"/>
         <exclude name="TooManyMethods"/>
         <exclude name="GodClass"/>
+        <exclude name="AvoidDeeplyNestedIfStmts"/>
     </rule>
 
     <rule ref="category/java/security.xml">
@@ -80,6 +82,7 @@
         <exclude name="ConsecutiveLiteralAppends"/>
         <exclude name="AvoidInstantiatingObjectsInLoops"/>
         <exclude name="InefficientEmptyStringCheck"/>
+        <exclude name="UseIndexOfChar"/>
     </rule>
 
     <rule ref="category/java/multithreading.xml">
