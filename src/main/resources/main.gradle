@@ -111,6 +111,7 @@ def configureStaticCodeAnalysis() {
   pmd {
     sourceSets = [sourceSets.main]
     toolVersion = '6.37.0'
+    ruleSets = [] // Gradle has some defaults that needs to be cleared
     ruleSetFiles = files("$buildDir/pmd.xml")
   }
   pmdMain {
