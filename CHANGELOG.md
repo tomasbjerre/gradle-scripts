@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.26.5 (2024-02-25)
+
+### Bug Fixes
+
+-  building gradle plugin with Gradle 8 ([e04cf](https://github.com/tomasbjerre/gradle-scripts/commit/e04cf9a7880db42) Tomas Bjerre)  
+
 ## 2.26.4 (2024-02-25)
 
 ### Bug Fixes
