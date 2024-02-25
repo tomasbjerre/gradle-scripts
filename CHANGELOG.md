@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.26.7 (2024-02-25)
+
+### Bug Fixes
+
+-  gradle 8, command line jar ([a1c79](https://github.com/tomasbjerre/gradle-scripts/commit/a1c79b0281cee6a) Tomas Bjerre)  
+
 ## 2.26.5 (2024-02-25)
 
 ### Bug Fixes
