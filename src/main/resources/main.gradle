@@ -725,14 +725,14 @@ def configureGradle() {
     .replaceAll('-',' ')
     .replaceAll("[\"']","")
   logger.lifecycle("pluginId ${pluginId} displayName ${displayNameValue}")
-  pluginBundle {
+  gradlePlugin {
     website = effectiveConfig.publishing.website
     vcsUrl = effectiveConfig.publishing.vcsUrl
     description = project.description.replaceAll("[\"']","")
 
     plugins {
       thePlugin {
-        tags = effectiveConfig.gradlePlugin.tags
+        tags.set(effectiveConfig.gradlePlugin.tags)
         description = project.description.replaceAll("[\"']","")
         id = pluginId
         displayName = displayNameValue
