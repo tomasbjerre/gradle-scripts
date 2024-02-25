@@ -480,18 +480,28 @@ def configureRelease() {
   }
 
   task releaseAfterMath(type: GradleBuild) {
-      tasks = [
-        'clean', 
-        'build',
-        'publish',
-        'publishToMavenLocal',
-        'commitNewVersionTask', 
-        'gitChangelogTask', 
-        'commitChangelogTask'
-      ] +
-      (effectiveConfig.publishing.nexusCloseAndRelease ? [ "nexusCloseAndRelease" ] : []) +
-      (effectiveConfig.repoType == "GRADLE" ? [ "publishPlugins" ] : []) +
-      (effectiveConfig.repoType == "COMMAND" ? [ "setupNpmJavaRunnerFiles", "publishNpm" ] : [])
+      if (effectiveConfig.repoType == "GRADLE") {
+        tasks = [
+          'clean', 
+          'build',
+          "publishPlugins",
+          'commitNewVersionTask', 
+          'gitChangelogTask', 
+          'commitChangelogTask'
+        ]
+      } else {
+        tasks = [
+          'clean', 
+          'build',
+          'publish',
+          'publishToMavenLocal',
+          'commitNewVersionTask', 
+          'gitChangelogTask', 
+          'commitChangelogTask'
+        ] +
+        (effectiveConfig.publishing.nexusCloseAndRelease ? [ "nexusCloseAndRelease" ] : []) +
+        (effectiveConfig.repoType == "COMMAND" ? [ "setupNpmJavaRunnerFiles", "publishNpm" ] : [])
+      }
   }
 
   if (useShadowJar) {
@@ -585,6 +595,13 @@ def configureRelease() {
   signing {
     required { effectiveConfig.publishing.sign && gradle.taskGraph.hasTask("publish") }
     sign publishing.publications.gradleScriptsPublication
+  }
+
+  tasks.withType(AbstractPublishToMaven) { publishTask ->
+    tasks.withType(Sign) { jarTask ->
+      logger.lifecycle("${publishTask} must run after ${jarTask}")
+      publishTask.mustRunAfter(jarTask)
+    }
   }
 }
 
