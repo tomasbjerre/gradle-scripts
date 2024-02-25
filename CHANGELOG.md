@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.26.0 (2024-02-25)
+
+### Features
+
+-  Gradle 8 ([b9df5](https://github.com/tomasbjerre/gradle-scripts/commit/b9df59884bced96) Tomas Bjerre)  
+
 ## 2.25.16 (2024-01-29)
 
 ### Bug Fixes
