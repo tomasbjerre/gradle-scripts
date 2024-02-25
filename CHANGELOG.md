@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.26.9 (2024-02-25)
+
+### Bug Fixes
+
+-  gradle 8, shadow ([7f31e](https://github.com/tomasbjerre/gradle-scripts/commit/7f31eefba6bf669) Tomas Bjerre)  
+
 ## 2.26.8 (2024-02-25)
 
 ### Bug Fixes
