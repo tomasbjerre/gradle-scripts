@@ -219,8 +219,6 @@ def configureJava() {
 
   if (effectiveConfig.manifest.mainClass != '') {
     jar {
-      withSourcesJar()
-      withJavadocJar()
       manifest {
         attributes 'Main-Class': effectiveConfig.manifest.mainClass
       }
@@ -560,11 +558,7 @@ def configureRelease() {
   publishing {
     publications {
       gradleScriptsPublication(MavenPublication) { publication ->
-        if (useShadowJar) {
-          project.shadow.component(publication)
-        } else {
-          from project.components.java
-        }
+        from project.components.java
         logger.lifecycle("group: ${project.group} name: ${project.name}")
         groupId project.group.replaceAll("[\"']","")
         artifactId project.name.replaceAll("[\"']","")
