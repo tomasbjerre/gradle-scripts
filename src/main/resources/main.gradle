@@ -150,12 +150,7 @@ def configureFormatting() {
     java {
       target '**/*.java'
       googleJavaFormat()
-      String excludeString = effectiveConfig
-        .generatedSourceFolders
-        .collect { "${it}.*" }
-        .join('|')
-      logger.lifecycle("Excluding formatting on: ${excludeString}")
-      targetExclude excludeString
+      targetExclude effectiveConfig.formattingExcludedPatterns
     }
   }
 }
@@ -834,6 +829,10 @@ def defaultConfig = [
   generatedSourceFolders: [
     "src/gen/java",
     "src/generated/java"
+  ],
+  formattingExcludedPatterns: [
+    "**/gen/**",
+    "**/generated/**"
   ],
   /**
    * Will be configured if they exist.
