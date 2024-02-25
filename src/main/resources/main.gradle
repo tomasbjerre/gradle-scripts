@@ -219,6 +219,8 @@ def configureJava() {
 
   if (effectiveConfig.manifest.mainClass != '') {
     jar {
+      withSourcesJar()
+      withJavadocJar()
       manifest {
         attributes 'Main-Class': effectiveConfig.manifest.mainClass
       }
