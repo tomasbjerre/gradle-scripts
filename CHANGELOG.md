@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.26.2 (2024-02-25)
+
+### Bug Fixes
+
+-  gradle plugin ([1ef7e](https://github.com/tomasbjerre/gradle-scripts/commit/1ef7e5233308afa) Tomas Bjerre)  
+
 ## 2.26.1 (2024-02-25)
 
 ### Bug Fixes
