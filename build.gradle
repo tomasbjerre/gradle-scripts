@@ -1,3 +1,5 @@
+apply plugin: 'java-library'
+
 def mainGradle = 'src/main/resources/main.gradle'
 
 def mainGradleContent = file(mainGradle).text
@@ -21,4 +23,18 @@ file('README.md').write(newReadmeContent)
 /**
  * See README.md for usage in a project.
  */
+/*
+ // This is just use for testing purposes when fiddling with this script
+ dependencies {
+    api 'se.bjurr.violations:violations-lib:1.156.7'
+ }
+ project.ext.buildConfig = [
+    publishing: [
+        relocate: [
+        "   se:se"
+        ]
+    ]
+ ]
+ */
+
 apply from: mainGradle

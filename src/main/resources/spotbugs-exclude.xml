@@ -36,4 +36,7 @@
 	<Match>
 		<Bug pattern="PATH_TRAVERSAL_IN"/>
 	</Match>
+	<Match>
+		<Bug pattern="CT_CONSTRUCTOR_THROW"/>
+	</Match>
 </FindBugsFilter>

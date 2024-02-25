@@ -80,7 +80,7 @@ def configureStaticCodeAnalysis() {
   }
 
   dependencies {
-    spotbugs 'com.github.spotbugs:spotbugs:4.5.3'
+    spotbugs 'com.github.spotbugs:spotbugs:4.8.3'
     compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
   }
 
@@ -91,10 +91,9 @@ def configureStaticCodeAnalysis() {
   spotbugsMain {
     enabled = true
     ignoreFailures = true
-    effort = "max"
+    effort = com.github.spotbugs.snom.Effort.MAX
     showProgress = true
     showStackTraces = false
-    reportLevel = "low"
     excludeFilter = new File("$buildDir/spotbugs-exclude.xml")
     reportsDir = new File("$buildDir/reports/spotbugs/")
     reports {
@@ -105,12 +104,12 @@ def configureStaticCodeAnalysis() {
   }
 
   dependencies {
-    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.10.1'
+    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.12.0'
   }
 
   pmd {
     sourceSets = [sourceSets.main]
-    toolVersion = '6.37.0'
+    toolVersion = '6.55.0'
     ruleSets = [] // Gradle has some defaults that needs to be cleared
     ruleSetFiles = files("$buildDir/pmd.xml")
   }
@@ -143,26 +142,20 @@ def configureStaticCodeAnalysis() {
 }
 
 def configureFormatting() {
-  if (JavaVersion.current() == JavaVersion.VERSION_17) {
-    logger.lifecycle("Skipping googleJavaFormat for ${JavaVersion.current()}")
-    return
-  }
+  apply plugin: com.diffplug.gradle.spotless.SpotlessPlugin
 
-  apply plugin: com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormatPlugin
-  verifyGoogleJavaFormat.dependsOn 'googleJavaFormat'
+  check.dependsOn spotlessApply
 
-  googleJavaFormat {
-    include '**/*.java'
-    if (JavaVersion.current() == JavaVersion.VERSION_1_8) {
-      toolVersion = '1.7'
-    }else{
-      toolVersion = '1.14.0'
-    }
-  }
-
-  effectiveConfig.generatedSourceFolders.each {
-    googleJavaFormat {
-      exclude "${it}/**/*.java"
+  spotless {
+    java {
+      target '**/*.java'
+      googleJavaFormat()
+      String excludeString = effectiveConfig
+        .generatedSourceFolders
+        .collect { "${it}.*" }
+        .join('|')
+      logger.lifecycle("Excluding formatting on: ${excludeString}")
+      targetExclude excludeString
     }
   }
 }
@@ -182,7 +175,7 @@ def addTestSourceFolderIfExists(String folder) {
 }
 
 def configureJava() {
-  apply plugin: 'java'
+  apply plugin: 'java-library'
   apply plugin: 'eclipse'
 
   sourceCompatibility = effectiveConfig.sourceCompatibility
@@ -226,6 +219,8 @@ def configureJava() {
 
   if (effectiveConfig.manifest.mainClass != '') {
     jar {
+      withSourcesJar()
+      withJavadocJar()
       manifest {
         attributes 'Main-Class': effectiveConfig.manifest.mainClass
       }
@@ -398,9 +393,12 @@ task nexusCloseAndRelease() {
 }
 
 def configureRelease() {
+  def useShadowJar = !effectiveConfig.publishing.relocate.isEmpty()
   apply plugin: "maven-publish"
   apply plugin: 'signing'
-  apply plugin: com.github.jengelman.gradle.plugins.shadow.PluginShadowPlugin
+  if (useShadowJar) {
+    apply plugin: com.github.jengelman.gradle.plugins.shadow.ShadowPlugin
+  }
 
   tasks.addRule("Pattern: bump<TYPE>") { String taskName ->
     if (taskName.matches("bump(Major|Minor|Patch)")) {
@@ -498,23 +496,6 @@ def configureRelease() {
       (effectiveConfig.repoType == "COMMAND" ? [ "setupNpmJavaRunnerFiles", "publishNpm" ] : [])
   }
 
-  task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-  }
-
-  task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-  }
-
-  task testJar(type: Jar, dependsOn: testClasses) {
-    classifier = 'tests'
-    from sourceSets.test.allSource
-  }
-
-  def artifactsList = []
-  def useShadowJar = !effectiveConfig.publishing.relocate.isEmpty()
   if (useShadowJar) {
     effectiveConfig.publishing.relocate.each { it ->
       def relocateFrom = ""
@@ -533,19 +514,13 @@ def configureRelease() {
       }
     }
     shadowJar {
-      baseName = project.name
-      classifier = null
-      version = project.version
+      archiveBaseName.set(project.name)
+      archiveClassifier.set('')
+      archiveVersion.set(project.version)
     }
-    artifactsList = [sourcesJar, javadocJar, testJar, shadowJar]
     build.dependsOn shadowJar
   } else {
     logger.lifecycle("Not including shadow jar.")
-    artifactsList = [sourcesJar, javadocJar, testJar, jar]
-  }
-
-  artifacts {
-    archives artifactsList
   }
 
   def pomConfig = {
@@ -580,7 +555,6 @@ def configureRelease() {
         } else {
           from project.components.java
         }
-        setArtifacts artifactsList
         logger.lifecycle("group: ${project.group} name: ${project.name}")
         groupId project.group.replaceAll("[\"']","")
         artifactId project.name.replaceAll("[\"']","")
@@ -621,8 +595,20 @@ def getUpdatableDependencies(dependencies) {
     .findAll {
       !([
       "com.github.spotbugs",
-      "com.h3xstream.findsecbugs",
+      "com.diffplug.durian",
       "com.google.googlejavaformat",
+      "com.ibm.icu",
+      "commons-collections",
+      "commons-io",
+      "dev.equo.ide",
+      "jakarta.annotation",
+      "jakarta.inject",
+      "jakarta.servlet",
+      "net.java.dev.jna",
+      "org.apache.felix",
+      "org.bouncycastle",
+      "org.eclipse",
+      "com.h3xstream.findsecbugs",
       "org.slf4j"
       ].contains(it.group))
     }
@@ -881,12 +867,12 @@ buildscript {
     classpath 'com.google.guava:guava:16.0.1'
     classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:+"
     classpath 'se.bjurr.gitchangelog:git-changelog-lib:1.+'
-    classpath "com.gradle.publish:plugin-publish-plugin:0.11.0"
-    classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.9'
+    classpath "com.gradle.publish:plugin-publish-plugin:1.2.1"
+    classpath 'com.diffplug.spotless:spotless-plugin-gradle:6.25.0'
     classpath 'se.bjurr.violations:violations-gradle-plugin:1.+'
     classpath 'gradle.plugin.com.github.ksoichiro:gradle-build-info-plugin:0.+'
-    classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:5.0.6"
-    classpath 'com.github.jengelman.gradle.plugins:shadow:5.2.0'
+    classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:6.0.7"
+    classpath 'com.github.johnrengelman:shadow:8.1.1'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.42.0'
   }
 }

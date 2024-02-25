@@ -18,7 +18,7 @@ It packages a `jar`. Uploads it to a Maven repository. Users can add the `jar` t
 The behaviour of the script is highly configurable by supplying a `project.ext.buildConfig`. The given config will be merged with the [defaultConfig](src/main/resources/main.gradle).
 
 ```groovy
-apply plugin: 'java'
+apply plugin: 'java-library'
 
 buildscript {
  repositories {
@@ -176,7 +176,7 @@ Tested with Gradle:
 
 ```sh
 ./gradlew wrapper \
-  --gradle-version=7.6 \
+  --gradle-version=8.6 \
   --distribution-type=bin
 ```
 
