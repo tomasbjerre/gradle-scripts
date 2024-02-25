@@ -117,6 +117,10 @@ def defaultConfig = [
     "src/gen/java",
     "src/generated/java"
   ],
+  formattingExcludedPatterns: [
+    "**/gen/**",
+    "**/generated/**"
+  ],
   /**
    * Will be configured if they exist.
    */
