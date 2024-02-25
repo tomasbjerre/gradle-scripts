@@ -736,6 +736,7 @@ def configureGradle() {
         description = project.description.replaceAll("[\"']","")
         id = pluginId
         displayName = displayNameValue
+        implementationClass = effectiveConfig.gradlePlugin.implementationClass
       }
     }
   }
