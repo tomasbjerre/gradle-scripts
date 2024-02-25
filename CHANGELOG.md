@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.26.4 (2024-02-25)
+
+### Bug Fixes
+
+-  sourcejar javadocjar ([f382c](https://github.com/tomasbjerre/gradle-scripts/commit/f382ce6d9bdb493) Tomas Bjerre)  
+
 ## 2.26.2 (2024-02-25)
 
 ### Bug Fixes
