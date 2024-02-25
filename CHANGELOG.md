@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.26.1 (2024-02-25)
+
+### Bug Fixes
+
+-  exlcuding patterns from formatting ([e3192](https://github.com/tomasbjerre/gradle-scripts/commit/e3192367ad2150e) Tomas Bjerre)  
+
 ## 2.26.0 (2024-02-25)
 
 ### Features
