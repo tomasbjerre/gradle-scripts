@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.27.0 (2024-04-24)
+
+### Features
+
+-  ignoring NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE ([f3aee](https://github.com/tomasbjerre/gradle-scripts/commit/f3aee9a1126b265) Tomas Bjerre)  
+
 ## 2.26.9 (2024-02-25)
 
 ### Bug Fixes
