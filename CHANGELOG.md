@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.27.1 (2024-04-30)
+
+### Bug Fixes
+
+-  pom dependencies were not removed in fat jars ([952ec](https://github.com/tomasbjerre/gradle-scripts/commit/952ec983f180c06) Tomas Bjerre)  
+
 ## 2.27.0 (2024-04-24)
 
 ### Features
