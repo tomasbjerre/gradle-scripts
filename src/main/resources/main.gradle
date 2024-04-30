@@ -584,6 +584,34 @@ def configureRelease() {
           }
         }
       }
+
+      if (useShadowJar) {
+        logger.lifecycle("shadow jar in maven publication")
+        shadow(MavenPublication) { publication ->
+          project.shadow.component(publication)
+          artifact javadocJar
+          artifact sourcesJar
+
+          logger.lifecycle("group: ${project.group} name: ${project.name}")
+          groupId project.group.replaceAll("[\"']","")
+          artifactId project.name.replaceAll("[\"']","")
+          version version
+          pom.withXml {
+            def root = asNode()
+            root.appendNode('description', project.description.replaceAll("[\"']",""))
+            root.appendNode('name', project.name)
+            root.appendNode('url', effectiveConfig.publishing.website)
+            root.appendNode('inceptionYear', new Date().getYear() + 1900)
+            root.children().last() + pomConfig
+          }
+
+          versionMapping {
+            allVariants {
+              fromResolutionResult()
+            }
+          }
+        }
+      }
     }
     repositories {
       maven {
@@ -597,6 +625,9 @@ def configureRelease() {
   signing {
     required { effectiveConfig.publishing.sign && gradle.taskGraph.hasTask("publish") }
     sign publishing.publications.gradleScriptsPublication
+    if (useShadowJar) {
+      sign publishing.publications.shadow
+    }
   }
 
   tasks.withType(AbstractPublishToMaven) { publishTask ->
