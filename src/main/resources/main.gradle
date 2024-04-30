@@ -558,7 +558,13 @@ def configureRelease() {
   publishing {
     publications {
       gradleScriptsPublication(MavenPublication) { publication ->
-        from project.components.java
+        if (useShadowJar) {
+          println "shadow jar in maven publication"
+          project.shadow.component(publication)
+        } else {
+          println "not using shadow jar in maven publication"
+          from project.components.java
+        }
         logger.lifecycle("group: ${project.group} name: ${project.name}")
         groupId project.group.replaceAll("[\"']","")
         artifactId project.name.replaceAll("[\"']","")
