@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.27.3 (2024-04-30)
+
+### Bug Fixes
+
+-  shadow jar ([87a90](https://github.com/tomasbjerre/gradle-scripts/commit/87a907d594bfaf4) Tomas Bjerre)  
+
 ## 2.27.2 (2024-04-30)
 
 ### Bug Fixes
