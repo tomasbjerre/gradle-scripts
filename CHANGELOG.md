@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.27.2 (2024-04-30)
+
+### Bug Fixes
+
+-  logging ([77bd4](https://github.com/tomasbjerre/gradle-scripts/commit/77bd4ae2c206c63) Tomas Bjerre)  
+
 ## 2.27.1 (2024-04-30)
 
 ### Bug Fixes
