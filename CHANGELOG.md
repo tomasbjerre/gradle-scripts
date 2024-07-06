@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.28.0 (2024-07-06)
+
+### Features
+
+-  defaulting to java 17 ([a33e8](https://github.com/tomasbjerre/gradle-scripts/commit/a33e892a3eafeaf) Tomas Bjerre)  
+
 ## 2.27.3 (2024-04-30)
 
 ### Bug Fixes
