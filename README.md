@@ -51,8 +51,8 @@ def defaultConfig = [
    * "COMMAND" - Runnable JAR, distributed in Central and NPM.
    */
   repoType: "DEFAULT",
-  sourceCompatibility: 11,
-  targetCompatibility: 11,
+  sourceCompatibility: 17,
+  targetCompatibility: 17,
   staticCodeAnalysis: [
     /**
     * Maximum number of violations to accept from static code analysis.
