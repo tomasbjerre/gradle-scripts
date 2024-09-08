@@ -37,4 +37,8 @@ file('README.md').write(newReadmeContent)
  ]
  */
 
+project.ext.buildConfig = [
+  sourceCompatibility: 11,
+  targetCompatibility: 11
+]
 apply from: mainGradle
