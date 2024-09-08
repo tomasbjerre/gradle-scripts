@@ -2,6 +2,12 @@
 
 Changelog of gradle-scripts.
 
+## 2.28.2 (2024-09-08)
+
+### Bug Fixes
+
+-  build it with java 11 ([e4197](https://github.com/tomasbjerre/gradle-scripts/commit/e41979c0e01dc10) Tomas Bjerre)  
+
 ## 2.28.0 (2024-07-06)
 
 ### Features
