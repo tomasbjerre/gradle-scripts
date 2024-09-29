@@ -1,3 +1,9 @@
+This functionality moved to:
+
+- <https://github.com/tomasbjerre/java-convention-gradle-plugin>
+- <https://github.com/tomasbjerre/update-versions-gradle-plugin>
+- <https://github.com/tomasbjerre/conventional-release-gradle-plugin>
+
 # Gradle Scripts
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.gradle/gradle-scripts/badge.svg)](https://search.maven.org/artifact/se.bjurr.gradle/gradle-scripts)
